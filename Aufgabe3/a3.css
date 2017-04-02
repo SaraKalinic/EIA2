@@ -1,0 +1,24 @@
+
+
+.board { 
+	width:80px;
+	height:80px;
+	border:1px solid black;
+	float:left;
+	text-align:center;
+	overflow:scroll;
+	}
+
+.black {
+	background-color: black;
+	color:white;
+	
+	}
+
+.white {
+	background-color:white;
+	}
+	
+body > div:nth-child(8n+1) {
+			clear: left;
+			;}
