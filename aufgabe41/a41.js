@@ -22,8 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let mouseBox = document.createElement("div");
     document.body.appendChild(mouseBox);
-    mouseBox.className = "mouseBox";
-    mouseBox.id = "mouseBox";
+    mouseBox.className = "mouseBox"; // 
+    document.addEventListener("mousemove", boxbewegen);
+    function boxbewegen(Event) {
+        mouseBox.style.left = (Event.clientX + 30) + "px";
+        mouseBox.style.top = (Event.clientY + 30) + "px";
+    }
     function mark(event) {
         let target = event.target;
         if (target.className.includes("marked")) {
@@ -43,11 +47,13 @@ document.addEventListener("DOMContentLoaded", function () {
             sum += parseInt(marked[i].innerText);
             mouseBox.innerText = "Dez:" + sum.toString() + "\r\n" + "hexDez:" + sum.toString(16);
         }
-        console.log(sum);
+        if (marked.length == 0) {
+            mouseBox.style.display = "none";
+        }
+        else {
+            mouseBox.style.display = "inline-block";
+        }
+        console.log(sum + "\r\n" + sum.toString(16));
     }
-    document.addEventListener("mousemove", function (Event) {
-        document.getElementById("mouseBox").style.left = (Event.clientX + 10) + "px";
-        document.getElementById("mouseBox").style.top = (Event.clientX + 10) + "px";
-    });
 });
 //# sourceMappingURL=a41.js.map
