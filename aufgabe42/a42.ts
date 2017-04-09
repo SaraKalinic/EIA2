@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function(): void {
     for (let v: number = 0; v < handKarten.length; v++) {
 
         //Karten von Hand in die Ablage
-        handKarten[v].addEventListener("click", function(_event: Event): void {
-            let karteHand: HTMLDivElement = <HTMLDivElement>_event.target;
+        handKarten[v].addEventListener("click", function(event: Event): void {
+            let karteHand: HTMLDivElement = <HTMLDivElement>event.target;
             ablage.textContent = karteHand.textContent;
             karteHand.textContent = "";
 

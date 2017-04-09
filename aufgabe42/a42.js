@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let handKarten = document.getElementsByClassName("Handkarten");
     for (let v = 0; v < handKarten.length; v++) {
         //Karten von Hand in die Ablage
-        handKarten[v].addEventListener("click", function (_event) {
-            let karteHand = _event.target;
+        handKarten[v].addEventListener("click", function (event) {
+            let karteHand = event.target;
             ablage.textContent = karteHand.textContent;
             karteHand.textContent = "";
         });
