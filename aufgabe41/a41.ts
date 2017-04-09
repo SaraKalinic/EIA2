@@ -18,12 +18,18 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.appendChild(element);
         
         
-       if ( n < 8 ) {  
+       if ( n < 8) {  
     element.addEventListener("click", mark);
     
 }
        
-  }       
+  }
+
+   let mouseBox: HTMLDivElement = document.createElement("div");   
+     document.body.appendChild(mouseBox);
+     mouseBox.className = "mouseBox";
+    mouseBox.id= "mouseBox";
+
         
 function mark(event: MouseEvent) {
    let target: HTMLDivElement = <HTMLDivElement>event.target;
@@ -43,23 +49,20 @@ function mark(event: MouseEvent) {
 
     for (let i = 0; i < marked.length; i++) {
         sum += parseInt(marked[i].innerText);
-    }
-    
-    console.log(" Summe Reiskörner: " + "\r\n" + "Dezimal: " + sum.toString() + "\r\n" + "Hexadezimal: " + sum.toString(16));
+        mouseBox.innerText = "Dez:"+ sum.toString() +"\r\n" + "hexDez:"+ sum.toString(16);
+ }
+    console.log(sum);
+
+  
+     
 }
-    
-   let mouseBox: HTMLDivElement = document.createElement("div");   
-     document.body.appendChild(mouseBox);
-    mouseBox.className = "mouseBox";
-    
-    mouseBox.addEventListener("mousemove", function (event: MouseEvent) {
-        mouseBox.style.left = (Event.clientX + 10) + "px";
-        mouseBox.style.top = (Event.clientY + 10) + "px";
-    });
 
+  document.addEventListener("mousemove", function(Event:MouseEvent) { 
+   document.getElementById("mouseBox").style.left = (Event.clientX+10) +"px";
+   document.getElementById("mouseBox").style.top = (Event.clientX+10) +"px"; });
     
-    
-   
 
- });
-//# sourceMappingURL=a41.js.map
+});
+
+
+ 

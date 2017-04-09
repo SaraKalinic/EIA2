@@ -20,6 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
             element.addEventListener("click", mark);
         }
     }
+    let mouseBox = document.createElement("div");
+    document.body.appendChild(mouseBox);
+    mouseBox.className = "mouseBox";
+    mouseBox.id = "mouseBox";
     function mark(event) {
         let target = event.target;
         if (target.className.includes("marked")) {
@@ -37,16 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
         let marked = document.getElementsByClassName("marked");
         for (let i = 0; i < marked.length; i++) {
             sum += parseInt(marked[i].innerText);
+            mouseBox.innerText = "Dez:" + sum.toString() + "\r\n" + "hexDez:" + sum.toString(16);
         }
-        console.log(" Summe Reiskörner: " + "\r\n" + "Dezimal: " + sum.toString() + "\r\n" + "Hexadezimal: " + sum.toString(16));
+        console.log(sum);
     }
-    let mouseBox = document.createElement("div");
-    document.body.appendChild(mouseBox);
-    mouseBox.className = "mouseBox";
-    mouseBox.addEventListener("mousemove", function (Event) {
-        mouseBox.style.left = (Event.clientX + 10) + "px";
-        mouseBox.style.top = (Event.clientY + 10) + "px";
+    document.addEventListener("mousemove", function (Event) {
+        document.getElementById("mouseBox").style.left = (Event.clientX + 10) + "px";
+        document.getElementById("mouseBox").style.top = (Event.clientX + 10) + "px";
     });
 });
-//# sourceMappingURL=a41.js.map 
 //# sourceMappingURL=a41.js.map

@@ -27,8 +27,11 @@ body > div:nth-child(8n+1) {
 			clear: left;
 			;}
 			
-.mouseBox { z-index:1;
+.mouseBox {
+	padding-top:5px; 
+ z-index:1;
 border: 3px solid yellowgreen;
 height: 90px;
-width: 110px; }
+width: 110px; 
+background-color: yellowgreen;}
  
