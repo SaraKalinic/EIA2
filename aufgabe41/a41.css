@@ -1,0 +1,34 @@
+
+.board { 
+	width:80px;
+	height:80px;
+	border:1px solid black;
+	float:left;
+	text-align:center;
+	
+	}
+
+.black {
+	background-color: black;
+	color:white;
+	
+	}
+
+.white {
+	background-color:white;
+	}
+	
+.marked {
+	background-color:maroon;
+	color:white;
+}
+	
+body > div:nth-child(8n+1) {
+			clear: left;
+			;}
+			
+.mouseBox { z-index:1;
+border: 3px solid yellowgreen;
+height: 90px;
+width: 110px; }
+ 
