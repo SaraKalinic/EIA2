@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (kartenSammlung.length === 0) {
             nachziehStapel.innerText = "leer";
+            nachziehStapel.style.display = "none";
         }
     });
     // ABLAGE 

@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function(): void {
 
         if (kartenSammlung.length === 0) {
             nachziehStapel.innerText = "leer";
+            nachziehStapel.style.display = "none"; 
         }
     })
 
