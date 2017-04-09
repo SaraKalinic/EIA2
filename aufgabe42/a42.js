@@ -1,4 +1,12 @@
-//In Zusammenarbeit mit Nadia Credidio und Christian Saile 
+/* Aufgabe: (Nummer 4)
+Name: (Sara Kalinic)
+Matrikel: (255073)
+Datum: (09.04.17)
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert
+In Zusammenarbeit mit Nadia Credidio, Christian Saile und
+mit Hilfestellung von Janett Stüwe*/
 document.addEventListener("DOMContentLoaded", function () {
     //Array anlegen
     let kartenSammlung = ['Pik 7', 'Pik 8', 'Pik 9',

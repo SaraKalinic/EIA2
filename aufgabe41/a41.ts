@@ -1,3 +1,5 @@
+
+
 let sum = 0;
 document.addEventListener("DOMContentLoaded", function () {
     let rice = 1;
