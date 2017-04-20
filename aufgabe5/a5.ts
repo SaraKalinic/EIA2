@@ -54,12 +54,13 @@ namespace L4_Canvas {
         drawTure(0, 540, "#ac7339", "#ac7339");
         drawFenster(0, 540, "#4da6ff", "#cce6ff");
         drawFenster(165, 540, "#4da6ff", "#cce6ff");
-        drawBank(20,700, "#734d26", "#d9b38c", "#4d2600","#4d2600" ); 
+        drawBank(20,700, "#734d26", "#d9b38c", "#4d2600","#4d2600" );
+        drawStraße( 0, 540, "#4d4d4d", "#999999");
         
         //Blumen
         drawBlume(800, 800, 5, 180, 270, "#ffff99", "#ffff99", "#4d2600", "#4d2600");
         drawBlume1(900, 800, 5, 180, 270, "#ffffff", "#ffffff", "#ffff1a", "#ffff1a");
-     //   drawBlume2(500, 800, 5, 180, 270, "#ff80df", "#ff80df", "#ff80df", "#ff80df");
+        //drawBlume2(500, 800, 5, 180, 270, "#ff80df", "#ff80df", "#ff80df", "#ff80df");
         drawBlume3(500, 900, 5, 180, 270, "#66ccff", "#66ccff", "#3399ff", "#3399ff", "#ffff00", "#ffff00", "#663300", "#663300");
        
           for (var i: number = 0; i < 14; i ++) {
@@ -244,6 +245,27 @@ namespace L4_Canvas {
         crc2.stroke();
     }
     
+      function drawStraße(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+        crc2.beginPath();
+        crc2.fillStyle = _fillColor;
+        crc2.strokeStyle = _strokeColor;
+        crc2.moveTo(_x +175 , _y );
+        crc2.lineTo(_x + 175, _y );
+        crc2.lineTo(_x + 175, _y +60 ); 
+        crc2.lineTo(_x + 179, _y + 68);    
+        crc2.lineTo(_x + 350, _y + 270);
+        crc2.lineTo(_x + 200, _y + 340);
+        crc2.lineTo(_x , _y + 540);  
+        crc2.lineTo(_x , _y + 480);  
+        crc2.lineTo(_x +180 , _y + 290);
+        crc2.lineTo(_x +270 , _y + 240);
+        crc2.lineTo(_x +130 , _y + 70);
+        crc2.lineTo(_x +125 , _y );               
+        crc2.closePath();
+        crc2.fill();
+        crc2.stroke();
+    }
+    
        function drawFenster(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
@@ -252,6 +274,7 @@ namespace L4_Canvas {
         crc2.lineTo(_x + 80, _y  -100);
         crc2.lineTo(_x + 80, _y -130);
         crc2.lineTo(_x + 50, _y -130);
+        crc2.closePath();   
         crc2.fill();
         crc2.stroke();
     }
