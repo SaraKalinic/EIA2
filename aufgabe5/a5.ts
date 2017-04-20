@@ -54,7 +54,7 @@ namespace L4_Canvas {
         drawTure(0, 540, "#ac7339", "#ac7339");
         drawFenster(0, 540, "#4da6ff", "#cce6ff");
         drawFenster(165, 540, "#4da6ff", "#cce6ff");
-        drawBank(20,590, "#734d26", "#d9b38c", "#4d2600","#4d2600" ); 
+        drawBank(20,700, "#734d26", "#d9b38c", "#4d2600","#4d2600" ); 
         
         //Blumen
         drawBlume(800, 800, 5, 180, 270, "#ffff99", "#ffff99", "#4d2600", "#4d2600");
@@ -409,8 +409,8 @@ namespace L4_Canvas {
         crc2.strokeStyle = _strokeColor1;
         crc2.moveTo(_x + 120 , _y - 14);
         crc2.lineTo(_x + 140, _y  -17 );
-        crc2.lineTo(_x + 140, _y +95 );
-        crc2.lineTo(_x + 120, _y +100 );
+        crc2.lineTo(_x + 140, _y +80 );
+        crc2.lineTo(_x + 120, _y +85);
         crc2.closePath(); 
          crc2.fill();
         crc2.stroke();   
@@ -443,8 +443,8 @@ namespace L4_Canvas {
         crc2.strokeStyle = _strokeColor1; 
         crc2.moveTo(_x + 145, _y + 38);
         crc2.lineTo(_x + 160, _y  +45 );
-         crc2.lineTo(_x + 160, _y  +105 );
-        crc2.lineTo(_x + 145, _y  +110 );       
+         crc2.lineTo(_x + 160, _y  +95 );
+        crc2.lineTo(_x + 145, _y  +100 );       
         crc2.closePath();   
         crc2.fill();
         crc2.stroke();  
