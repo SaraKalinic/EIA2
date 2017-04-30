@@ -94,7 +94,7 @@ namespace L5_Canvas {
          
         //Startposition der Bienen 
         for (let i: number = 0; i < n; i++) {
-            x[i] = 1750;
+             x[i] = 1750; 
             y[i] = 685;
         }
         
