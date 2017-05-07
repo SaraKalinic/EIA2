@@ -4,7 +4,9 @@ Matrikel: (255073)
 Datum: (07.05.17)
 Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
-nicht kopiert und auch nicht diktiert.  */
+nicht kopiert und auch nicht diktiert. */
+
+/* Die Regenbogenflügel sind geplant gewesen. */
 
 namespace L5_Canvas {
     window.addEventListener("load", init);
@@ -836,7 +838,7 @@ namespace L5_Canvas {
          let b: BieneData = { x: 0, y: 0,  color: " white " , size: 0 };
            b.x = 1750;
            b.y = 685;
-           b.color = "white"; 
+           b.color =  b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)"; 
            b.size = Math.random() * 10 + 2;
            bee.push(b);
             n++;
