@@ -4,7 +4,9 @@ Matrikel: (255073)
 Datum: (07.05.17)
 Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
-nicht kopiert und auch nicht diktiert.  */
+nicht kopiert und auch nicht diktiert.
+
+In Zusammenarbeit mit Nadia Credidio*/
 var StudiVZ;
 (function (StudiVZ) {
     var students = [];
