@@ -85,7 +85,7 @@ var L5_Canvas;
         image = crc2.getImageData(0, 0, canvas.width, canvas.height);
         //Startposition der Bienen 
         for (let i = 0; i < n; i++) {
-            let b = { x: 0, y: 0, color: "", size: 0 };
+            let b = { x: 0, y: 0, color: " ", size: 0 };
             b.x = 1750;
             b.y = 685;
             b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
@@ -697,8 +697,8 @@ var L5_Canvas;
     //Biene zeichnen
     function drawBiene(_x, _y, _color, _size) {
         crc2.beginPath();
-        crc2.fillStyle = "_color";
-        crc2.strokeStyle = "_color";
+        crc2.fillStyle = _color;
+        crc2.strokeStyle = _color;
         crc2.moveTo(_x + 2, _y - 12);
         crc2.arc(_x + 2, _y - 12, _size, 180, 270);
         crc2.moveTo(_x + 9, _y - 12);
@@ -741,7 +741,7 @@ var L5_Canvas;
     }
     // Neue Biene zeichnen
     function drawNeueBiene() {
-        let b = { x: 0, y: 0, color: "", size: 0 };
+        let b = { x: 0, y: 0, color: " white ", size: 0 };
         b.x = 1750;
         b.y = 685;
         b.color = "white";

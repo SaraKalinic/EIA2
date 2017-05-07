@@ -111,7 +111,7 @@ namespace L5_Canvas {
         //Startposition der Bienen 
         for (let i: number = 0; i < n; i++) {
             
-            let b: BieneData = { x: 0, y: 0,  color: "", size: 0 };
+            let b: BieneData = { x: 0, y: 0,  color: " ", size: 0 };
             b.x = 1750; 
             b.y = 685;
             b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
@@ -781,11 +781,11 @@ namespace L5_Canvas {
     }
     
         //Biene zeichnen
-       function drawBiene(_x: number, _y: number, _color: string, _size:number): void {
+       function drawBiene(_x: number, _y: number, _color: string, _size: number): void {
         
         crc2.beginPath();
-        crc2.fillStyle = "_color";
-        crc2.strokeStyle = "_color";
+        crc2.fillStyle = _color;
+        crc2.strokeStyle = _color;
         crc2.moveTo(_x + 2 , _y - 12);
         crc2.arc(_x + 2 , _y - 12 , _size, 180, 270); 
         crc2.moveTo(_x + 9 , _y - 12);
@@ -833,12 +833,12 @@ namespace L5_Canvas {
     
       // Neue Biene zeichnen
      function drawNeueBiene(): void {
-         let b: BieneData = { x: 0, y: 0,  color: "", size: 0 };
+         let b: BieneData = { x: 0, y: 0,  color: " white " , size: 0 };
            b.x = 1750;
            b.y = 685;
            b.color = "white"; 
            b.size = Math.random() * 10 + 2;
-           bee.push(b)
+           bee.push(b);
             n++;
         }
     
