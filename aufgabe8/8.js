@@ -1,7 +1,7 @@
-/*Aufgabe: (Nummer 7a)
+/*Aufgabe: (Nummer 8)
 Name: (Sara Kalinic)
 Matrikel: (255073)
-Datum: (07.05.17)
+Datum: (09.05.17)
 Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
@@ -10,8 +10,10 @@ var L6_Classes;
 (function (L6_Classes) {
     window.addEventListener("load", init);
     let bee = [];
+    let blumen = [];
     let n = 10;
     let image;
+    let m = 6;
     function init(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -64,25 +66,18 @@ var L6_Classes;
         drawBusch(0, 540, 100, 180, 270, "#339966", "#339966");
         drawBusch1(190, 540, 100, 180, 270, "#339966", "#339966");
         drawKorb(1620, 940, "#663300", "#663300", "#000000", "#000000");
-        //Blume zufällig platzieren
-        for (var i = 0; i < 19; i++) {
-            let blumenFeld = Math.floor((Math.random() * 4) - 1);
-            let _x = Math.floor(Math.random() * (1620 - 180)) + 180;
-            let _y = Math.floor(Math.random() * (1000 - 850)) + 850;
-            switch (blumenFeld) {
-                case 0:
-                    drawBlume(_x, _y, 5, 180, 270, "#ffff99", "#ffff99", "#4d2600", "#4d2600");
-                    break;
-                case 1:
-                    drawBlume1(_x, _y, 5, 180, 270, "#ffffff", "#ffffff", "#ffff1a", "#ffff1a");
-                    break;
-                case 2:
-                    drawBlume3(_x, _y, 5, 180, 270, "#66ccff", "#66ccff", "#3399ff", "#3399ff", "#ffff00", "#ffff00", "#663300", "#663300");
-                    break;
-            }
-        }
+        let f = new L6_Classes.Blume(0, 0);
+        f.placeRandom();
+        console.log(blumen);
         // Hintergrundbild abspeichern
         image = L6_Classes.crc2.getImageData(0, 0, canvas.width, canvas.height);
+        //Blume platzieren
+        for (let i = 0; i < m; i++) {
+            let x = Math.random() * (1620 - 180) + 180;
+            let y = Math.random() * (1000 - 850) + 850;
+            let f = new L6_Classes.Blume(x, y);
+            blumen[i] = f;
+        }
         //Startposition der Bienen 
         for (let i = 0; i < n; i++) {
             let b = new L6_Classes.BieneData();
@@ -373,119 +368,6 @@ var L6_Classes;
         L6_Classes.crc2.fill();
         L6_Classes.crc2.stroke();
     }
-    //Sonnenblume
-    function drawBlume(_x, _y, _x1, _y1, r, _strokeColor, _fillColor, _fillColor1, _strokeColor1) {
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = _fillColor;
-        L6_Classes.crc2.strokeStyle = _strokeColor;
-        L6_Classes.crc2.moveTo(_x + 30, _y - 26);
-        L6_Classes.crc2.arc(_x + 30, _y - 26, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 7, _y - 13);
-        L6_Classes.crc2.arc(_x + 7, _y - 13, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 52, _y - 12);
-        L6_Classes.crc2.arc(_x + 52, _y - 12, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 7, _y + 7);
-        L6_Classes.crc2.arc(_x + 7, _y + 7, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 55, _y + 12);
-        L6_Classes.crc2.arc(_x + 55, _y + 12, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 30, _y + 23);
-        L6_Classes.crc2.arc(_x + 30, _y + 25, 15, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = _fillColor1;
-        L6_Classes.crc2.strokeStyle = _strokeColor1;
-        L6_Classes.crc2.moveTo(_x + 28, _y);
-        L6_Classes.crc2.arc(_x + 30, _y, 17, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-    }
-    // Gänseblümchen
-    function drawBlume1(_x, _y, _x1, _y1, r, _strokeColor, _fillColor, _fillColor1, _strokeColor1) {
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = _fillColor;
-        L6_Classes.crc2.strokeStyle = _strokeColor;
-        L6_Classes.crc2.moveTo(_x + 30, _y - 26);
-        L6_Classes.crc2.arc(_x + 30, _y - 26, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 7, _y - 13);
-        L6_Classes.crc2.arc(_x + 7, _y - 13, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 52, _y - 12);
-        L6_Classes.crc2.arc(_x + 52, _y - 12, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 7, _y + 7);
-        L6_Classes.crc2.arc(_x + 7, _y + 7, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 55, _y + 12);
-        L6_Classes.crc2.arc(_x + 55, _y + 12, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 30, _y + 23);
-        L6_Classes.crc2.arc(_x + 30, _y + 25, 15, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = _fillColor1;
-        L6_Classes.crc2.strokeStyle = _strokeColor1;
-        L6_Classes.crc2.moveTo(_x + 28, _y);
-        L6_Classes.crc2.arc(_x + 30, _y, 17, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-    }
-    // Blaue Blume
-    function drawBlume3(_x, _y, _x1, _y1, r, _strokeColor, _fillColor, _fillColor1, _strokeColor1, _fillColor2, _strokeColor2, _fillColor3, _strokeColor3) {
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = _fillColor1;
-        L6_Classes.crc2.strokeStyle = _strokeColor1;
-        L6_Classes.crc2.moveTo(_x + 30, _y - 26);
-        L6_Classes.crc2.arc(_x + 30, _y - 26, 21, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 7, _y - 13);
-        L6_Classes.crc2.arc(_x + 7, _y - 13, 21, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 52, _y - 12);
-        L6_Classes.crc2.arc(_x + 52, _y - 12, 21, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 7, _y + 7);
-        L6_Classes.crc2.arc(_x + 7, _y + 7, 21, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 55, _y + 12);
-        L6_Classes.crc2.arc(_x + 55, _y + 12, 21, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 30, _y + 23);
-        L6_Classes.crc2.arc(_x + 30, _y + 25, 21, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = _fillColor;
-        L6_Classes.crc2.strokeStyle = _strokeColor;
-        L6_Classes.crc2.moveTo(_x + 30, _y - 26);
-        L6_Classes.crc2.arc(_x + 30, _y - 26, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 7, _y - 13);
-        L6_Classes.crc2.arc(_x + 7, _y - 13, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 52, _y - 12);
-        L6_Classes.crc2.arc(_x + 52, _y - 12, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 7, _y + 7);
-        L6_Classes.crc2.arc(_x + 7, _y + 7, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 55, _y + 12);
-        L6_Classes.crc2.arc(_x + 55, _y + 12, 15, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 30, _y + 23);
-        L6_Classes.crc2.arc(_x + 30, _y + 25, 15, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = _fillColor2;
-        L6_Classes.crc2.strokeStyle = _strokeColor2;
-        L6_Classes.crc2.moveTo(_x + 28, _y);
-        L6_Classes.crc2.arc(_x + 30, _y, 17, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = _fillColor3;
-        L6_Classes.crc2.strokeStyle = _strokeColor3;
-        L6_Classes.crc2.moveTo(_x + 28, _y);
-        L6_Classes.crc2.arc(_x + 30, _y, 9, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-    }
     // Bank zeichnen
     function drawBank(_x, _y, _strokeColor, _fillColor, _strokeColor1, _fillColor1) {
         L6_Classes.crc2.beginPath();
@@ -691,51 +573,6 @@ var L6_Classes;
         L6_Classes.crc2.fill();
         L6_Classes.crc2.stroke();
     }
-    //Biene zeichnen
-    function drawBiene(_x, _y, _color, _size) {
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = _color;
-        L6_Classes.crc2.strokeStyle = _color;
-        L6_Classes.crc2.moveTo(_x + 2, _y - 12);
-        L6_Classes.crc2.arc(_x + 2, _y - 12, _size, 180, 270);
-        L6_Classes.crc2.moveTo(_x + 9, _y - 12);
-        L6_Classes.crc2.arc(_x + 9, _y - 12, _size, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = "yellow";
-        L6_Classes.crc2.strokeStyle = "yellow";
-        L6_Classes.crc2.moveTo(_x + 9, _y);
-        L6_Classes.crc2.arc(_x + 9, _y, _size, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = "black";
-        L6_Classes.crc2.strokeStyle = "black";
-        L6_Classes.crc2.moveTo(_x + 4, _y);
-        L6_Classes.crc2.arc(_x + 4, _y, _size, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = "yellow";
-        L6_Classes.crc2.strokeStyle = "yellow";
-        L6_Classes.crc2.moveTo(_x, _y);
-        L6_Classes.crc2.arc(_x, _y, _size, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-        L6_Classes.crc2.beginPath();
-        L6_Classes.crc2.fillStyle = "black";
-        L6_Classes.crc2.strokeStyle = "black";
-        L6_Classes.crc2.moveTo(_x - 5, _y - 2);
-        L6_Classes.crc2.arc(_x - 5, _y - 2, _size, 180, 270);
-        L6_Classes.crc2.closePath();
-        L6_Classes.crc2.fill();
-        L6_Classes.crc2.stroke();
-    }
     // Neue Biene zeichnen
     function drawNeueBiene() {
         let b = new L6_Classes.BieneData();
@@ -755,7 +592,10 @@ var L6_Classes;
             b.catch();
             b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             // Biene malen lassen
-            drawBiene(b.x, b.y, b.color, b.size);
+            b.drawBiene();
+        }
+        for (let i = 0; i < blumen.length; i++) {
+            blumen[i].drawBlume();
         }
         window.setTimeout(animate, 20);
     }
