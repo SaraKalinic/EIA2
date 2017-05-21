@@ -10,6 +10,7 @@ namespace inheritance {
             
             this.x = _x;
             this.y = _y;
+     
         }
 
         setStart(): void {

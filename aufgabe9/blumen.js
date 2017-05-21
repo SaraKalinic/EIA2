@@ -15,6 +15,7 @@ var inheritance;
                     case 0:
                         let blaueBlume = new inheritance.BlauBlume(this.x, this.y);
                         blaueBlume.draw();
+                        inheritance.blumen.push(blaueBlume);
                         break;
                     case 1:
                         let sonnenblume = new inheritance.Sonnenblume(this.x, this.y);

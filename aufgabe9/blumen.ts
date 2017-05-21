@@ -31,16 +31,19 @@ namespace inheritance {
                     case 0:
                     let blaueBlume: BlauBlume = new BlauBlume (this.x, this.y);
                         blaueBlume.draw();
+                        blumen.push(blaueBlume);
                         break;
 
                     case 1:
                         let sonnenblume: Sonnenblume = new Sonnenblume (this.x, this.y);
                         sonnenblume.draw();
-                         break;
+                        
+                        break;
                         
                      case 2:
                         let ganseblume: Ganseblume = new Ganseblume (this.x, this.y);
                         ganseblume.draw();
+                        
                         break;   
                 }
             }
