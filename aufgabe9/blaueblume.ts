@@ -1,14 +1,15 @@
 namespace inheritance {
-    
-export class BlauBlume extends Blume {
-   constructor(_x: number, _y: number) {
-            super(_x, _y);
-            
-        }     
 
-   
+    export class BlauBlume extends Blume {
+
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
+
+        }
+
+
         // Blaue Blume
-        drawBlume3(): void {
+        draw(): void {
             crc2.beginPath();
             crc2.fillStyle = "#66ccff";
             crc2.strokeStyle = "#66ccff";
@@ -65,6 +66,6 @@ export class BlauBlume extends Blume {
             crc2.fill();
             crc2.stroke();
         }
-    
-}
+
+    }
 }

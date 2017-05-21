@@ -1,12 +1,8 @@
 var inheritance;
 (function (inheritance) {
     class Honigbiene extends inheritance.BieneData {
-        constructor(_x, _y) {
+        constructor(_x, _y, _targetX, _targetY) {
             super(_x, _y);
-            this.drawBiene();
-        }
-        collect() {
-            //
         }
     }
     inheritance.Honigbiene = Honigbiene;

@@ -5,7 +5,7 @@ var inheritance;
             super(_x, _y);
         }
         //Sonnenblume
-        drawBlume() {
+        draw() {
             inheritance.crc2.beginPath();
             inheritance.crc2.fillStyle = "#ffff99";
             inheritance.crc2.strokeStyle = "#ffff99";

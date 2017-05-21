@@ -5,7 +5,7 @@ var inheritance;
             super(_x, _y);
         }
         // Gänseblümchen
-        drawBlume1() {
+        draw() {
             inheritance.crc2.beginPath();
             inheritance.crc2.fillStyle = "#ffffff";
             inheritance.crc2.strokeStyle = "#ffffff";

@@ -1,7 +1,7 @@
 namespace inheritance {
-    
-export class Ganseblume extends Blume {
-       
+
+    export class Ganseblume extends Blume {
+
         r: number;
         strokeColor: string;
         fillColor: string;
@@ -11,14 +11,14 @@ export class Ganseblume extends Blume {
         strokeColor2: string;
         fillColor3: string;
         strokeColor3: string;
-    
-   constructor(_x: number, _y: number) {
-            super(_x, _y);
-            
-        }     
 
-     // Gänseblümchen
-        drawBlume1(): void {
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
+
+        }
+
+        // Gänseblümchen
+        draw(): void {
             crc2.beginPath();
             crc2.fillStyle = "#ffffff";
             crc2.strokeStyle = "#ffffff";
@@ -47,6 +47,6 @@ export class Ganseblume extends Blume {
             crc2.fill();
             crc2.stroke();
         }
-    
-}
+
+    }
 }

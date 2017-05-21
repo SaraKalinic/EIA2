@@ -5,7 +5,7 @@ var inheritance;
             super(_x, _y);
         }
         // Blaue Blume
-        drawBlume3() {
+        draw() {
             inheritance.crc2.beginPath();
             inheritance.crc2.fillStyle = "#66ccff";
             inheritance.crc2.strokeStyle = "#66ccff";

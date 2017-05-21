@@ -10,7 +10,7 @@ var inheritance;
 (function (inheritance) {
     window.addEventListener("load", init);
     let bee = [];
-    let blumen = [];
+    inheritance.blumen = [];
     let n = 20;
     let image;
     let m = 6;
@@ -70,7 +70,7 @@ var inheritance;
         for (var i = 0; i < h; i++) {
             let f = new inheritance.Blume(0, 0);
         }
-        console.log(blumen);
+        console.log(inheritance.blumen);
         // Hintergrundbild abspeichern
         image = inheritance.crc2.getImageData(0, 0, canvas.width, canvas.height);
         //Blume platzieren
@@ -78,7 +78,7 @@ var inheritance;
             let x = Math.random() * (1620 - 180) + 180;
             let y = Math.random() * (1000 - 850) + 850;
             let f = new inheritance.Blume(x, y);
-            blumen[i] = f;
+            inheritance.blumen[i] = f;
         }
         //Startposition der Bienen 
         for (let i = 0; i < n; i++) {
@@ -596,8 +596,8 @@ var inheritance;
             // Biene malen lassen
             b.drawBiene();
         }
-        for (let i = 0; i < blumen.length; i++) {
-            blumen[i].drawBlume();
+        for (let i = 0; i < inheritance.blumen.length; i++) {
+            inheritance.blumen[i].drawBlume();
         }
         window.setTimeout(animate, 20);
     }

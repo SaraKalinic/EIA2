@@ -1,13 +1,14 @@
 namespace inheritance {
-    
-export class Sonnenblume extends Blume {
-   constructor(_x: number, _y: number) {
-            super(_x, _y);
-            
-        }     
 
-    //Sonnenblume
-        drawBlume(): void {
+    export class Sonnenblume extends Blume {
+
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
+
+        }
+
+        //Sonnenblume
+        draw(): void {
             crc2.beginPath();
             crc2.fillStyle = "#ffff99";
             crc2.strokeStyle = "#ffff99";
@@ -36,6 +37,6 @@ export class Sonnenblume extends Blume {
             crc2.fill();
             crc2.stroke();
         }
-    
-}
+
+    }
 }

@@ -13,7 +13,7 @@ namespace inheritance {
     export let crc2: CanvasRenderingContext2D;
 
     let bee: BieneData[] = [];
-    let blumen: Blume[] = [];
+    export let blumen: Blume[] = [];
     let n: number = 20;
     let image: ImageData;
     let m: number = 6;
@@ -78,17 +78,17 @@ namespace inheritance {
         drawBusch1(190, 540, 100, 180, 270, "#339966", "#339966");
 
         drawKorb(1620, 940, "#663300", "#663300", "#000000", "#000000");
-        
-        
-        for (var i: number = 0; i < h; i++) {
-        let f: Blume = new Blume(0, 0);
+
+
+     for (var i: number = 0; i < h; i++) {
+       let f: Blume = new Blume(0, 0);
         }
 
         console.log(blumen);
 
         // Hintergrundbild abspeichern
         image = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        
+
         //Blume platzieren
         for (let i: number = 0; i < m; i++) {
             let x: number = Math.random() * (1620 - 180) + 180;
@@ -642,7 +642,7 @@ namespace inheritance {
 
     // Neue Biene zeichnen
     function drawNeueBiene(): void {
-        let b: BieneData = new BieneData( 0 , 0);
+        let b: BieneData = new BieneData(0, 0);
         b.setStart();
         bee.push(b);
         n++;
