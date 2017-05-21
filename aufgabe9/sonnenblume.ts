@@ -1,5 +1,4 @@
-namespace inheritance {
-    
+namespace inheritance {   
 export class Sonnenblume extends Blume {
 
    constructor(_x: number, _y: number) {
@@ -37,6 +36,6 @@ export class Sonnenblume extends Blume {
             crc2.fill();
             crc2.stroke();
         }
-    
-}
+
+    }
 }

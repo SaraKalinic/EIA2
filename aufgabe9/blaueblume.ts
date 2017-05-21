@@ -1,5 +1,5 @@
 namespace inheritance {
-    
+  
 export class BlauBlume extends Blume {
     fillColor2: string = "#ffff00";
     strokeColor2: string = "#ffff00";
@@ -10,8 +10,6 @@ export class BlauBlume extends Blume {
             super(_x, _y, "#66ccff", "#66ccff", "#3399ff", "#3399ff");
             
         }     
-
-   
         // Blaue Blume
         draw(): void {
             crc2.beginPath();
@@ -70,6 +68,6 @@ export class BlauBlume extends Blume {
             crc2.fill();
             crc2.stroke();
         }
-    
-}
+
+    }
 }

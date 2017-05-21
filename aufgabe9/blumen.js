@@ -10,6 +10,7 @@ var inheritance;
             this.fillColor1 = _fillColor1;
             //this.placeRandom();
         }
+
         /*placeRandom(): void {
             for (var i: number = 0; i < 1; i++) {
                 let blumenFeld: number = Math.floor((Math.random() * 3) - 1);
@@ -19,11 +20,18 @@ var inheritance;
                 switch (blumenFeld) {
                     
                     case 0:
-                        this.drawBlume1();
+                        let blaueBlume = new inheritance.BlauBlume(this.x, this.y);
+                        blaueBlume.draw();
+                        inheritance.blumen.push(blaueBlume);
                         break;
 
                     case 1:
-                        this.drawBlume3();
+                        let sonnenblume = new inheritance.Sonnenblume(this.x, this.y);
+                        sonnenblume.draw();
+                        break;
+                    case 2:
+                        let ganseblume = new inheritance.Ganseblume(this.x, this.y);
+                        ganseblume.draw();
                         break;
                 }
             }

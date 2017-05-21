@@ -16,11 +16,11 @@ nicht kopiert und auch nicht diktiert. */
 var inheritance;
 (function (inheritance) {
     window.addEventListener("load", init);
-    var bee = [];
-    var flowers = [];
-    var n = 20;
-    var image;
-    var flowerAmount = 20;
+    let bee = [];
+    let flowers = [];
+    let n = 20;
+    let image;
+    let flowerAmount = 20;
     function init() {
         var canvas;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -73,6 +73,7 @@ var inheritance;
         drawBusch(0, 540, "#339966", "#339966");
         drawBusch1(190, 540, "#339966", "#339966");
         drawKorb(1620, 940, "#663300", "#663300", "#000000", "#000000");
+
         console.log(flowers);
         // Hintergrundbild abspeichern
         image = inheritance.crc2.getImageData(0, 0, canvas.width, canvas.height);

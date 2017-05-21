@@ -22,6 +22,7 @@ namespace inheritance {
 
     let bee: BieneData[] = [];
     let flowers: Blume[] = [];
+
     let n: number = 20;
     let image: ImageData;
     let flowerAmount: number = 20;
@@ -86,11 +87,9 @@ namespace inheritance {
 
         drawKorb(1620, 940, "#663300", "#663300", "#000000", "#000000");
 
-        console.log(flowers);
-
         // Hintergrundbild abspeichern
         image = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        
+
         //Blume platzieren
         for (let i: number = 0; i < flowerAmount; i++) {
             let x: number = Math.random() * (1620 - 180) + 180;

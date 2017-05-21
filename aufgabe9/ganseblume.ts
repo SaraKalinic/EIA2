@@ -1,5 +1,4 @@
 namespace inheritance {
-    
 export class Ganseblume extends Blume {
     constructor(_x: number, _y: number) {
             super(_x, _y, "#ffffff", "#ffffff", "#ffff1a", "#ffff1a");
@@ -36,6 +35,6 @@ export class Ganseblume extends Blume {
             crc2.fill();
             crc2.stroke();
         }
-    
-}
+
+    }
 }
