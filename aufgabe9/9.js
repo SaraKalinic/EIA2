@@ -1,3 +1,10 @@
+/// <reference path="bienen.ts"/>
+/// <reference path="blaueblume.ts"/>
+/// <reference path="blumen.ts"/>
+/// <reference path="bienen.ts"/>
+/// <reference path="ganseblume.ts"/>
+/// <reference path="honigbienen.ts"/>
+/// <reference path="sonnenblume.ts"/>
 /*Aufgabe: (Nummer 8)
 Name: (Sara Kalinic)
 Matrikel: (255073)
@@ -9,14 +16,13 @@ nicht kopiert und auch nicht diktiert. */
 var inheritance;
 (function (inheritance) {
     window.addEventListener("load", init);
-    let bee = [];
-    let blumen = [];
-    let n = 20;
-    let image;
-    let m = 6;
-    let h = 9;
-    function init(_event) {
-        let canvas;
+    var bee = [];
+    var flowers = [];
+    var n = 20;
+    var image;
+    var flowerAmount = 20;
+    function init() {
+        var canvas;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1920;
         canvas.height = 1080;
@@ -26,19 +32,19 @@ var inheritance;
         inheritance.crc2.fillStyle = "#ccffff";
         inheritance.crc2.fillRect(0, 0, canvas.width, canvas.height);
         //Wolke + Himmel
-        drawCloud(0, 100, 100, 180, 370, "#f2f2f2", "#f2f2f2");
-        drawCloud(350, 60, 100, 180, 370, "#ffe6f2", "#ffe6f2");
-        drawCloud(900, 50, 100, 180, 370, "#ffe6f2", "#ffe6f2");
-        drawCloud(170, 0, 100, 180, 370, "#ffffff", "#ffffff");
-        drawCloud(570, 20, 100, 180, 370, "#f2f2f2", "#f2f2f2");
-        drawCloud(1600, 20, 100, 180, 370, "#ffe6f2", "#ffe6f2");
-        drawCloud(1290, 70, 100, 180, 370, "#f2f2f2", "#f2f2f2");
-        drawCloud1(770, 150, 100, 180, 70, "#ffffff", "#ffffff");
-        drawCloud1(880, 0, 100, 180, 70, "#f2f2f2", "#f2f2f2");
-        drawCloud1(1080, 0, 100, 180, 70, "#ffffff", "#ffffff");
-        drawCloud1(1500, 150, 100, 180, 70, "#ffffff", "#ffffff");
-        drawCloud1(1760, 10, 100, 180, 70, "#ffffff", "#ffffff");
-        drawSun(0, 0, 100, 180, 270, "#ffffff", "#ffff99");
+        drawCloud(0, 100, "#f2f2f2", "#f2f2f2");
+        drawCloud(350, 60, "#ffe6f2", "#ffe6f2");
+        drawCloud(900, 50, "#ffe6f2", "#ffe6f2");
+        drawCloud(170, 0, "#ffffff", "#ffffff");
+        drawCloud(570, 20, "#f2f2f2", "#f2f2f2");
+        drawCloud(1600, 20, "#ffe6f2", "#ffe6f2");
+        drawCloud(1290, 70, "#f2f2f2", "#f2f2f2");
+        drawCloud1(770, 150, "#ffffff", "#ffffff");
+        drawCloud1(880, 0, "#f2f2f2", "#f2f2f2");
+        drawCloud1(1080, 0, "#ffffff", "#ffffff");
+        drawCloud1(1500, 150, "#ffffff", "#ffffff");
+        drawCloud1(1760, 10, "#ffffff", "#ffffff");
+        drawSun(0, 0, "#ffffff", "#ffff99");
         //Berge
         drawBerg(2000, 540, "#cccccc", "#cccccc");
         drawBerg1(1800, 540, "#bfbfbf", "#bfbfbf");
@@ -63,28 +69,33 @@ var inheritance;
         drawFenster(0, 540, "#4da6ff", "#cce6ff");
         drawFenster(165, 540, "#4da6ff", "#cce6ff");
         drawBank(20, 700, "#734d26", "#d9b38c", "#4d2600", "#4d2600");
-        drawStraße(0, 540, "#4d4d4d", "#999999");
-        drawBusch(0, 540, 100, 180, 270, "#339966", "#339966");
-        drawBusch1(190, 540, 100, 180, 270, "#339966", "#339966");
+        drawStrasse(0, 540, "#4d4d4d", "#999999");
+        drawBusch(0, 540, "#339966", "#339966");
+        drawBusch1(190, 540, "#339966", "#339966");
         drawKorb(1620, 940, "#663300", "#663300", "#000000", "#000000");
-        for (var i = 0; i < h; i++) {
-            let f = new inheritance.Blume(0, 0);
-        }
-        console.log(blumen);
+        console.log(flowers);
         // Hintergrundbild abspeichern
         image = inheritance.crc2.getImageData(0, 0, canvas.width, canvas.height);
         //Blume platzieren
-        for (let i = 0; i < m; i++) {
-            let x = Math.random() * (1620 - 180) + 180;
-            let y = Math.random() * (1000 - 850) + 850;
-            let f = new inheritance.Blume(x, y);
-            blumen[i] = f;
+        for (var i = 0; i < flowerAmount; i++) {
+            var x = Math.random() * (1620 - 180) + 180;
+            var y = Math.random() * (1000 - 850) + 850;
+            var type = Math.round(Math.random() * 2);
+            switch (type) {
+                case 0:
+                    flowers.push(new inheritance.Ganseblume(x, y));
+                    break;
+                case 1:
+                    flowers.push(new inheritance.BlauBlume(x, y));
+                    break;
+                case 2:
+                default:
+                    flowers.push(new inheritance.Sonnenblume(x, y));
+            }
         }
         //Startposition der Bienen 
-        for (let i = 0; i < n; i++) {
-            let b = new inheritance.BieneData(0, 0);
-            b.setStart();
-            bee[i] = b;
+        for (var i = 0; i < n; i++) {
+            bee[i] = new inheritance.BieneData();
         }
         window.setTimeout(animate, 20);
         // Eventlistener -> bei Klick neue Biene
@@ -92,7 +103,7 @@ var inheritance;
         canvas.addEventListener("click", drawNeueBiene);
     }
     //Wolken und Sonne
-    function drawCloud(_x, _y, _x1, _y1, r, _strokeColor, _fillColor) {
+    function drawCloud(_x, _y, _strokeColor, _fillColor) {
         inheritance.crc2.beginPath();
         inheritance.crc2.fillStyle = _fillColor;
         inheritance.crc2.strokeStyle = _strokeColor;
@@ -106,7 +117,7 @@ var inheritance;
         inheritance.crc2.stroke();
     }
     // Wolken zeichnen 
-    function drawCloud1(_x, _y, _x1, _y1, r, _strokeColor, _fillColor) {
+    function drawCloud1(_x, _y, _strokeColor, _fillColor) {
         inheritance.crc2.beginPath();
         inheritance.crc2.fillStyle = _fillColor;
         inheritance.crc2.strokeStyle = _strokeColor;
@@ -121,7 +132,7 @@ var inheritance;
         inheritance.crc2.stroke();
     }
     // Sonne zeichnen
-    function drawSun(_x, _y, _x1, _y1, r, _strokeColor, _fillColor) {
+    function drawSun(_x, _y, _strokeColor, _fillColor) {
         inheritance.crc2.beginPath();
         inheritance.crc2.fillStyle = _fillColor;
         inheritance.crc2.strokeStyle = _strokeColor;
@@ -251,7 +262,7 @@ var inheritance;
         inheritance.crc2.stroke();
     }
     // Straße zeichnen
-    function drawStraße(_x, _y, _strokeColor, _fillColor) {
+    function drawStrasse(_x, _y, _strokeColor, _fillColor) {
         inheritance.crc2.beginPath();
         inheritance.crc2.fillStyle = _fillColor;
         inheritance.crc2.strokeStyle = _strokeColor;
@@ -285,7 +296,7 @@ var inheritance;
         inheritance.crc2.stroke();
     }
     // Busch zeichnen
-    function drawBusch(_x, _y, _x1, _y1, r, _strokeColor, _fillColor) {
+    function drawBusch(_x, _y, _strokeColor, _fillColor) {
         inheritance.crc2.beginPath();
         inheritance.crc2.fillStyle = _fillColor;
         inheritance.crc2.strokeStyle = _strokeColor;
@@ -336,7 +347,7 @@ var inheritance;
         inheritance.crc2.stroke();
     }
     // Busch zeichnen
-    function drawBusch1(_x, _y, _x1, _y1, r, _strokeColor, _fillColor) {
+    function drawBusch1(_x, _y, _strokeColor, _fillColor) {
         inheritance.crc2.beginPath();
         inheritance.crc2.fillStyle = _fillColor;
         inheritance.crc2.strokeStyle = _strokeColor;
@@ -577,29 +588,22 @@ var inheritance;
     }
     // Neue Biene zeichnen
     function drawNeueBiene() {
-        let b = new inheritance.BieneData(0, 0);
-        b.setStart();
+        var b = new inheritance.BieneData();
         bee.push(b);
-        n++;
     }
     // Animate Funktion
     function animate() {
         // Hintergrundbild abrufen
         inheritance.crc2.putImageData(image, 0, 0);
-        for (let i = 0; i < n; i++) {
-            let b = bee[i];
-            // Bewegungsrichtung der Bienen 
-            b.move();
-            // Wenn Bienen aus dem Bild fliegen
-            b.catch();
+        for (var i = 0; i < bee.length; i++) {
+            var b = bee[i];
             b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             // Biene malen lassen
-            b.drawBiene();
+            b.update();
         }
-        for (let i = 0; i < blumen.length; i++) {
-            blumen[i].drawBlume();
+        for (var i = 0; i < flowers.length; i++) {
+            flowers[i].draw();
         }
         window.setTimeout(animate, 20);
     }
 })(inheritance || (inheritance = {}));
-//# sourceMappingURL=9.js.map

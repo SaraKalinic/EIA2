@@ -1,3 +1,11 @@
+/// <reference path="bienen.ts"/>
+/// <reference path="blaueblume.ts"/>
+/// <reference path="blumen.ts"/>
+/// <reference path="bienen.ts"/>
+/// <reference path="ganseblume.ts"/>
+/// <reference path="honigbienen.ts"/>
+/// <reference path="sonnenblume.ts"/>
+
 /*Aufgabe: (Nummer 8)
 Name: (Sara Kalinic)
 Matrikel: (255073)
@@ -13,13 +21,12 @@ namespace inheritance {
     export let crc2: CanvasRenderingContext2D;
 
     let bee: BieneData[] = [];
-    let blumen: Blume[] = [];
+    let flowers: Blume[] = [];
     let n: number = 20;
     let image: ImageData;
-    let m: number = 6;
-    let h: number = 9;
+    let flowerAmount: number = 20;
 
-    function init(_event: Event): void {
+    function init(): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1920;
@@ -33,19 +40,19 @@ namespace inheritance {
         crc2.fillRect(0, 0, canvas.width, canvas.height);
 
         //Wolke + Himmel
-        drawCloud(0, 100, 100, 180, 370, "#f2f2f2", "#f2f2f2");
-        drawCloud(350, 60, 100, 180, 370, "#ffe6f2", "#ffe6f2");
-        drawCloud(900, 50, 100, 180, 370, "#ffe6f2", "#ffe6f2");
-        drawCloud(170, 0, 100, 180, 370, "#ffffff", "#ffffff");
-        drawCloud(570, 20, 100, 180, 370, "#f2f2f2", "#f2f2f2");
-        drawCloud(1600, 20, 100, 180, 370, "#ffe6f2", "#ffe6f2");
-        drawCloud(1290, 70, 100, 180, 370, "#f2f2f2", "#f2f2f2");
-        drawCloud1(770, 150, 100, 180, 70, "#ffffff", "#ffffff");
-        drawCloud1(880, 0, 100, 180, 70, "#f2f2f2", "#f2f2f2");
-        drawCloud1(1080, 0, 100, 180, 70, "#ffffff", "#ffffff");
-        drawCloud1(1500, 150, 100, 180, 70, "#ffffff", "#ffffff");
-        drawCloud1(1760, 10, 100, 180, 70, "#ffffff", "#ffffff");
-        drawSun(0, 0, 100, 180, 270, "#ffffff", "#ffff99");
+        drawCloud(0, 100, "#f2f2f2", "#f2f2f2");
+        drawCloud(350, 60, "#ffe6f2", "#ffe6f2");
+        drawCloud(900, 50, "#ffe6f2", "#ffe6f2");
+        drawCloud(170, 0, "#ffffff", "#ffffff");
+        drawCloud(570, 20, "#f2f2f2", "#f2f2f2");
+        drawCloud(1600, 20, "#ffe6f2", "#ffe6f2");
+        drawCloud(1290, 70, "#f2f2f2", "#f2f2f2");
+        drawCloud1(770, 150, "#ffffff", "#ffffff");
+        drawCloud1(880, 0, "#f2f2f2", "#f2f2f2");
+        drawCloud1(1080, 0, "#ffffff", "#ffffff");
+        drawCloud1(1500, 150, "#ffffff", "#ffffff");
+        drawCloud1(1760, 10, "#ffffff", "#ffffff");
+        drawSun(0, 0, "#ffffff", "#ffff99");
 
         //Berge
         drawBerg(2000, 540, "#cccccc", "#cccccc");
@@ -73,34 +80,38 @@ namespace inheritance {
         drawFenster(0, 540, "#4da6ff", "#cce6ff");
         drawFenster(165, 540, "#4da6ff", "#cce6ff");
         drawBank(20, 700, "#734d26", "#d9b38c", "#4d2600", "#4d2600");
-        drawStraße(0, 540, "#4d4d4d", "#999999");
-        drawBusch(0, 540, 100, 180, 270, "#339966", "#339966");
-        drawBusch1(190, 540, 100, 180, 270, "#339966", "#339966");
+        drawStrasse(0, 540, "#4d4d4d", "#999999");
+        drawBusch(0, 540, "#339966", "#339966");
+        drawBusch1(190, 540, "#339966", "#339966");
 
         drawKorb(1620, 940, "#663300", "#663300", "#000000", "#000000");
-        
-        
-        for (var i: number = 0; i < h; i++) {
-        let f: Blume = new Blume(0, 0);
-        }
 
-        console.log(blumen);
+        console.log(flowers);
 
         // Hintergrundbild abspeichern
         image = crc2.getImageData(0, 0, canvas.width, canvas.height);
         
         //Blume platzieren
-        for (let i: number = 0; i < m; i++) {
+        for (let i: number = 0; i < flowerAmount; i++) {
             let x: number = Math.random() * (1620 - 180) + 180;
             let y: number = Math.random() * (1000 - 850) + 850;
-            let f: Blume = new Blume(x, y);
-            blumen[i] = f;
+            let type: number = Math.round(Math.random() * 2);
+
+            switch (type) {
+                case 0:
+                    flowers.push(new Ganseblume(x, y));
+                    break;
+                case 1:
+                    flowers.push(new BlauBlume(x, y));
+                    break;
+                case 2:
+                default:
+                    flowers.push(new Sonnenblume(x, y));
+            }
         }
         //Startposition der Bienen 
         for (let i: number = 0; i < n; i++) {
-            let b: BieneData = new BieneData(0, 0);
-            b.setStart();
-            bee[i] = b;
+            bee[i] = new BieneData();
         }
 
         window.setTimeout(animate, 20);
@@ -111,7 +122,7 @@ namespace inheritance {
     }
 
     //Wolken und Sonne
-    function drawCloud(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string): void {
+    function drawCloud(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -126,7 +137,7 @@ namespace inheritance {
     }
 
     // Wolken zeichnen 
-    function drawCloud1(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string): void {
+    function drawCloud1(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -142,7 +153,7 @@ namespace inheritance {
     }
 
     // Sonne zeichnen
-    function drawSun(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string): void {
+    function drawSun(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -283,7 +294,7 @@ namespace inheritance {
     }
 
     // Straße zeichnen
-    function drawStraße(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
+    function drawStrasse(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -319,7 +330,7 @@ namespace inheritance {
     }
 
     // Busch zeichnen
-    function drawBusch(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string): void {
+    function drawBusch(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -374,7 +385,7 @@ namespace inheritance {
     }
 
     // Busch zeichnen
-    function drawBusch1(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string): void {
+    function drawBusch1(_x: number, _y: number, _strokeColor: string, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
         crc2.strokeStyle = _strokeColor;
@@ -642,10 +653,8 @@ namespace inheritance {
 
     // Neue Biene zeichnen
     function drawNeueBiene(): void {
-        let b: BieneData = new BieneData( 0 , 0);
-        b.setStart();
+        let b: BieneData = new BieneData();
         bee.push(b);
-        n++;
     }
 
     // Animate Funktion
@@ -653,21 +662,16 @@ namespace inheritance {
         // Hintergrundbild abrufen
         crc2.putImageData(image, 0, 0);
 
-        for (let i: number = 0; i < n; i++) {
+        for (let i: number = 0; i < bee.length; i++) {
             let b: BieneData = bee[i];
-            // Bewegungsrichtung der Bienen 
-            b.move();
-
-            // Wenn Bienen aus dem Bild fliegen
-            b.catch();
             b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
 
             // Biene malen lassen
-            b.drawBiene();
+            b.update();
         }
 
-        for (let i: number = 0; i < blumen.length; i++) {
-            blumen[i].drawBlume();
+        for (let i: number = 0; i < flowers.length; i++) {
+            flowers[i].draw();
         }
 
         window.setTimeout(animate, 20);

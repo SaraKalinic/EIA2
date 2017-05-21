@@ -1,23 +1,21 @@
 var inheritance;
 (function (inheritance) {
-    class BieneData {
-        constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
-        }
-        setStart() {
+    var BieneData = (function () {
+        function BieneData() {
             this.x = 1750;
             this.y = 650;
             this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             this.size = Math.random() * 10 + 2;
         }
-        move() {
+        BieneData.prototype.update = function () {
+            this.move();
+            this.draw();
+        };
+        BieneData.prototype.move = function () {
             this.x += Math.random() * 7 - 6;
             this.y += Math.random() * 4 - 2;
-        }
-        catch() {
             // Wenn Bienen aus dem Bild fliegen
-            // X-Richtung 
+            // X-Richtung
             if (this.x >= 1920)
                 this.x = -6;
             if (this.x < -6)
@@ -27,8 +25,8 @@ var inheritance;
                 this.y = 1086;
             if (this.y > 1086)
                 this.y = -6;
-        }
-        drawBiene() {
+        };
+        BieneData.prototype.draw = function () {
             inheritance.crc2.beginPath();
             inheritance.crc2.fillStyle = this.color;
             inheritance.crc2.strokeStyle = this.color;
@@ -71,8 +69,8 @@ var inheritance;
             inheritance.crc2.closePath();
             inheritance.crc2.fill();
             inheritance.crc2.stroke();
-        }
-    }
+        };
+        return BieneData;
+    }());
     inheritance.BieneData = BieneData;
 })(inheritance || (inheritance = {}));
-//# sourceMappingURL=bienen.js.map

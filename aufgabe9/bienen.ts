@@ -6,27 +6,24 @@ namespace inheritance {
         color: string;
         size: number;
 
- constructor(_x: number, _y: number) {
-            
-            this.x = _x;
-            this.y = _y;
-        }
-
-        setStart(): void {
+        constructor() {
             this.x = 1750;
             this.y = 650;
             this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             this.size = Math.random() * 10 + 2;
-
         }
+
+        update(): void {
+            this.move();
+            this.draw();
+        }
+
         move(): void {
             this.x += Math.random() * 7 - 6;
             this.y += Math.random() * 4 - 2;
-        }
 
-        catch(): void {
             // Wenn Bienen aus dem Bild fliegen
-            // X-Richtung 
+            // X-Richtung
             if (this.x >= 1920)
                 this.x = -6;
             if (this.x < -6)
@@ -39,7 +36,7 @@ namespace inheritance {
                 this.y = -6;
         }
 
-        drawBiene(): void {
+        draw(): void {
 
             crc2.beginPath();
             crc2.fillStyle = this.color;

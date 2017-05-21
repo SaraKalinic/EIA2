@@ -1,39 +1,54 @@
 var inheritance;
 (function (inheritance) {
-    class Blume {
-        constructor(_x, _y) {
+    var Blume = (function () {
+        function Blume(_x, _y, _strokeColor, _fillColor, _strokeColor1, _fillColor1) {
             this.x = _x;
             this.y = _y;
-            this.placeRandom();
+            this.strokeColor = _strokeColor;
+            this.fillColor = _fillColor;
+            this.strokeColor1 = _strokeColor1;
+            this.fillColor1 = _fillColor1;
+            //this.placeRandom();
         }
-        placeRandom() {
-            for (var i = 0; i < 1; i++) {
-                let blumenFeld = Math.floor((Math.random() * 3) - 1);
+        /*placeRandom(): void {
+            for (var i: number = 0; i < 1; i++) {
+                let blumenFeld: number = Math.floor((Math.random() * 3) - 1);
                 this.x = Math.floor(Math.random() * (1620 - 180)) + 180;
                 this.y = Math.floor(Math.random() * (1000 - 850)) + 850;
+
                 switch (blumenFeld) {
+                    
                     case 0:
                         this.drawBlume1();
                         break;
+
                     case 1:
                         this.drawBlume3();
                         break;
                 }
             }
+
         }
+
         //Sonnenblume
-        drawBlume() {
-            //abstract
+        drawBlume(): void {
+           //abstract
         }
+
         // Gänseblümchen
-        drawBlume1() {
-            //abstract
+        drawBlume1(): void {
+           //abstract
         }
+
+
         // Blaue Blume
-        drawBlume3() {
+        drawBlume3(): void {
             //abstract
-        }
-    }
+        }*/
+        Blume.prototype.draw = function () {
+            // abstract;
+        };
+        return Blume;
+    }());
     inheritance.Blume = Blume;
 })(inheritance || (inheritance = {}));
-//# sourceMappingURL=blumen.js.map
