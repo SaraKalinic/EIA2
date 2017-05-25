@@ -596,6 +596,9 @@ var inheritance;
     function animate() {
         // Hintergrundbild abrufen
         inheritance.crc2.putImageData(image, 0, 0);
+        for (let i = 0; i < inheritance.flowers.length; i++) {
+            inheritance.flowers[i].draw();
+        }
         for (let i = 0; i < bee.length; i++) {
             let b = bee[i];
             b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
@@ -603,10 +606,8 @@ var inheritance;
             b.update();
         }
         for (let i = 0; i < honeybee.length; i++) {
-            honeybee[i].draw();
-        }
-        for (let i = 0; i < inheritance.flowers.length; i++) {
-            inheritance.flowers[i].draw();
+            let h = honeybee[i];
+            h.update();
         }
         window.setTimeout(animate, 20);
     }

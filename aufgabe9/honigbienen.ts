@@ -7,8 +7,9 @@ namespace inheritance {
 
         constructor() {
             super();
-            
-            
+            this.speed = 0.04;
+            this.setRandomTargetPosition();
+            this.setStartPosition();
         }
 
         setRandomTargetPosition(): void {
@@ -33,6 +34,7 @@ namespace inheritance {
             
             if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1)
                 this.setRandomTargetPosition();
+                
             else {
                 this.x += xDiff * this.speed;
                 this.y += yDiff * this.speed;

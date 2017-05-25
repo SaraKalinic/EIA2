@@ -672,7 +672,11 @@ namespace inheritance {
     function animate(): void {
         // Hintergrundbild abrufen
         crc2.putImageData(image, 0, 0);
+        for (let i: number = 0; i < flowers.length; i++) {
+            flowers[i].draw();
+        }
 
+        
         for (let i: number = 0; i < bee.length; i++) {
             let b: BieneData = bee[i];
             b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
@@ -683,7 +687,8 @@ namespace inheritance {
 
         for (let i: number = 0; i < honeybee.length; i++) {
             
-            honeybee[i].draw();
+            let h: Honigbiene = honeybee[i]; 
+            h.update();
             
           
             
@@ -691,10 +696,7 @@ namespace inheritance {
         }
 
 
-        for (let i: number = 0; i < flowers.length; i++) {
-            flowers[i].draw();
-        }
-
+        
         window.setTimeout(animate, 20);
     }
 

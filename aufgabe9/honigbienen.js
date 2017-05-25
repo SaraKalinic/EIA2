@@ -3,6 +3,9 @@ var inheritance;
     class Honigbiene extends inheritance.BieneData {
         constructor() {
             super();
+            this.speed = 0.04;
+            this.setRandomTargetPosition();
+            this.setStartPosition();
         }
         setRandomTargetPosition() {
             let randomtargetflower = Math.round(Math.random() * (inheritance.flowers.length - 1));
