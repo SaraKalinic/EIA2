@@ -5,21 +5,6 @@ var L6_Classes;
             this.x = x;
             this.y = y;
         }
-        placeRandom() {
-            for (var i = 0; i < 9; i++) {
-                let blumenFeld = Math.floor((Math.random() * 3) - 1);
-                this.x = Math.floor(Math.random() * (1620 - 180)) + 180;
-                this.y = Math.floor(Math.random() * (1000 - 850)) + 850;
-                switch (blumenFeld) {
-                    case 0:
-                        this.drawBlume1();
-                        break;
-                    case 1:
-                        this.drawBlume3();
-                        break;
-                }
-            }
-        }
         //Sonnenblume
         drawBlume() {
             L6_Classes.crc2.beginPath();

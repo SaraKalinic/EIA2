@@ -11,9 +11,10 @@ var L6_Classes;
     window.addEventListener("load", init);
     let bee = [];
     let blumen = [];
-    let n = 10;
+    let n = 20;
     let image;
     let m = 6;
+    let h = 9;
     function init(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -66,9 +67,27 @@ var L6_Classes;
         drawBusch(0, 540, 100, 180, 270, "#339966", "#339966");
         drawBusch1(190, 540, 100, 180, 270, "#339966", "#339966");
         drawKorb(1620, 940, "#663300", "#663300", "#000000", "#000000");
-        let f = new L6_Classes.Blume(0, 0);
-        f.placeRandom();
+        for (var i = 0; i < h; i++) {
+            let f = new L6_Classes.Blume(0, 0);
+        }
         console.log(blumen);
+        for (var i = 0; i < 19; i++) {
+            let blumenFeld = Math.floor((Math.random() * 4) - 1);
+            let _x = Math.floor(Math.random() * (1620 - 180)) + 180;
+            let _y = Math.floor(Math.random() * (1000 - 850)) + 850;
+            let f = new L6_Classes.Blume(_x, _y);
+            switch (blumenFeld) {
+                case 0:
+                    f.drawBlume();
+                    break;
+                case 1:
+                    f.drawBlume1();
+                    break;
+                case 2:
+                    f.drawBlume3();
+                    break;
+            }
+        }
         // Hintergrundbild abspeichern
         image = L6_Classes.crc2.getImageData(0, 0, canvas.width, canvas.height);
         //Blume platzieren

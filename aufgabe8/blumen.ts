@@ -16,27 +16,10 @@ namespace L6_Classes {
         constructor(x: number, y: number) {
             this.x = x;
             this.y = y;
+            
         }
 
-        placeRandom(): void {
-            for (var i: number = 0; i < 9; i++) {
-                let blumenFeld: number = Math.floor((Math.random() * 3) - 1);
-                this.x = Math.floor(Math.random() * (1620 - 180)) + 180;
-                this.y = Math.floor(Math.random() * (1000 - 850)) + 850;
-
-                switch (blumenFeld) {
-                    
-                    case 0:
-                        this.drawBlume1();
-                        break;
-
-                    case 1:
-                        this.drawBlume3();
-                        break;
-                }
-            }
-
-        }
+       
 
 
 

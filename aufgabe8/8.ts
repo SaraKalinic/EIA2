@@ -14,9 +14,10 @@ namespace L6_Classes {
 
     let bee: BieneData[] = [];
     let blumen: Blume[] = [];
-    let n: number = 10;
+    let n: number = 20;
     let image: ImageData;
     let m: number = 6;
+    let h: number = 9;
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
@@ -78,12 +79,36 @@ namespace L6_Classes {
 
         drawKorb(1620, 940, "#663300", "#663300", "#000000", "#000000");
         
+        
+        for (var i: number = 0; i < h; i++) {
         let f: Blume = new Blume(0, 0);
-        f.placeRandom();
-       
+        }
 
         console.log(blumen);
 
+       
+    
+     for (var i: number = 0; i < 19; i++) {
+          
+            let blumenFeld: number = Math.floor((Math.random() * 4) - 1);
+            let _x: number = Math.floor(Math.random() * (1620 - 180)) + 180;
+            let _y: number = Math.floor(Math.random() * (1000 - 850)) + 850;
+            let f: Blume = new Blume (_x, _y);
+            switch (blumenFeld) {
+                case 0:
+                    f.drawBlume();
+                    break;
+                case 1:
+                    f.drawBlume1();
+                    break;
+
+                case 2:
+                    f.drawBlume3();
+                    break;
+
+            }
+           
+        }
         // Hintergrundbild abspeichern
         image = crc2.getImageData(0, 0, canvas.width, canvas.height);
         
