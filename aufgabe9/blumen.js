@@ -1,43 +1,15 @@
 var inheritance;
 (function (inheritance) {
     class Blume {
-        constructor(_x, _y) {
+        constructor(_x, _y, _strokeColor, _fillColor, _strokeColor1, _fillColor1) {
             this.x = _x;
             this.y = _y;
-            this.placeRandom();
+            this.strokeColor = _strokeColor;
+            this.fillColor = _fillColor;
+            this.strokeColor1 = _strokeColor1;
+            this.fillColor1 = _fillColor1;
         }
-        placeRandom() {
-            for (var i = 0; i < 1; i++) {
-                let blumenFeld = Math.floor((Math.random() * 4) - 1);
-                this.x = Math.floor(Math.random() * (1620 - 180)) + 180;
-                this.y = Math.floor(Math.random() * (1000 - 850)) + 850;
-                switch (blumenFeld) {
-                    case 0:
-                        let blaueBlume = new inheritance.BlauBlume(this.x, this.y);
-                        blaueBlume.draw();
-                        inheritance.blumen.push(blaueBlume);
-                        break;
-                    case 1:
-                        let sonnenblume = new inheritance.Sonnenblume(this.x, this.y);
-                        sonnenblume.draw();
-                        break;
-                    case 2:
-                        let ganseblume = new inheritance.Ganseblume(this.x, this.y);
-                        ganseblume.draw();
-                        break;
-                }
-            }
-        }
-        //Sonnenblume
-        drawBlume() {
-            //abstract
-        }
-        // Gänseblümchen
-        drawBlume1() {
-            //abstract
-        }
-        // Blaue Blume
-        drawBlume3() {
+        draw() {
             //abstract
         }
     }

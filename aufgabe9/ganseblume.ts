@@ -2,26 +2,15 @@ namespace inheritance {
 
     export class Ganseblume extends Blume {
 
-        r: number;
-        strokeColor: string;
-        fillColor: string;
-        fillColor1: string;
-        strokeColor1: string;
-        fillColor2: string;
-        strokeColor2: string;
-        fillColor3: string;
-        strokeColor3: string;
-
-        constructor(_x: number, _y: number) {
-            super(_x, _y);
-
-        }
+      constructor(_x: number, _y: number) {
+            super(_x, _y, "#ffffff", "#ffffff", "#ffff1a", "#ffff1a");
+          } 
 
         // Gänseblümchen
         draw(): void {
             crc2.beginPath();
-            crc2.fillStyle = "#ffffff";
-            crc2.strokeStyle = "#ffffff";
+            crc2.fillStyle = this.fillColor;
+            crc2.strokeStyle = this.strokeColor;
             crc2.moveTo(this.x + 30, this.y - 26);
             crc2.arc(this.x + 30, this.y - 26, 15, 180, 270);
             crc2.moveTo(this.x + 7, this.y - 13);
@@ -39,8 +28,8 @@ namespace inheritance {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "#ffff1a";
-            crc2.strokeStyle = "#ffff1a";
+            crc2.fillStyle = this.fillColor1;
+            crc2.strokeStyle = this.strokeColor1;
             crc2.moveTo(this.x + 28, this.y);
             crc2.arc(this.x + 30, this.y, 17, 180, 270);
             crc2.closePath();

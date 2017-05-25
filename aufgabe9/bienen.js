@@ -1,9 +1,15 @@
 var inheritance;
 (function (inheritance) {
     class BieneData {
-        constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
+        constructor() {
+            this.x = 1750;
+            this.y = 650;
+            this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            this.size = Math.random() * 10 + 2;
+        }
+        update() {
+            this.move();
+            this.draw();
         }
         setStart() {
             this.x = 1750;
@@ -14,9 +20,6 @@ var inheritance;
         move() {
             this.x += Math.random() * 7 - 6;
             this.y += Math.random() * 4 - 2;
-        }
-        catch() {
-            // Wenn Bienen aus dem Bild fliegen
             // X-Richtung 
             if (this.x >= 1920)
                 this.x = -6;
@@ -28,7 +31,7 @@ var inheritance;
             if (this.y > 1086)
                 this.y = -6;
         }
-        drawBiene() {
+        draw() {
             inheritance.crc2.beginPath();
             inheritance.crc2.fillStyle = this.color;
             inheritance.crc2.strokeStyle = this.color;

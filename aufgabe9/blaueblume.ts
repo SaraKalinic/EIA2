@@ -1,9 +1,15 @@
 namespace inheritance {
 
     export class BlauBlume extends Blume {
+        
+     fillColor2: string = "#ffff00";
+     strokeColor2: string = "#ffff00";
+     fillColor3: string = "#663300";
+     strokeColor3: string = "#663300";
+ 
 
         constructor(_x: number, _y: number) {
-            super(_x, _y);
+            super(_x, _y, "#66ccff", "#66ccff", "#3399ff", "#3399ff");
 
         }
 
@@ -11,8 +17,8 @@ namespace inheritance {
         // Blaue Blume
         draw(): void {
             crc2.beginPath();
-            crc2.fillStyle = "#66ccff";
-            crc2.strokeStyle = "#66ccff";
+            crc2.fillStyle = this.fillColor;
+            crc2.strokeStyle = this.strokeColor;
             crc2.moveTo(this.x + 30, this.y - 26);
             crc2.arc(this.x + 30, this.y - 26, 21, 180, 270);
             crc2.moveTo(this.x + 7, this.y - 13);
@@ -30,8 +36,8 @@ namespace inheritance {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "#3399ff";
-            crc2.strokeStyle = "#3399ff";
+            crc2.fillStyle = this.fillColor1;
+            crc2.strokeStyle = this.strokeColor1;
             crc2.moveTo(this.x + 30, this.y - 26);
             crc2.arc(this.x + 30, this.y - 26, 15, 180, 270);
             crc2.moveTo(this.x + 7, this.y - 13);
@@ -49,8 +55,8 @@ namespace inheritance {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "#ffff00";
-            crc2.strokeStyle = "#ffff00";
+            crc2.fillStyle = this.fillColor2;
+            crc2.strokeStyle = this.strokeColor2;
             crc2.moveTo(this.x + 28, this.y);
             crc2.arc(this.x + 30, this.y, 17, 180, 270);
             crc2.closePath();
@@ -58,8 +64,8 @@ namespace inheritance {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "#663300";
-            crc2.strokeStyle = "#663300";
+            crc2.fillStyle = this.fillColor3;
+            crc2.strokeStyle = this.strokeColor3;
             crc2.moveTo(this.x + 28, this.y);
             crc2.arc(this.x + 30, this.y, 9, 180, 270);
             crc2.closePath();
