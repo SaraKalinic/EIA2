@@ -57,6 +57,7 @@ namespace Eisdealer {
             createInput(flavors[i]);
         }
     }
+    
     function createInput(_flavors: string): void {
         let label: HTMLLabelElement = document.createElement("label");
         let input: HTMLInputElement = document.createElement("input");
@@ -125,24 +126,24 @@ namespace Eisdealer {
 
     
     function changeDelivery(_sum: number): void {
-        let overview: HTMLElement = document.getElementById("delivery");
+        let overview: HTMLElement = document.getElementById("orderOverview");
         overview.innerText = "";
 
         for (let i: number = 0; i < inputFlavors.length; i++) {
             if (parseInt(inputFlavors[i].value) > 0) {
-                overview.innerText += flavors[i] + " " + (parseInt(inputFlavors[i].value) * 1) + "Euro" + "\n";
+                overview.innerText += flavors[i] + " " + (parseInt(inputFlavors[i].value) * 1)  + "\n";
             }
         }
 
         for (let i: number = 0; i < inputSauces.length; i++) {
             if (inputSauces[i].checked) {
-                overview.innerText += sauces[i] + " 0.20 Euro" + "\n";
+                overview.innerText += sauces[i] +  "\n";
             }
         }
 
         for (let i: number = 0; i < inputToppings.length; i++) {
             if (inputToppings[i].checked) {
-                overview.innerText += toppings[i] + " 0.50 Euro" + "\n";
+                overview.innerText += toppings[i] +  "\n";
             }
         }
         

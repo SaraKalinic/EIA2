@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Eisdealer</title>
+
 <link rel="stylesheet" href="a10.css" type="text/css" media="screen"/>
 <script src="a10.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
 	<header>
-		<h1>kjnb</h1>
+		<h1>Sara's Ice Cream Shop</h1>
 	</header>
 	
 	<main>
+		<section id="Bestellung" >
 		<div>
 			<!-- Cone -->
 			<fieldset id="cone">
@@ -34,7 +35,9 @@
 			<fieldset id="toppings">
 			<legend> Toppings -  0.50€ </legend>
 			</fieldset>
+			</section>
 			
+			<section id="Confirmation">
 			
 			<!-- Delivery Options -->
 			<fieldset id="deliveryOptions">
@@ -48,14 +51,14 @@
 			<!--Order Review -->
 			<fieldset id="overview">
 				<legend> Your Order </legend>
-				<p id="orderOvervies"></p>
+				<p id="orderOverview"></p>
 				<h4>Sum:</h4>
 				<p id="sum"></p>
        		</fieldset>
 	
 			<!-- Contact -->
 			<fieldset id="Contact">
-				<legend> Xontact </legend>
+				<legend> Contact </legend>
 				Name
 				<input type="text" name="surame" placeholder="Insert surname" required id="surname"/>
 				Vorname
@@ -70,5 +73,6 @@
 	
 			<button name="button" type="button" id="sendOrder">Review your order and send it off</button>
 		</div>
+		</section>
 	</main>
 </body>	
