@@ -7,12 +7,37 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
 var Sem;
 (function (Sem) {
-    window.addEventListener("load", init);
+    window.addEventListener("load", start);
     Sem.ant = [];
     let image;
     let n = 10;
     let t = 0;
     let m = 1;
+    function start(_event) {
+        let canvas;
+        canvas = document.getElementsByTagName("canvas")[0];
+        canvas.width = 1920;
+        canvas.height = 1080;
+        console.log(canvas);
+        canvas.addEventListener("click", init);
+        Sem.crc2 = canvas.getContext("2d");
+        console.log(Sem.crc2);
+        Sem.crc2.beginPath();
+        Sem.crc2.fillStyle = "#adebad";
+        Sem.crc2.strokeStyle = "#adebad";
+        Sem.crc2.moveTo(0, 0);
+        Sem.crc2.lineTo(0, canvas.height);
+        Sem.crc2.lineTo(canvas.width, canvas.height);
+        Sem.crc2.lineTo(canvas.width, 0);
+        Sem.crc2.closePath();
+        Sem.crc2.fill();
+        Sem.crc2.stroke();
+        Sem.crc2.fillStyle = "black";
+        Sem.crc2.font = "150px Arial";
+        Sem.crc2.fillText("Das Große Krabbeln", 250, 450);
+        Sem.crc2.font = "70px Arial";
+        Sem.crc2.fillText("Klicken Sie irgendwo hin um das Spiel zu starten", 200, 650);
+    }
     function init(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -23,6 +48,7 @@ var Sem;
         console.log(Sem.crc2);
         Sem.crc2.fillStyle = "#adebad";
         Sem.crc2.fillRect(0, 0, canvas.width, canvas.height);
+        canvas.removeEventListener("click", init);
         //Hintergrund malen lassen
         drawDecke(500, 800, "#80aaff", "#80aaff", "#cce6ff", "#cce6ff");
         drawTeller(600, 700, 50, 180, 270, "#ffffff", "#ffffff", "#e6e6e6", "#e6e6e6");

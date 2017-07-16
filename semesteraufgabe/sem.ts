@@ -8,7 +8,7 @@ nicht kopiert und auch nicht diktiert. */
 
 
 namespace Sem {
-    window.addEventListener("load", init);
+    window.addEventListener("load", start);
     export let crc2: CanvasRenderingContext2D;
     export let ant: Ameise[] = [];
     let image: ImageData;
@@ -16,6 +16,39 @@ namespace Sem {
     let t: number = 0;
     let m: number = 1;
 
+    function start(_event: Event): void {
+    let canvas: HTMLCanvasElement;
+        canvas = document.getElementsByTagName("canvas")[0];
+        canvas.width = 1920;
+        canvas.height = 1080;
+        console.log(canvas);
+        canvas.addEventListener("click", init);
+        crc2 = canvas.getContext("2d");
+        console.log(crc2);
+     
+        
+        crc2.beginPath();
+        crc2.fillStyle = "#adebad";
+        crc2.strokeStyle = "#adebad";
+        crc2.moveTo(0,0);
+        crc2.lineTo(0 , canvas.height);
+        crc2.lineTo(canvas.width, canvas.height);
+        crc2.lineTo(canvas.width, 0);
+        crc2.closePath();
+        crc2.fill();
+            
+            
+        crc2.stroke();
+        crc2.fillStyle = "black";
+        crc2.font = "150px Arial";
+        crc2.fillText("Das Große Krabbeln",250,450); 
+        crc2.font = "70px Arial";
+        crc2.fillText("Klicken Sie irgendwo hin um das Spiel zu starten",200,650); 
+       
+        
+        }
+    
+    
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -28,6 +61,8 @@ namespace Sem {
 
         crc2.fillStyle = "#adebad";
         crc2.fillRect(0, 0, canvas.width, canvas.height);
+        
+        canvas.removeEventListener("click", init);
 
         //Hintergrund malen lassen
         drawDecke(500, 800, "#80aaff", "#80aaff", "#cce6ff", "#cce6ff");
