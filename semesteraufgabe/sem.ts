@@ -12,7 +12,9 @@ namespace Sem {
     export let crc2: CanvasRenderingContext2D;
     export let ant: Ameise[] = [];
     let image: ImageData;
-    let n: number = 20;
+    let n: number = 10;
+    let t: number = 0;
+    let m: number = 1;
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
@@ -43,13 +45,16 @@ namespace Sem {
         }
 
         window.setTimeout(animate, 20);
+        
+        
+         
 
         // Event Listener hinzufügen
         canvas.addEventListener("touch", killAnt);
         canvas.addEventListener("click", killAnt);
 
 
-
+        
 
 
 
@@ -61,47 +66,60 @@ namespace Sem {
                 // Position des Klick herausfinden
                 let clickX: number = event.clientX;
                 let clickY: number = event.clientY;
-                //console.log(clickX);
-                // console.log(clickY);
+                console.log(clickX);
+                console.log(clickY);
 
                 // Differenz zwischen Klick Position und Position der Ameise ausrechnen
                 let diffX: number = Math.abs(clickX - a.currentPosX);
                 let diffY: number = Math.abs(clickY - a.currentPosY);
 
-                console.log(diffX);
-                console.log(diffY);
+                //console.log(diffX);
+                //console.log(diffY);
 
                 // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX < 20) {
+                if (diffX < 30 && diffY < 30) {
                     ant.splice(i);
-
-
-                }
-
-                //Game Over
-                if (ant.length < 2) {
-                    alert(" Game Over - Sie haben gewonnen! ");
                 };
 
-            }
+                //Game Over - Spieler hat gewonnen
+                if (ant.length < 2) {
+                    alert(" Game Over - Sie haben das Spiel gewonnen! ");
+                    
+                };
+             
+               
+            };
 
         };
 
+       
+
+        function checkPosition(): void{
+            for (let i: number = 0; i < ant.length; i++) {
+            let a: Ameise = ant[i];
+            if (a.currentPosX >= 837 && a.currentPosX <= 1087) {
+                if (a.currentPosY >= 388 && a.currentPosY <= 628) {
+                    alert("Game Over - Sie haben das Spiel verloren");
+                }
+            };
+        };
+        };
+        
+        
         //Neue Ameise malen lassen
         function drawNeueAmeise(): void {
             let a: Ameise = new Ameise();
             ant.push(a);
             n++;
-        }
+        };
 
-
-
-
+        
 
         // Animate Funktion
         function animate(): void {
             // Hintergrundbild abrufen
             crc2.putImageData(image, 0, 0);
+ 
 
             // Korb malen 
             drawKorb(950, 500, 50, 180, 270, "#d9b38c", "#d9b38c", "#734d26", "#734d26");
@@ -110,13 +128,34 @@ namespace Sem {
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
                 a.update();
-            }
+
+            };
+
 
             window.setTimeout(animate, 20);
+                
+            checkPosition();
+              t++;
+           //console.log(t);
+            
+           if (t > 10) {
+               
+               let a: Ameise = new Ameise();
+               ant.push(a);
+               n++;
+               
+               t = 0
+           };
         }
 
-
+     
     };
+
+    
+    
+
+
+
     // Hintergrund mal funktionen
     function drawDecke(_x: number, _y: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
         crc2.beginPath();

@@ -10,7 +10,9 @@ var Sem;
     window.addEventListener("load", init);
     Sem.ant = [];
     let image;
-    let n = 20;
+    let n = 10;
+    let t = 0;
+    let m = 1;
     function init(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -43,23 +45,38 @@ var Sem;
                 // Position des Klick herausfinden
                 let clickX = event.clientX;
                 let clickY = event.clientY;
-                //console.log(clickX);
-                // console.log(clickY);
+                console.log(clickX);
+                console.log(clickY);
                 // Differenz zwischen Klick Position und Position der Ameise ausrechnen
                 let diffX = Math.abs(clickX - a.currentPosX);
                 let diffY = Math.abs(clickY - a.currentPosY);
-                console.log(diffX);
-                console.log(diffY);
+                //console.log(diffX);
+                //console.log(diffY);
                 // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX < 20) {
+                if (diffX < 30 && diffY < 30) {
                     Sem.ant.splice(i);
                 }
-                //Game Over
+                ;
+                //Game Over - Spieler hat gewonnen
                 if (Sem.ant.length < 2) {
-                    alert(" Game Over - Sie haben gewonnen! ");
+                    alert(" Game Over - Sie haben das Spiel gewonnen! ");
                 }
                 ;
             }
+            ;
+        }
+        ;
+        function checkPosition() {
+            for (let i = 0; i < Sem.ant.length; i++) {
+                let a = Sem.ant[i];
+                if (a.currentPosX >= 837 && a.currentPosX <= 1087) {
+                    if (a.currentPosY >= 388 && a.currentPosY <= 628) {
+                        alert("Game Over - Sie haben das Spiel verloren");
+                    }
+                }
+                ;
+            }
+            ;
         }
         ;
         //Neue Ameise malen lassen
@@ -68,6 +85,7 @@ var Sem;
             Sem.ant.push(a);
             n++;
         }
+        ;
         // Animate Funktion
         function animate() {
             // Hintergrundbild abrufen
@@ -79,7 +97,18 @@ var Sem;
                 let a = Sem.ant[i];
                 a.update();
             }
+            ;
             window.setTimeout(animate, 20);
+            checkPosition();
+            t++;
+            //console.log(t);
+            if (t > 10) {
+                let a = new Sem.Ameise();
+                Sem.ant.push(a);
+                n++;
+                t = 0;
+            }
+            ;
         }
     }
     ;
