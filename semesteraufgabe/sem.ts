@@ -80,7 +80,7 @@ namespace Sem {
 
                 //Game Over
                 if (ant.length < 2) {
-                    alert(" Game Over");
+                    alert(" Game Over - Sie haben gewonnen! ");
                 };
 
             }

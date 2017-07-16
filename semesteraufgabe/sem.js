@@ -56,7 +56,7 @@ var Sem;
                 }
                 //Game Over
                 if (Sem.ant.length < 2) {
-                    alert(" Game Over");
+                    alert(" Game Over - Sie haben gewonnen! ");
                 }
                 ;
             }
