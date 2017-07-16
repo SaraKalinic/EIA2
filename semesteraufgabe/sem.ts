@@ -101,8 +101,8 @@ namespace Sem {
                 // Position des Klick herausfinden
                 let clickX: number = event.clientX;
                 let clickY: number = event.clientY;
-                console.log(clickX);
-                console.log(clickY);
+                //console.log(clickX);
+                //console.log(clickY);
 
                 // Differenz zwischen Klick Position und Position der Ameise ausrechnen
                 let diffX: number = Math.abs(clickX - a.currentPosX);
@@ -115,71 +115,27 @@ namespace Sem {
                 if (diffX < 30 && diffY < 30) {
                     ant.splice(i);
                 };
-
-
-                // Game Over - Wenn über 200 Ameisen vernichtet wurden
-                if (n > 20) {
-                    //alert("Game Over - Sie haben alle Ameisen verscheucht");
-                    crc2.beginPath();
-                    crc2.fillStyle = "#adebad";
-                    crc2.strokeStyle = "#adebad";
-                    crc2.moveTo(0, 0);
-                    crc2.lineTo(0, canvas.height);
-                    crc2.lineTo(canvas.width, canvas.height);
-                    crc2.lineTo(canvas.width, 0);
-                    crc2.closePath();
-                    crc2.fill();
-
-
-                    crc2.stroke();
-                    crc2.fillStyle = "black";
-                    crc2.font = "150px Arial";
-                    crc2.fillText("Game Over - You lost", 250, 450);
-                    crc2.font = "100px Arial";
-                    crc2.fillText("Refresh to play again", 250, 650);
-
-                   
-
-                };
-            }; console.log(n);
+                //Game over won
+                }; console.log(n);
 
         };
 
-
+         
 
         function checkPosition(): void {
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
                 if (a.currentPosX >= 837 && a.currentPosX <= 1087) {
                     if (a.currentPosY >= 388 && a.currentPosY <= 628) {
-
-                        //alert("Game Over - Sie haben das Spiel verloren");
-                        crc2.beginPath();
-                        crc2.fillStyle = "#adebad";
-                        crc2.strokeStyle = "#adebad";
-                        crc2.moveTo(0, 0);
-                        crc2.lineTo(0, canvas.height);
-                        crc2.lineTo(canvas.width, canvas.height);
-                        crc2.lineTo(canvas.width, 0);
-                        crc2.closePath();
-                        crc2.fill();
-
-
-                        crc2.stroke();
-                        crc2.fillStyle = "black";
-                        crc2.font = "150px Arial";
-                        crc2.fillText("Game Over - You lost", 250, 450);
-                        crc2.font = "100px Arial";
-                        crc2.fillText("Refresh to play again", 250,650);
+                        gameLost();
+                        
                         
                     }
                 };
-
             };
- 
         };
 
-
+ 
         //Neue Ameise malen lassen
         function drawNeueAmeise(): void {
             let a: Ameise = new Ameise();
@@ -218,18 +174,63 @@ namespace Sem {
                 n++;
 
                 t = 0;
-            };
+                
+             
+            }
+            
+            // Game Over - Wenn über 200 Ameisen vernichtet wurden
+                if (n > 200) {
+                    gameWon();
+                };
         }
 
 
-    };
+   
 
 
+function gameWon(): void {
+     crc2.beginPath();
+        crc2.fillStyle = "#adebad";
+        crc2.strokeStyle = "#adebad";
+        crc2.moveTo(0, 0);
+        crc2.lineTo(0, canvas.height);
+        crc2.lineTo(canvas.width, canvas.height);
+        crc2.lineTo(canvas.width, 0);
+        crc2.closePath();
+        crc2.fill();
 
 
-    function gameOver(): void{
+        crc2.stroke();
+        crc2.fillStyle = "black";
+        crc2.font = "100px Arial";
+        crc2.fillText("Game Over - Sie haben gewonnen", 250, 450);
+        crc2.font = "70px Arial";
+        crc2.fillText("Refresh to play again", 570, 650);
         
+};
+
+function gameLost(): void {
+       
+        crc2.beginPath();
+        crc2.fillStyle = "#adebad";
+        crc2.strokeStyle = "#adebad";
+        crc2.moveTo(0, 0);
+        crc2.lineTo(0, canvas.height);
+        crc2.lineTo(canvas.width, canvas.height);
+        crc2.lineTo(canvas.width, 0);
+        crc2.closePath();
+        crc2.fill();
+
+
+        crc2.stroke();
+        crc2.fillStyle = "black";
+        crc2.font = "100px Arial";
+        crc2.fillText("Game Over - Sie haben verloren", 250, 450);
+        crc2.font = "70px Arial";
+        crc2.fillText("Refresh to play again", 570, 650);
     };
+    
+    
 
     // Hintergrund mal funktionen
     function drawDecke(_x: number, _y: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
@@ -644,5 +645,8 @@ namespace Sem {
         crc2.fill();
         crc2.stroke();
     }
+    
+    
 
+}
 }
