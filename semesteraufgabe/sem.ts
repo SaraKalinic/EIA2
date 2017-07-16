@@ -122,8 +122,10 @@ namespace Sem {
                     
                 };
              
-               
-            };
+               if (n > 200) {
+                 alert("Game Over - Sie haben alle Ameisen verscheucht");  
+                     };
+            }; console.log(n);
 
         };
 

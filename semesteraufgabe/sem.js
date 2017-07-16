@@ -88,8 +88,13 @@ var Sem;
                     alert(" Game Over - Sie haben das Spiel gewonnen! ");
                 }
                 ;
+                if (n > 200) {
+                    alert("Game Over - Sie haben alle Ameisen verscheucht");
+                }
+                ;
             }
             ;
+            console.log(n);
         }
         ;
         function checkPosition() {
