@@ -10,9 +10,10 @@ var Sem;
     window.addEventListener("load", start);
     Sem.ant = [];
     let image;
-    let n = 10;
+    let n = 3;
     let t = 0;
     let m = 1;
+    //START SCREEN
     function start(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -38,6 +39,7 @@ var Sem;
         Sem.crc2.font = "70px Arial";
         Sem.crc2.fillText("Klicken Sie irgendwo hin um das Spiel zu starten", 200, 650);
     }
+    // SPIEL 
     function init(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -74,13 +76,13 @@ var Sem;
                 //console.log(clickX);
                 //console.log(clickY);
                 // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                let diffX = Math.abs(clickX - a.currentPosX);
-                let diffY = Math.abs(clickY - a.currentPosY);
+                let diffX = Math.abs(a.currentPosX - clickX);
+                let diffY = Math.abs(a.currentPosY - clickY);
                 //console.log(diffX);
                 //console.log(diffY);
                 // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX < 30 && diffY < 30) {
-                    Sem.ant.splice(i);
+                if (diffX <= 30 && diffY <= 30) {
+                    Sem.ant.splice(i, 1);
                 }
                 ;
             }
@@ -124,18 +126,19 @@ var Sem;
             checkPosition();
             t++;
             //console.log(t); 
-            if (t > 10) {
+            if (t > 35) {
                 let a = new Sem.Ameise();
                 Sem.ant.push(a);
                 n++;
                 t = 0;
             }
             // Game Over - Wenn über 200 Ameisen vernichtet wurden
-            if (n > 200) {
+            if (n > 2000) {
                 gameWon();
             }
             ;
         }
+        // GAME WON SCREEN 
         function gameWon() {
             Sem.crc2.beginPath();
             Sem.crc2.fillStyle = "#adebad";
@@ -154,6 +157,7 @@ var Sem;
             Sem.crc2.fillText("Refresh to play again", 570, 650);
         }
         ;
+        //GAME LOST SCREEN 
         function gameLost() {
             Sem.crc2.beginPath();
             Sem.crc2.fillStyle = "#adebad";

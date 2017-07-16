@@ -12,10 +12,11 @@ namespace Sem {
     export let crc2: CanvasRenderingContext2D;
     export let ant: Ameise[] = [];
     let image: ImageData;
-    let n: number = 10;
+    let n: number = 3;
     let t: number = 0;
     let m: number = 1;
 
+    //START SCREEN
     function start(_event: Event): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -48,7 +49,7 @@ namespace Sem {
 
     }
 
-
+// SPIEL 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -81,17 +82,9 @@ namespace Sem {
 
         window.setTimeout(animate, 20);
 
-
-
-
         // Event Listener hinzufügen
         canvas.addEventListener("touch", killAnt);
         canvas.addEventListener("click", killAnt);
-
-
-
-
-
 
         // Bei Klick auf Ameise soll diese gelöscht werden
         function killAnt(event: MouseEvent): void {
@@ -105,37 +98,37 @@ namespace Sem {
                 //console.log(clickY);
 
                 // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                let diffX: number = Math.abs(clickX - a.currentPosX);
-                let diffY: number = Math.abs(clickY - a.currentPosY);
+                let diffX: number = Math.abs( a.currentPosX - clickX);
+                let diffY: number = Math.abs( a.currentPosY - clickY);
 
                 //console.log(diffX);
                 //console.log(diffY);
 
                 // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX < 30 && diffY < 30) {
-                    ant.splice(i);
+                if (diffX <= 30 && diffY <= 30) {
+                    ant.splice(i,1);
                 };
                 //Game over won
-                }; console.log(n);
+            }; console.log(n);
 
         };
 
-         
+
 
         function checkPosition(): void {
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
                 if (a.currentPosX >= 837 && a.currentPosX <= 1087) {
                     if (a.currentPosY >= 388 && a.currentPosY <= 628) {
-                        gameLost();
-                        
-                        
+                       gameLost();
+
+
                     }
                 };
             };
         };
 
- 
+
         //Neue Ameise malen lassen
         function drawNeueAmeise(): void {
             let a: Ameise = new Ameise();
@@ -167,486 +160,485 @@ namespace Sem {
             checkPosition();
             t++;
             //console.log(t); 
-            if (t > 10) {
+            if (t > 35) {
 
                 let a: Ameise = new Ameise();
                 ant.push(a);
                 n++;
 
                 t = 0;
-                
-             
             }
-            
+
             // Game Over - Wenn über 200 Ameisen vernichtet wurden
-                if (n > 200) {
-                    gameWon();
-                };
+            if (n > 2000) {
+                gameWon();
+            };
         }
 
 
-   
 
 
-function gameWon(): void {
-     crc2.beginPath();
-        crc2.fillStyle = "#adebad";
-        crc2.strokeStyle = "#adebad";
-        crc2.moveTo(0, 0);
-        crc2.lineTo(0, canvas.height);
-        crc2.lineTo(canvas.width, canvas.height);
-        crc2.lineTo(canvas.width, 0);
-        crc2.closePath();
-        crc2.fill();
+// GAME WON SCREEN 
+        function gameWon(): void {
+            crc2.beginPath();
+            crc2.fillStyle = "#adebad";
+            crc2.strokeStyle = "#adebad";
+            crc2.moveTo(0, 0);
+            crc2.lineTo(0, canvas.height);
+            crc2.lineTo(canvas.width, canvas.height);
+            crc2.lineTo(canvas.width, 0);
+            crc2.closePath();
+            crc2.fill();
 
 
-        crc2.stroke();
-        crc2.fillStyle = "black";
-        crc2.font = "100px Arial";
-        crc2.fillText("Game Over - Sie haben gewonnen", 250, 450);
-        crc2.font = "70px Arial";
-        crc2.fillText("Refresh to play again", 570, 650);
+            crc2.stroke();
+            crc2.fillStyle = "black";
+            crc2.font = "100px Arial";
+            crc2.fillText("Game Over - Sie haben gewonnen", 250, 450);
+            crc2.font = "70px Arial";
+            crc2.fillText("Refresh to play again", 570, 650);
+
+        };
         
-};
+//GAME LOST SCREEN 
+        function gameLost(): void {
 
-function gameLost(): void {
-       
-        crc2.beginPath();
-        crc2.fillStyle = "#adebad";
-        crc2.strokeStyle = "#adebad";
-        crc2.moveTo(0, 0);
-        crc2.lineTo(0, canvas.height);
-        crc2.lineTo(canvas.width, canvas.height);
-        crc2.lineTo(canvas.width, 0);
-        crc2.closePath();
-        crc2.fill();
+            crc2.beginPath();
+            crc2.fillStyle = "#adebad";
+            crc2.strokeStyle = "#adebad";
+            crc2.moveTo(0, 0);
+            crc2.lineTo(0, canvas.height);
+            crc2.lineTo(canvas.width, canvas.height);
+            crc2.lineTo(canvas.width, 0);
+            crc2.closePath();
+            crc2.fill();
 
 
-        crc2.stroke();
-        crc2.fillStyle = "black";
-        crc2.font = "100px Arial";
-        crc2.fillText("Game Over - Sie haben verloren", 250, 450);
-        crc2.font = "70px Arial";
-        crc2.fillText("Refresh to play again", 570, 650);
-    };
-    
-    
+            crc2.stroke();
+            crc2.fillStyle = "black";
+            crc2.font = "100px Arial";
+            crc2.fillText("Game Over - Sie haben verloren", 250, 450);
+            crc2.font = "70px Arial";
+            crc2.fillText("Refresh to play again", 570, 650);
+        };
 
-    // Hintergrund mal funktionen
-    function drawDecke(_x: number, _y: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor;
-        crc2.strokeStyle = _strokeColor;
-        crc2.moveTo(_x, _y);
-        crc2.lineTo(_x + 900, _y);
-        crc2.lineTo(_x + 900, _y - 600);
-        crc2.lineTo(_x, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y);
-        crc2.lineTo(_x + 20, _y);
-        crc2.lineTo(_x + 20, _y - 600);
-        crc2.lineTo(_x, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 60, _y);
-        crc2.lineTo(_x + 80, _y);
-        crc2.lineTo(_x + 80, _y - 600);
-        crc2.lineTo(_x + 60, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+        // Hintergrund mal funktionen
+        function drawDecke(_x: number, _y: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor;
+            crc2.strokeStyle = _strokeColor;
+            crc2.moveTo(_x, _y);
+            crc2.lineTo(_x + 900, _y);
+            crc2.lineTo(_x + 900, _y - 600);
+            crc2.lineTo(_x, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 120, _y);
-        crc2.lineTo(_x + 140, _y);
-        crc2.lineTo(_x + 140, _y - 600);
-        crc2.lineTo(_x + 120, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y);
+            crc2.lineTo(_x + 20, _y);
+            crc2.lineTo(_x + 20, _y - 600);
+            crc2.lineTo(_x, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 180, _y);
-        crc2.lineTo(_x + 200, _y);
-        crc2.lineTo(_x + 200, _y - 600);
-        crc2.lineTo(_x + 180, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 60, _y);
+            crc2.lineTo(_x + 80, _y);
+            crc2.lineTo(_x + 80, _y - 600);
+            crc2.lineTo(_x + 60, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 240, _y);
-        crc2.lineTo(_x + 260, _y);
-        crc2.lineTo(_x + 260, _y - 600);
-        crc2.lineTo(_x + 240, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 120, _y);
+            crc2.lineTo(_x + 140, _y);
+            crc2.lineTo(_x + 140, _y - 600);
+            crc2.lineTo(_x + 120, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 300, _y);
-        crc2.lineTo(_x + 320, _y);
-        crc2.lineTo(_x + 320, _y - 600);
-        crc2.lineTo(_x + 300, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 180, _y);
+            crc2.lineTo(_x + 200, _y);
+            crc2.lineTo(_x + 200, _y - 600);
+            crc2.lineTo(_x + 180, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 360, _y);
-        crc2.lineTo(_x + 380, _y);
-        crc2.lineTo(_x + 380, _y - 600);
-        crc2.lineTo(_x + 360, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 240, _y);
+            crc2.lineTo(_x + 260, _y);
+            crc2.lineTo(_x + 260, _y - 600);
+            crc2.lineTo(_x + 240, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 420, _y);
-        crc2.lineTo(_x + 440, _y);
-        crc2.lineTo(_x + 440, _y - 600);
-        crc2.lineTo(_x + 420, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 300, _y);
+            crc2.lineTo(_x + 320, _y);
+            crc2.lineTo(_x + 320, _y - 600);
+            crc2.lineTo(_x + 300, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 480, _y);
-        crc2.lineTo(_x + 500, _y);
-        crc2.lineTo(_x + 500, _y - 600);
-        crc2.lineTo(_x + 480, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 360, _y);
+            crc2.lineTo(_x + 380, _y);
+            crc2.lineTo(_x + 380, _y - 600);
+            crc2.lineTo(_x + 360, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 540, _y);
-        crc2.lineTo(_x + 560, _y);
-        crc2.lineTo(_x + 560, _y - 600);
-        crc2.lineTo(_x + 540, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 420, _y);
+            crc2.lineTo(_x + 440, _y);
+            crc2.lineTo(_x + 440, _y - 600);
+            crc2.lineTo(_x + 420, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 600, _y);
-        crc2.lineTo(_x + 620, _y);
-        crc2.lineTo(_x + 620, _y - 600);
-        crc2.lineTo(_x + 600, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 480, _y);
+            crc2.lineTo(_x + 500, _y);
+            crc2.lineTo(_x + 500, _y - 600);
+            crc2.lineTo(_x + 480, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 660, _y);
-        crc2.lineTo(_x + 680, _y);
-        crc2.lineTo(_x + 680, _y - 600);
-        crc2.lineTo(_x + 660, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 540, _y);
+            crc2.lineTo(_x + 560, _y);
+            crc2.lineTo(_x + 560, _y - 600);
+            crc2.lineTo(_x + 540, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 720, _y);
-        crc2.lineTo(_x + 740, _y);
-        crc2.lineTo(_x + 740, _y - 600);
-        crc2.lineTo(_x + 720, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 600, _y);
+            crc2.lineTo(_x + 620, _y);
+            crc2.lineTo(_x + 620, _y - 600);
+            crc2.lineTo(_x + 600, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 780, _y);
-        crc2.lineTo(_x + 800, _y);
-        crc2.lineTo(_x + 800, _y - 600);
-        crc2.lineTo(_x + 780, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 660, _y);
+            crc2.lineTo(_x + 680, _y);
+            crc2.lineTo(_x + 680, _y - 600);
+            crc2.lineTo(_x + 660, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 840, _y);
-        crc2.lineTo(_x + 860, _y);
-        crc2.lineTo(_x + 860, _y - 600);
-        crc2.lineTo(_x + 840, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 720, _y);
+            crc2.lineTo(_x + 740, _y);
+            crc2.lineTo(_x + 740, _y - 600);
+            crc2.lineTo(_x + 720, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x + 900, _y);
-        crc2.lineTo(_x + 920, _y);
-        crc2.lineTo(_x + 920, _y - 600);
-        crc2.lineTo(_x + 900, _y - 600);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 780, _y);
+            crc2.lineTo(_x + 800, _y);
+            crc2.lineTo(_x + 800, _y - 600);
+            crc2.lineTo(_x + 780, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y - 40);
-        crc2.lineTo(_x + 920, _y - 40);
-        crc2.lineTo(_x + 920, _y - 60);
-        crc2.lineTo(_x, _y - 60);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 840, _y);
+            crc2.lineTo(_x + 860, _y);
+            crc2.lineTo(_x + 860, _y - 600);
+            crc2.lineTo(_x + 840, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y - 100);
-        crc2.lineTo(_x + 920, _y - 100);
-        crc2.lineTo(_x + 920, _y - 120);
-        crc2.lineTo(_x, _y - 120);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x + 900, _y);
+            crc2.lineTo(_x + 920, _y);
+            crc2.lineTo(_x + 920, _y - 600);
+            crc2.lineTo(_x + 900, _y - 600);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y - 160);
-        crc2.lineTo(_x + 920, _y - 160);
-        crc2.lineTo(_x + 920, _y - 180);
-        crc2.lineTo(_x, _y - 180);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y - 40);
+            crc2.lineTo(_x + 920, _y - 40);
+            crc2.lineTo(_x + 920, _y - 60);
+            crc2.lineTo(_x, _y - 60);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y - 220);
-        crc2.lineTo(_x + 920, _y - 220);
-        crc2.lineTo(_x + 920, _y - 240);
-        crc2.lineTo(_x, _y - 240);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y - 100);
+            crc2.lineTo(_x + 920, _y - 100);
+            crc2.lineTo(_x + 920, _y - 120);
+            crc2.lineTo(_x, _y - 120);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y - 280);
-        crc2.lineTo(_x + 920, _y - 280);
-        crc2.lineTo(_x + 920, _y - 300);
-        crc2.lineTo(_x, _y - 300);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y - 160);
+            crc2.lineTo(_x + 920, _y - 160);
+            crc2.lineTo(_x + 920, _y - 180);
+            crc2.lineTo(_x, _y - 180);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y - 340);
-        crc2.lineTo(_x + 920, _y - 340);
-        crc2.lineTo(_x + 920, _y - 360);
-        crc2.lineTo(_x, _y - 360);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y - 220);
+            crc2.lineTo(_x + 920, _y - 220);
+            crc2.lineTo(_x + 920, _y - 240);
+            crc2.lineTo(_x, _y - 240);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y - 400);
-        crc2.lineTo(_x + 920, _y - 400);
-        crc2.lineTo(_x + 920, _y - 420);
-        crc2.lineTo(_x, _y - 420);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y - 280);
+            crc2.lineTo(_x + 920, _y - 280);
+            crc2.lineTo(_x + 920, _y - 300);
+            crc2.lineTo(_x, _y - 300);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y - 460);
-        crc2.lineTo(_x + 920, _y - 460);
-        crc2.lineTo(_x + 920, _y - 480);
-        crc2.lineTo(_x, _y - 480);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y - 340);
+            crc2.lineTo(_x + 920, _y - 340);
+            crc2.lineTo(_x + 920, _y - 360);
+            crc2.lineTo(_x, _y - 360);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
 
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y - 520);
-        crc2.lineTo(_x + 920, _y - 520);
-        crc2.lineTo(_x + 920, _y - 540);
-        crc2.lineTo(_x, _y - 540);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y - 400);
+            crc2.lineTo(_x + 920, _y - 400);
+            crc2.lineTo(_x + 920, _y - 420);
+            crc2.lineTo(_x, _y - 420);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y - 460);
+            crc2.lineTo(_x + 920, _y - 460);
+            crc2.lineTo(_x + 920, _y - 480);
+            crc2.lineTo(_x, _y - 480);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y - 520);
+            crc2.lineTo(_x + 920, _y - 520);
+            crc2.lineTo(_x + 920, _y - 540);
+            crc2.lineTo(_x, _y - 540);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+
+        }
+
+        function drawTeller(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor;
+            crc2.strokeStyle = _strokeColor;
+            crc2.moveTo(_x, _y);
+            crc2.arc(_x, _y, 60, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y);
+            crc2.arc(_x, _y, 45, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+        }
+
+        function drawKorb(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor;
+            crc2.strokeStyle = _strokeColor;
+            crc2.moveTo(_x, _y);
+            crc2.arc(_x, _y, 120, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = _fillColor1;
+            crc2.strokeStyle = _strokeColor1;
+            crc2.moveTo(_x, _y);
+            crc2.arc(_x, _y, 100, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = "red";
+            crc2.strokeStyle = "red";
+            crc2.moveTo(_x + 80, _y);
+            crc2.arc(_x + 80, _y, 30, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+
+            crc2.beginPath();
+            crc2.fillStyle = "green";
+            crc2.strokeStyle = "green";
+            crc2.moveTo(_x - 75, _y);
+            crc2.arc(_x - 75, _y, 30, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = "red";
+            crc2.strokeStyle = "red";
+            crc2.moveTo(_x, _y);
+            crc2.arc(_x, _y, 30, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = "yellow";
+            crc2.strokeStyle = "yellow";
+            crc2.moveTo(_x, _y + 75);
+            crc2.arc(_x, _y + 75, 30, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = "orange";
+            crc2.strokeStyle = "orange";
+            crc2.moveTo(_x, _y - 75);
+            crc2.arc(_x, _y - 75, 30, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = "green";
+            crc2.strokeStyle = "green";
+            crc2.moveTo(_x + 50, _y - 50);
+            crc2.arc(_x + 50, _y - 50, 30, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = "yellow";
+            crc2.strokeStyle = "yellow";
+            crc2.moveTo(_x - 50, _y - 50);
+            crc2.arc(_x - 50, _y - 50, 30, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = "red";
+            crc2.strokeStyle = "red";
+            crc2.moveTo(_x - 50, _y + 50);
+            crc2.arc(_x - 50, _y + 50, 30, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+
+            crc2.beginPath();
+            crc2.fillStyle = "orange";
+            crc2.strokeStyle = "orange";
+            crc2.moveTo(_x + 50, _y + 50);
+            crc2.arc(_x + 50, _y + 50, 30, 180, 270);
+            crc2.closePath();
+            crc2.fill();
+            crc2.stroke();
+        }
+
 
 
     }
-
-    function drawTeller(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor;
-        crc2.strokeStyle = _strokeColor;
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 60, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 45, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-    }
-
-    function drawKorb(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor;
-        crc2.strokeStyle = _strokeColor;
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 120, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor1;
-        crc2.strokeStyle = _strokeColor1;
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 100, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = "red";
-        crc2.strokeStyle = "red";
-        crc2.moveTo(_x + 80, _y);
-        crc2.arc(_x + 80, _y, 30, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-
-        crc2.beginPath();
-        crc2.fillStyle = "green";
-        crc2.strokeStyle = "green";
-        crc2.moveTo(_x - 75, _y);
-        crc2.arc(_x - 75, _y, 30, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = "red";
-        crc2.strokeStyle = "red";
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 30, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = "yellow";
-        crc2.strokeStyle = "yellow";
-        crc2.moveTo(_x, _y + 75);
-        crc2.arc(_x, _y + 75, 30, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = "orange";
-        crc2.strokeStyle = "orange";
-        crc2.moveTo(_x, _y - 75);
-        crc2.arc(_x, _y - 75, 30, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = "green";
-        crc2.strokeStyle = "green";
-        crc2.moveTo(_x + 50, _y - 50);
-        crc2.arc(_x + 50, _y - 50, 30, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = "yellow";
-        crc2.strokeStyle = "yellow";
-        crc2.moveTo(_x - 50, _y - 50);
-        crc2.arc(_x - 50, _y - 50, 30, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = "red";
-        crc2.strokeStyle = "red";
-        crc2.moveTo(_x - 50, _y + 50);
-        crc2.arc(_x - 50, _y + 50, 30, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.fillStyle = "orange";
-        crc2.strokeStyle = "orange";
-        crc2.moveTo(_x + 50, _y + 50);
-        crc2.arc(_x + 50, _y + 50, 30, 180, 270);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-    }
-    
-    
-
-}
 }
