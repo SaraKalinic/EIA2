@@ -6,9 +6,6 @@ Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
 
-
-
-
 namespace Sem {
     export class Ameise {
         x: number;
@@ -18,26 +15,24 @@ namespace Sem {
         xTarget: number;
         yTarget: number;
         speed: number;
-        currentPosX:number;
-        currentPosY:number;
+        currentPosX: number;
+        currentPosY: number;
 
         constructor() {
-            
+
             this.draw();
             this.speed = 0.01;
             this.setStartPosition();
             this.setTarget();
-          
+ }
 
-        }
-        
         // Position der Ameise herausfinden
-        logCurrentPosition():void {
-        this.currentPosX= this.x;
-        this.currentPosY = this.y;
-            
-        //console.log(this.x);
-        //console.log(this.y);    
+        logCurrentPosition(): void {
+            this.currentPosX = this.x;
+            this.currentPosY = this.y;
+
+            //console.log(this.x);
+            //console.log(this.y);    
         }
         // Update Funktion
         update(): void {
@@ -56,7 +51,7 @@ namespace Sem {
             this.x += Math.random() * 7 - 6;
             this.y += Math.random() * 4 - 2;
 
-            
+
             let xDiff: number = this.xTarget - this.x;
             let yDiff: number = this.yTarget - this.y;
 
