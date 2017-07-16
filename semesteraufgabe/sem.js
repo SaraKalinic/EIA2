@@ -83,13 +83,24 @@ var Sem;
                     Sem.ant.splice(i);
                 }
                 ;
-                //Game Over - Spieler hat gewonnen
-                if (Sem.ant.length < 2) {
-                    alert(" Game Over - Sie haben das Spiel gewonnen! ");
-                }
-                ;
-                if (n > 200) {
-                    alert("Game Over - Sie haben alle Ameisen verscheucht");
+                // Game Over - Wenn über 200 Ameisen vernichtet wurden
+                if (n > 20) {
+                    //alert("Game Over - Sie haben alle Ameisen verscheucht");
+                    Sem.crc2.beginPath();
+                    Sem.crc2.fillStyle = "#adebad";
+                    Sem.crc2.strokeStyle = "#adebad";
+                    Sem.crc2.moveTo(0, 0);
+                    Sem.crc2.lineTo(0, canvas.height);
+                    Sem.crc2.lineTo(canvas.width, canvas.height);
+                    Sem.crc2.lineTo(canvas.width, 0);
+                    Sem.crc2.closePath();
+                    Sem.crc2.fill();
+                    Sem.crc2.stroke();
+                    Sem.crc2.fillStyle = "black";
+                    Sem.crc2.font = "150px Arial";
+                    Sem.crc2.fillText("Game Over - You lost", 250, 450);
+                    Sem.crc2.font = "100px Arial";
+                    Sem.crc2.fillText("Refresh to play again", 250, 650);
                 }
                 ;
             }
@@ -102,7 +113,22 @@ var Sem;
                 let a = Sem.ant[i];
                 if (a.currentPosX >= 837 && a.currentPosX <= 1087) {
                     if (a.currentPosY >= 388 && a.currentPosY <= 628) {
-                        alert("Game Over - Sie haben das Spiel verloren");
+                        //alert("Game Over - Sie haben das Spiel verloren");
+                        Sem.crc2.beginPath();
+                        Sem.crc2.fillStyle = "#adebad";
+                        Sem.crc2.strokeStyle = "#adebad";
+                        Sem.crc2.moveTo(0, 0);
+                        Sem.crc2.lineTo(0, canvas.height);
+                        Sem.crc2.lineTo(canvas.width, canvas.height);
+                        Sem.crc2.lineTo(canvas.width, 0);
+                        Sem.crc2.closePath();
+                        Sem.crc2.fill();
+                        Sem.crc2.stroke();
+                        Sem.crc2.fillStyle = "black";
+                        Sem.crc2.font = "150px Arial";
+                        Sem.crc2.fillText("Game Over - You lost", 250, 450);
+                        Sem.crc2.font = "100px Arial";
+                        Sem.crc2.fillText("Refresh to play again", 250, 650);
                     }
                 }
                 ;
@@ -132,7 +158,7 @@ var Sem;
             window.setTimeout(animate, 20);
             checkPosition();
             t++;
-            //console.log(t);
+            //console.log(t); 
             if (t > 10) {
                 let a = new Sem.Ameise();
                 Sem.ant.push(a);
@@ -141,6 +167,9 @@ var Sem;
             }
             ;
         }
+    }
+    ;
+    function gameOver() {
     }
     ;
     // Hintergrund mal funktionen

@@ -17,7 +17,7 @@ namespace Sem {
     let m: number = 1;
 
     function start(_event: Event): void {
-    let canvas: HTMLCanvasElement;
+        let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1920;
         canvas.height = 1080;
@@ -25,30 +25,30 @@ namespace Sem {
         canvas.addEventListener("click", init);
         crc2 = canvas.getContext("2d");
         console.log(crc2);
-     
-        
+
+
         crc2.beginPath();
         crc2.fillStyle = "#adebad";
         crc2.strokeStyle = "#adebad";
-        crc2.moveTo(0,0);
-        crc2.lineTo(0 , canvas.height);
+        crc2.moveTo(0, 0);
+        crc2.lineTo(0, canvas.height);
         crc2.lineTo(canvas.width, canvas.height);
         crc2.lineTo(canvas.width, 0);
         crc2.closePath();
         crc2.fill();
-            
-            
+
+
         crc2.stroke();
         crc2.fillStyle = "black";
         crc2.font = "150px Arial";
-        crc2.fillText("Das Große Krabbeln",250,450); 
+        crc2.fillText("Das Große Krabbeln", 250, 450);
         crc2.font = "70px Arial";
-        crc2.fillText("Klicken Sie irgendwo hin um das Spiel zu starten",200,650); 
-       
-        
-        }
-    
-    
+        crc2.fillText("Klicken Sie irgendwo hin um das Spiel zu starten", 200, 650);
+
+
+    }
+
+
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -61,7 +61,7 @@ namespace Sem {
 
         crc2.fillStyle = "#adebad";
         crc2.fillRect(0, 0, canvas.width, canvas.height);
-        
+
         canvas.removeEventListener("click", init);
 
         //Hintergrund malen lassen
@@ -80,16 +80,16 @@ namespace Sem {
         }
 
         window.setTimeout(animate, 20);
-        
-        
-         
+
+
+
 
         // Event Listener hinzufügen
         canvas.addEventListener("touch", killAnt);
         canvas.addEventListener("click", killAnt);
 
 
-        
+
 
 
 
@@ -116,33 +116,70 @@ namespace Sem {
                     ant.splice(i);
                 };
 
-                //Game Over - Spieler hat gewonnen
-                if (ant.length < 2) {
-                    alert(" Game Over - Sie haben das Spiel gewonnen! ");
-                    
+
+                // Game Over - Wenn über 200 Ameisen vernichtet wurden
+                if (n > 20) {
+                    //alert("Game Over - Sie haben alle Ameisen verscheucht");
+                    crc2.beginPath();
+                    crc2.fillStyle = "#adebad";
+                    crc2.strokeStyle = "#adebad";
+                    crc2.moveTo(0, 0);
+                    crc2.lineTo(0, canvas.height);
+                    crc2.lineTo(canvas.width, canvas.height);
+                    crc2.lineTo(canvas.width, 0);
+                    crc2.closePath();
+                    crc2.fill();
+
+
+                    crc2.stroke();
+                    crc2.fillStyle = "black";
+                    crc2.font = "150px Arial";
+                    crc2.fillText("Game Over - You lost", 250, 450);
+                    crc2.font = "100px Arial";
+                    crc2.fillText("Refresh to play again", 250, 650);
+
+                   
+
                 };
-             
-               if (n > 200) {
-                 alert("Game Over - Sie haben alle Ameisen verscheucht");  
-                     };
             }; console.log(n);
 
         };
 
-       
 
-        function checkPosition(): void{
+
+        function checkPosition(): void {
             for (let i: number = 0; i < ant.length; i++) {
-            let a: Ameise = ant[i];
-            if (a.currentPosX >= 837 && a.currentPosX <= 1087) {
-                if (a.currentPosY >= 388 && a.currentPosY <= 628) {
-                    alert("Game Over - Sie haben das Spiel verloren");
-                }
+                let a: Ameise = ant[i];
+                if (a.currentPosX >= 837 && a.currentPosX <= 1087) {
+                    if (a.currentPosY >= 388 && a.currentPosY <= 628) {
+
+                        //alert("Game Over - Sie haben das Spiel verloren");
+                        crc2.beginPath();
+                        crc2.fillStyle = "#adebad";
+                        crc2.strokeStyle = "#adebad";
+                        crc2.moveTo(0, 0);
+                        crc2.lineTo(0, canvas.height);
+                        crc2.lineTo(canvas.width, canvas.height);
+                        crc2.lineTo(canvas.width, 0);
+                        crc2.closePath();
+                        crc2.fill();
+
+
+                        crc2.stroke();
+                        crc2.fillStyle = "black";
+                        crc2.font = "150px Arial";
+                        crc2.fillText("Game Over - You lost", 250, 450);
+                        crc2.font = "100px Arial";
+                        crc2.fillText("Refresh to play again", 250,650);
+                        
+                    }
+                };
+
             };
+ 
         };
-        };
-        
-        
+
+
         //Neue Ameise malen lassen
         function drawNeueAmeise(): void {
             let a: Ameise = new Ameise();
@@ -150,13 +187,13 @@ namespace Sem {
             n++;
         };
 
-        
+
 
         // Animate Funktion
         function animate(): void {
             // Hintergrundbild abrufen
             crc2.putImageData(image, 0, 0);
- 
+
 
             // Korb malen 
             drawKorb(950, 500, 50, 180, 270, "#d9b38c", "#d9b38c", "#734d26", "#734d26");
@@ -170,28 +207,29 @@ namespace Sem {
 
 
             window.setTimeout(animate, 20);
-                
+
             checkPosition();
-              t++;
-           //console.log(t);
-            
-           if (t > 10) {
-               
-               let a: Ameise = new Ameise();
-               ant.push(a);
-               n++;
-               
-               t = 0
-           };
+            t++;
+            //console.log(t); 
+            if (t > 10) {
+
+                let a: Ameise = new Ameise();
+                ant.push(a);
+                n++;
+
+                t = 0;
+            };
         }
 
-     
+
     };
 
-    
-    
 
 
+
+    function gameOver(): void{
+        
+    };
 
     // Hintergrund mal funktionen
     function drawDecke(_x: number, _y: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
