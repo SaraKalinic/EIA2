@@ -21,7 +21,7 @@ namespace Sem {
     function start(_event: Event): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1420;
+        canvas.width = 1300;
         canvas.height = 700;
         console.log(canvas);
         canvas.addEventListener("click", startTutorial);

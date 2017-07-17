@@ -19,7 +19,7 @@ var Sem;
     function start(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1420;
+        canvas.width = 1300;
         canvas.height = 700;
         console.log(canvas);
         canvas.addEventListener("click", startTutorial);
