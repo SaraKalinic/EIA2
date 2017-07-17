@@ -29,8 +29,8 @@ var Sem;
         }
         // Target Position auf den Korb setzten
         setTarget() {
-            this.xTarget = 1450;
-            this.yTarget = 500;
+            this.xTarget = 650;
+            this.yTarget = 320;
         }
         move() {
             this.x += Math.random() * 7 - 6;
