@@ -195,7 +195,7 @@ var Sem;
                 t = 0;
             }
             // Game Over - Wenn über 200 Ameisen vernichtet wurden
-            if (k > 10) {
+            if (k > 150) {
                 gameWon();
             }
             ;
