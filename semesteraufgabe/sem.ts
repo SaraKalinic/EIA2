@@ -234,7 +234,7 @@ namespace Sem {
 
             window.setTimeout(animate, 20);
 
-            // checkPosition();
+            checkPosition();
             t++;
             //console.log(t); 
             if (t > 35) {
