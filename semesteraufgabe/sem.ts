@@ -166,7 +166,7 @@ namespace Sem {
         };
 
 
-        function checkPosition(): void {
+       /* function checkPosition(): void {
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
                 if (a.currentPosX >= 567 && a.currentPosX <= 750) {
@@ -177,7 +177,7 @@ namespace Sem {
                     }
                 };
             };
-        };
+        };*/
 
 
         //Neue Ameise malen lassen
@@ -205,7 +205,7 @@ namespace Sem {
 
             window.setTimeout(animate, 20);
 
-            checkPosition();
+           // checkPosition();
             t++;
             //console.log(t); 
             if (t > 35) {

@@ -43,7 +43,7 @@ namespace Sem {
 
         // Target Position auf den Korb setzten
         setTarget(): void {
-            this.xTarget = 1150;
+            this.xTarget = 1250;
             this.yTarget = 320;
         }
 

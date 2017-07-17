@@ -130,19 +130,18 @@ var Sem;
             ; //console.log(n);
         }
         ;
-        function checkPosition() {
-            for (let i = 0; i < Sem.ant.length; i++) {
-                let a = Sem.ant[i];
-                if (a.currentPosX >= 567 && a.currentPosX <= 750) {
-                    if (a.currentPosY >= 245 && a.currentPosY <= 429) {
-                        gameLost();
-                    }
-                }
-                ;
-            }
-            ;
-        }
-        ;
+        /* function checkPosition(): void {
+             for (let i: number = 0; i < ant.length; i++) {
+                 let a: Ameise = ant[i];
+                 if (a.currentPosX >= 567 && a.currentPosX <= 750) {
+                     if (a.currentPosY >= 245 && a.currentPosY <= 429) {
+                         gameLost();
+ 
+ 
+                     }
+                 };
+             };
+         };*/
         //Neue Ameise malen lassen
         function drawNeueAmeise() {
             let a = new Sem.Ameise();
@@ -161,7 +160,7 @@ var Sem;
             }
             ;
             window.setTimeout(animate, 20);
-            checkPosition();
+            // checkPosition();
             t++;
             //console.log(t); 
             if (t > 35) {
