@@ -12,7 +12,7 @@ namespace Sem {
     export let crc2: CanvasRenderingContext2D;
     export let ant: Ameise[] = [];
     let image: ImageData;
-    let n: number = 3;
+    let n: number = 5;
     let t: number = 0;
     let m: number = 1;
     let k: number = 0;
@@ -238,7 +238,7 @@ namespace Sem {
             
             t++;
             //console.log(t); 
-            if (t > 35) {
+            if (t > 22) {
 
                 let a: Ameise = new Ameise();
                 ant.push(a);
@@ -246,9 +246,10 @@ namespace Sem {
 
                 t = 0;
             }
-
+                 
+            
             // Game Over - Wenn über 200 Ameisen vernichtet wurden
-            if (k > 150) {
+            if (k > 15000) {
                 gameWon();
             };
         }
@@ -298,6 +299,8 @@ namespace Sem {
             crc2.fillText("Game Over - Sie haben verloren", 150, 250);
             crc2.font = "50px Arial";
             crc2.fillText("Refresh to play again", 370, 450);
+            
+            crc2.fillText("Dein Highscore: " + k , 370, 550);
         };
 
 

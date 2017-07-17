@@ -10,7 +10,7 @@ var Sem;
     window.addEventListener("load", start);
     Sem.ant = [];
     let image;
-    let n = 3;
+    let n = 5;
     let t = 0;
     let m = 1;
     let k = 0;
@@ -188,14 +188,14 @@ var Sem;
             checkPosition();
             t++;
             //console.log(t); 
-            if (t > 35) {
+            if (t > 22) {
                 let a = new Sem.Ameise();
                 Sem.ant.push(a);
                 n++;
                 t = 0;
             }
             // Game Over - Wenn über 200 Ameisen vernichtet wurden
-            if (k > 150) {
+            if (k > 15000) {
                 gameWon();
             }
             ;
@@ -236,6 +236,7 @@ var Sem;
             Sem.crc2.fillText("Game Over - Sie haben verloren", 150, 250);
             Sem.crc2.font = "50px Arial";
             Sem.crc2.fillText("Refresh to play again", 370, 450);
+            Sem.crc2.fillText("Dein Highscore: " + k, 370, 550);
         }
         ;
         // Hintergrund mal funktionen
