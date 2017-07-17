@@ -29,7 +29,7 @@ var Sem;
         }
         // Target Position auf den Korb setzten
         setTarget() {
-            this.xTarget = 650;
+            this.xTarget = 1150;
             this.yTarget = 320;
         }
         move() {
