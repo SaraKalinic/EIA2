@@ -21,10 +21,10 @@ namespace Sem {
         constructor() {
 
             this.draw();
-            this.speed = 0.01;
+            this.speed = 0.004;
             this.setStartPosition();
             this.setTarget();
- }
+        }
 
         // Position der Ameise herausfinden
         logCurrentPosition(): void {
@@ -43,7 +43,7 @@ namespace Sem {
 
         // Target Position auf den Korb setzten
         setTarget(): void {
-            this.xTarget = 1150;
+            this.xTarget = 1450;
             this.yTarget = 500;
         }
 

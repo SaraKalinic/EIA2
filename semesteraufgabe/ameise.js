@@ -10,7 +10,7 @@ var Sem;
     class Ameise {
         constructor() {
             this.draw();
-            this.speed = 0.01;
+            this.speed = 0.004;
             this.setStartPosition();
             this.setTarget();
         }
@@ -29,7 +29,7 @@ var Sem;
         }
         // Target Position auf den Korb setzten
         setTarget() {
-            this.xTarget = 1150;
+            this.xTarget = 1450;
             this.yTarget = 500;
         }
         move() {

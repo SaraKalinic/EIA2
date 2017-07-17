@@ -13,6 +13,8 @@ var Sem;
     let n = 3;
     let t = 0;
     let m = 1;
+    let k = 0;
+    //---------------------------------------------------------------------------
     //START SCREEN
     function start(_event) {
         let canvas;
@@ -20,7 +22,8 @@ var Sem;
         canvas.width = 1920;
         canvas.height = 1080;
         console.log(canvas);
-        canvas.addEventListener("click", init);
+        canvas.addEventListener("click", startTutorial);
+        canvas.addEventListener("touch", startTutorial);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
         Sem.crc2.beginPath();
@@ -39,6 +42,41 @@ var Sem;
         Sem.crc2.font = "70px Arial";
         Sem.crc2.fillText("Klicken Sie irgendwo hin um das Spiel zu starten", 200, 650);
     }
+    //--------------------------------------------------------------------------   
+    //EKLÄRUNG    
+    function startTutorial(_event) {
+        let canvas;
+        canvas = document.getElementsByTagName("canvas")[0];
+        canvas.width = 1920;
+        canvas.height = 1080;
+        console.log(canvas);
+        canvas.addEventListener("click", init);
+        canvas.addEventListener("touch", init);
+        Sem.crc2 = canvas.getContext("2d");
+        console.log(Sem.crc2);
+        canvas.removeEventListener("click", startTutorial);
+        canvas.removeEventListener("touch", startTutorial);
+        Sem.crc2.beginPath();
+        Sem.crc2.fillStyle = "#adebad";
+        Sem.crc2.strokeStyle = "#adebad";
+        Sem.crc2.moveTo(0, 0);
+        Sem.crc2.lineTo(0, canvas.height);
+        Sem.crc2.lineTo(canvas.width, canvas.height);
+        Sem.crc2.lineTo(canvas.width, 0);
+        Sem.crc2.closePath();
+        Sem.crc2.fill();
+        Sem.crc2.stroke();
+        Sem.crc2.fillStyle = "black";
+        Sem.crc2.font = "100px Arial";
+        Sem.crc2.fillText("Das Große Krabbeln", 250, 150);
+        Sem.crc2.font = "70px Arial";
+        Sem.crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 600);
+        Sem.crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 700);
+        Sem.crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren.", 200, 800);
+        Sem.crc2.fillText("Klicken sie um das Spiel zu starten.", 200, 1000);
+    }
+    ;
+    //---------------------------------------------------------------------------
     // SPIEL 
     function init(_event) {
         let canvas;
@@ -48,9 +86,10 @@ var Sem;
         console.log(canvas);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
+        canvas.removeEventListener("click", init);
+        canvas.removeEventListener("touch", init);
         Sem.crc2.fillStyle = "#adebad";
         Sem.crc2.fillRect(0, 0, canvas.width, canvas.height);
-        canvas.removeEventListener("click", init);
         //Hintergrund malen lassen
         drawDecke(500, 800, "#80aaff", "#80aaff", "#cce6ff", "#cce6ff");
         drawTeller(600, 700, 50, 180, 270, "#ffffff", "#ffffff", "#e6e6e6", "#e6e6e6");
@@ -81,13 +120,14 @@ var Sem;
                 //console.log(diffX);
                 //console.log(diffY);
                 // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX <= 30 && diffY <= 30) {
+                if (diffX <= 40 && diffY <= 40) {
                     Sem.ant.splice(i, 1);
+                    k++;
+                    console.log(k);
                 }
                 ;
             }
-            ;
-            console.log(n);
+            ; //console.log(n);
         }
         ;
         function checkPosition() {
@@ -133,7 +173,7 @@ var Sem;
                 t = 0;
             }
             // Game Over - Wenn über 200 Ameisen vernichtet wurden
-            if (n > 2000) {
+            if (k > 200) {
                 gameWon();
             }
             ;
