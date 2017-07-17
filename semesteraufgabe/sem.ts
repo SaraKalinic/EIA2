@@ -133,7 +133,7 @@ namespace Sem {
         window.setTimeout(animate, 20);
 
         // Event Listener hinzufügen
-        canvas.addEventListener("touch", killAnt);
+        canvas.addEventListener("touch", killAntM);
         canvas.addEventListener("click", killAnt);
 
         // Bei Klick auf Ameise soll diese gelöscht werden
@@ -165,8 +165,37 @@ namespace Sem {
 
         };
 
+        
+        // Bei Klick auf Ameise soll diese gelöscht werden
+        function killAntM(event: MouseEvent): void {
+            for (let i: number = 0; i < ant.length; i++) {
+                let a: Ameise = ant[i];
 
-       /* function checkPosition(): void {
+                // Position des Klick herausfinden
+                let clickX: number = event.clientX;
+                let clickY: number = event.clientY;
+                //console.log(clickX);
+                //console.log(clickY);
+
+                // Differenz zwischen Klick Position und Position der Ameise ausrechnen
+                let diffX: number = Math.abs(a.currentPosX - clickX);
+                let diffY: number = Math.abs(a.currentPosY - clickY);
+
+                //console.log(diffX);
+                //console.log(diffY);
+
+                // Wenn differenz < 20 wird Ameise gelöscht
+                if (diffX <= 50 && diffY <= 500) {
+                    ant.splice(i, 1);
+                    k++;
+                   // console.log(k);
+                };
+                //Game over won
+            }; //console.log(n);
+
+        };
+
+       function checkPosition(): void {
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
                 if (a.currentPosX >= 567 && a.currentPosX <= 750) {
@@ -177,7 +206,7 @@ namespace Sem {
                     }
                 };
             };
-        };*/
+        };
 
 
         //Neue Ameise malen lassen
