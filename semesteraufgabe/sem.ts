@@ -51,7 +51,7 @@ namespace Sem {
 
     }
     //--------------------------------------------------------------------------   
-    //EKLÄRUNG
+    //ERKLÄRUNG
 
     function startTutorial(_event: Event): void {
 

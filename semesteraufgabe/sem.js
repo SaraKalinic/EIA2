@@ -43,7 +43,7 @@ var Sem;
         Sem.crc2.fillText("Klicken Sie um das Spiel zu starten", 250, 450);
     }
     //--------------------------------------------------------------------------   
-    //EKLÄRUNG
+    //ERKLÄRUNG
     function startTutorial(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
