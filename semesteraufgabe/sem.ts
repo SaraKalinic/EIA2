@@ -15,14 +15,14 @@ namespace Sem {
     let n: number = 3;
     let t: number = 0;
     let m: number = 1;
-    let k: number = 0; 
-//---------------------------------------------------------------------------
+    let k: number = 0;
+    //---------------------------------------------------------------------------
     //START SCREEN
     function start(_event: Event): void {
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1920;
-        canvas.height = 1080;
+        canvas.width = 1440;
+        canvas.height = 900;
         console.log(canvas);
         canvas.addEventListener("click", startTutorial);
         canvas.addEventListener("touch", startTutorial);
@@ -50,12 +50,12 @@ namespace Sem {
 
 
     }
- //--------------------------------------------------------------------------   
-//EKLÄRUNG    
+    //--------------------------------------------------------------------------   
+    //EKLÄRUNG
     
-    function startTutorial(_event: Event): void { 
-    
-    let canvas: HTMLCanvasElement;
+    function startTutorial(_event: Event): void {
+
+        let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1920;
         canvas.height = 1080;
@@ -81,23 +81,22 @@ namespace Sem {
         crc2.stroke();
         crc2.fillStyle = "black";
         crc2.font = "100px Arial";
-        crc2.fillText("Das Große Krabbeln", 250, 150);
-        
-        crc2.font = "70px Arial";
-        crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 600);
-        crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 700);
-        crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren.", 200, 800);
-        crc2.fillText("Klicken sie um das Spiel zu starten.", 200, 1000);
-     
-    
-       
+        crc2.fillText("Das Große Krabbeln", 200, 150);
+         crc2.font = "70px Arial";
+        crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 450);
+        crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 600);
+        crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren.", 200, 750);
+        crc2.fillText("Klicke um das Spiel zu starten.", 200, 1000);
+
+
+
     };
-    
-    
-//---------------------------------------------------------------------------
-// SPIEL 
+
+
+    //---------------------------------------------------------------------------
+    // SPIEL 
     function init(_event: Event): void {
-        
+
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1920;
@@ -109,11 +108,11 @@ namespace Sem {
 
         canvas.removeEventListener("click", init);
         canvas.removeEventListener("touch", init);
-        
+
         crc2.fillStyle = "#adebad";
         crc2.fillRect(0, 0, canvas.width, canvas.height);
 
-        
+
 
         //Hintergrund malen lassen
         drawDecke(500, 800, "#80aaff", "#80aaff", "#cce6ff", "#cce6ff");
@@ -148,30 +147,30 @@ namespace Sem {
                 //console.log(clickY);
 
                 // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                let diffX: number = Math.abs( a.currentPosX - clickX);
-                let diffY: number = Math.abs( a.currentPosY - clickY);
+                let diffX: number = Math.abs(a.currentPosX - clickX);
+                let diffY: number = Math.abs(a.currentPosY - clickY);
 
                 //console.log(diffX);
                 //console.log(diffY);
 
                 // Wenn differenz < 20 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
-                    ant.splice(i,1);
-                    k ++; 
+                    ant.splice(i, 1);
+                    k++;
                     console.log(k);
                 };
                 //Game over won
             }; //console.log(n);
 
         };
-        
+
 
         function checkPosition(): void {
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
                 if (a.currentPosX >= 837 && a.currentPosX <= 1087) {
                     if (a.currentPosY >= 388 && a.currentPosY <= 628) {
-                       gameLost();
+                        gameLost();
 
 
                     }
@@ -229,7 +228,7 @@ namespace Sem {
 
 
 
-// GAME WON SCREEN 
+        // GAME WON SCREEN 
         function gameWon(): void {
             crc2.beginPath();
             crc2.fillStyle = "#adebad";
@@ -250,8 +249,8 @@ namespace Sem {
             crc2.fillText("Refresh to play again", 570, 650);
 
         };
-        
-//GAME LOST SCREEN 
+
+        //GAME LOST SCREEN 
         function gameLost(): void {
 
             crc2.beginPath();
