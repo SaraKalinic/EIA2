@@ -52,7 +52,7 @@ namespace Sem {
     }
     //--------------------------------------------------------------------------   
     //EKLÄRUNG
-    
+
     function startTutorial(_event: Event): void {
 
         let canvas: HTMLCanvasElement;
@@ -158,14 +158,14 @@ namespace Sem {
                 if (diffX <= 40 && diffY <= 40) {
                     ant.splice(i, 1);
                     k++;
-                   // console.log(k);
+                    // console.log(k);
                 };
                 //Game over won
             }; //console.log(n);
 
         };
 
-        
+
         // Bei Klick auf Ameise soll diese gelöscht werden
         function killAntM(event: MouseEvent): void {
             for (let i: number = 0; i < ant.length; i++) {
@@ -188,14 +188,14 @@ namespace Sem {
                 if (diffX <= 70 && diffY <= 70) {
                     ant.splice(i, 1);
                     k++;
-                   // console.log(k);
+                    // console.log(k);
                 };
                 //Game over won
             }; //console.log(n);
 
         };
 
-       function checkPosition(): void {
+        function checkPosition(): void {
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
                 if (a.currentPosX >= 567 && a.currentPosX <= 750) {
@@ -219,7 +219,7 @@ namespace Sem {
 
 
         // Animate Funktion
-         function animate(): void {
+        function animate(): void {
             // Hintergrundbild abrufen
             crc2.putImageData(image, 0, 0);
 
@@ -234,7 +234,7 @@ namespace Sem {
 
             window.setTimeout(animate, 20);
 
-           // checkPosition();
+            // checkPosition();
             t++;
             //console.log(t); 
             if (t > 35) {
@@ -250,7 +250,7 @@ namespace Sem {
             if (k > 200) {
                 gameWon();
             };
-        } 
+        }
 
 
 
@@ -608,8 +608,8 @@ namespace Sem {
             crc2.closePath();
             crc2.fill();
             crc2.stroke();
-            
-            
+
+
 
         }
 
