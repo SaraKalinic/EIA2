@@ -336,6 +336,7 @@ var Sem;
             Sem.crc2.fillText("Game Over - Sie haben gewonnen", 150, 350);
             Sem.crc2.font = "50px Arial";
             Sem.crc2.fillText("Refresh to play again", 370, 450);
+            canvas.removeEventListener("click", killAnt);
         }
         ;
         //GAME LOST SCREEN 
@@ -356,6 +357,7 @@ var Sem;
             Sem.crc2.font = "50px Arial";
             Sem.crc2.fillText("Refresh to play again", 370, 450);
             Sem.crc2.fillText("Dein Highscore: " + k, 370, 550);
+            canvas.removeEventListener("click", killAnt);
         }
         ;
         // Hintergrund mal funktionen

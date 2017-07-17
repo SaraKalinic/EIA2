@@ -335,11 +335,13 @@ namespace Sem {
                 if (r.currentPosX >= 567 && r.currentPosX <= 750) {
                     if (r.currentPosY >= 245 && r.currentPosY <= 429) {
                         gameLost();
-
+                        
+                        
 
                     }
                 };
             };
+            
         };
 
 
@@ -452,6 +454,8 @@ namespace Sem {
             crc2.fillText("Game Over - Sie haben gewonnen", 150, 350);
             crc2.font = "50px Arial";
             crc2.fillText("Refresh to play again", 370, 450);
+            
+            canvas.removeEventListener("click", killAnt);
 
         };
 
@@ -477,6 +481,8 @@ namespace Sem {
             crc2.fillText("Refresh to play again", 370, 450);
 
             crc2.fillText("Dein Highscore: " + k, 370, 550);
+            
+            canvas.removeEventListener("click", killAnt);
         };
 
 
