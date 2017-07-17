@@ -190,7 +190,7 @@ var Sem;
             ;
             window.setTimeout(animate, 20);
             checkPosition();
-            highscore.innerText = " Bienen vernichtet: " + k;
+            highscore.innerText = " Ameisen vernichtet: " + k;
             t++;
             //console.log(t); 
             if (t > 22) {

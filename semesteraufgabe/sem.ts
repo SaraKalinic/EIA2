@@ -115,7 +115,7 @@ namespace Sem {
         crc2.fillRect(0, 0, canvas.width, canvas.height);
 
         let highscore = document.createElement("div");
-        highscore.innerText = " Ameisen vernichtet: " + k;
+        highscore.innerText = " Ameisen vernichtet: " + k; 
         highscore.style.fontSize = "40px"; 
         document.body.appendChild(highscore);
 
