@@ -145,7 +145,7 @@ var Sem;
                 //console.log(diffX);
                 //console.log(diffY);
                 // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX <= 50 && diffY <= 500) {
+                if (diffX <= 60 && diffY <= 60) {
                     Sem.ant.splice(i, 1);
                     k++;
                 }
