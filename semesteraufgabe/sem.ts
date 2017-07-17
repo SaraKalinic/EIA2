@@ -185,7 +185,7 @@ namespace Sem {
                 //console.log(diffY);
 
                 // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX <= 60 && diffY <= 60) {
+                if (diffX <= 70 && diffY <= 70) {
                     ant.splice(i, 1);
                     k++;
                    // console.log(k);
