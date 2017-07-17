@@ -63,8 +63,8 @@ namespace Sem {
             
             
             crc2.beginPath();
-            crc2.fillStyle = "brown";
-            crc2.strokeStyle = "brown";
+            crc2.fillStyle = "#b30000";
+            crc2.strokeStyle = "#b30000";
             crc2.moveTo(this.x + 9, this.y);
             crc2.arc(this.x + 9, this.y, 7, 180, 270);
             crc2.closePath();

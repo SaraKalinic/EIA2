@@ -48,8 +48,8 @@ var Sem;
         }
         draw() {
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "brown";
-            Sem.crc2.strokeStyle = "brown";
+            Sem.crc2.fillStyle = "#b30000";
+            Sem.crc2.strokeStyle = "#b30000";
             Sem.crc2.moveTo(this.x + 9, this.y);
             Sem.crc2.arc(this.x + 9, this.y, 7, 180, 270);
             Sem.crc2.closePath();

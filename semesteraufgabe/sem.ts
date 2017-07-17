@@ -6,9 +6,8 @@ Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
 
-
 namespace Sem {
-    window.addEventListener("load", init);
+    window.addEventListener("load", start);
     export let crc2: CanvasRenderingContext2D;
     export let ant: Ameise[] = [];
     export let antRed: AmeiseRot[] = [];
@@ -21,6 +20,9 @@ namespace Sem {
     let v: number = 3;
     let z: number = 0;
     let br: number = 0;
+    let s: number = 0;
+    let r: number = 0;
+    let ab: number = 0;
     //---------------------------------------------------------------------------
     //START SCREEN
     function start(_event: Event): void {
@@ -87,12 +89,13 @@ namespace Sem {
         crc2.fillStyle = "black";
         crc2.font = "70px Arial";
         crc2.fillText("Das Große Krabbeln", 200, 150);
-        crc2.font = "50px Arial";
-        crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 250);
-        crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 320);
-        crc2.fillText("Erreicht eine Ameise den Korb ", 200, 390);
-        crc2.fillText("so hast du verloren.", 200, 460);
-        crc2.fillText("Klicke um das Spiel zu starten.", 200, 600);
+        crc2.font = "35px Arial";
+        crc2.fillText("Vernichte die Ameisen (durch klich auf diese bevor) sie an den Korb gelangen. ", 50, 250);
+        crc2.fillText("Schwarze Ameise = 1 Klick ", 50, 320);
+        crc2.fillText("Braune Ameise = 2 Klick ", 50, 390);
+        crc2.fillText("Rote Ameise = 3 Klick ", 50, 460);
+        crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren. ", 50, 530);
+        crc2.fillText("Klicke um das Spiel zu starten.", 50, 620);
 
 
 
@@ -120,7 +123,7 @@ namespace Sem {
         crc2.fillRect(0, 0, canvas.width, canvas.height);
 
         let highscore = document.createElement("div");
-        highscore.innerText = " Ameisen vernichtet: " + k;
+        highscore.innerText = " Ameisen vernichtet: " + k + "\n Schwarze Ameisen: " + s + " \n Braune Ameisen: " + ab + " \n Rote Ameisen: " + r;
         highscore.style.fontSize = "40px";
         document.body.appendChild(highscore);
 
@@ -155,8 +158,8 @@ namespace Sem {
         // Bei Klick auf Ameise soll diese gelöscht werden
 
         function killAnt(event: MouseEvent): void {
-            
-     // Schwarze Ameise nach einem Klick löschen        
+
+            // Schwarze Ameise nach einem Klick löschen        
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
 
@@ -178,7 +181,7 @@ namespace Sem {
 
                     ant.splice(i, 1);
                     k++;
-
+                    s++;
 
                     // console.log(k);
                 };
@@ -186,8 +189,8 @@ namespace Sem {
 
                 //Game over won
             };
-         
-          //  Braune Ameise nach 2 Klicks löschen
+
+            //  Braune Ameise nach 2 Klicks löschen
             for (let i: number = 0; i < antBrown.length; i++) {
                 let b: AmeiseBrown = antBrown[i];
 
@@ -216,6 +219,7 @@ namespace Sem {
                     if (br > 1 && br < 3) {
                         antBrown.splice(i, 1);
                         k++;
+                        ab++;
                         br = 0;
                     }
 
@@ -225,8 +229,8 @@ namespace Sem {
 
                 //Game over won
             };
-            
-         // Rote Ameise nach 3 klicks löschen
+
+            // Rote Ameise nach 3 klicks löschen
             for (let i: number = 0; i < antRed.length; i++) {
                 let ar: AmeiseRot = antRed[i];
 
@@ -255,6 +259,7 @@ namespace Sem {
                     if (z > 2) {
                         antRed.splice(i, 1);
                         k++;
+                        r++;
                         z = 0;
                     }
 
@@ -270,7 +275,7 @@ namespace Sem {
 
 
 
-     // Bei Klick auf Ameise soll diese gelöscht werden für Touch
+        // Bei Klick auf Ameise soll diese gelöscht werden für Touch
         function killAntM(event: MouseEvent): void {
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
@@ -291,9 +296,9 @@ namespace Sem {
                 // Wenn differenz < 20 wird Ameise gelöscht
                 if (diffX <= 100 && diffY <= 100) {
                     ant.splice(i, 1);
-                    
-                    antBrown.splice(i,1);
-                    antRed.splice(i,1);
+
+                    antBrown.splice(i, 1);
+                    antRed.splice(i, 1);
                     k++;
                     // console.log(k);
                 };
@@ -313,7 +318,7 @@ namespace Sem {
                     }
                 };
             };
-            
+
             for (let i: number = 0; i < antBrown.length; i++) {
                 let b: AmeiseBrown = antBrown[i];
                 if (b.currentPosX >= 567 && b.currentPosX <= 750) {
@@ -324,7 +329,7 @@ namespace Sem {
                     }
                 };
             };
-            
+
             for (let i: number = 0; i < antRed.length; i++) {
                 let r: AmeiseRot = antRed[i];
                 if (r.currentPosX >= 567 && r.currentPosX <= 750) {
@@ -345,10 +350,10 @@ namespace Sem {
 
             let h: AmeiseRot = new AmeiseRot();
             antRed.push(h);
-            
+
             let b: AmeiseBrown = new AmeiseBrown();
             antBrown.push(b);
-            
+
             n++;
         };
 
@@ -374,7 +379,7 @@ namespace Sem {
                 h.update();
 
             }
-            
+
             for (let i: number = 0; i < antBrown.length; i++) {
 
                 let b: AmeiseBrown = antBrown[i];
@@ -386,36 +391,36 @@ namespace Sem {
             window.setTimeout(animate, 35);
 
             checkPosition();
-            highscore.innerText = " Ameisen vernichtet: " + k;
+            highscore.innerText = " Ameisen vernichtet: " + k + "\n Schwarze Ameisen: " + s + " \n Braune Ameisen: " + ab + " \n Rote Ameisen: " + r;
             t++;
             //console.log(t); 
-            if (t > 31 && t < 33 ) {
+            if (t > 31 && t < 33) {
 
                 let a: Ameise = new Ameise();
                 ant.push(a);
                 n++;
-                
-               
 
-               
+
+
+
             }
-            
-            if (t > 50 && t< 52) {
+
+            if (t > 50 && t < 52) {
 
                 let b: AmeiseBrown = new AmeiseBrown();
                 antBrown.push(b);
                 n++;
-            
-                
+
+
             }
-            
-            if (t > 70 && t< 72) {
+
+            if (t > 70 && t < 72) {
 
                 let r: AmeiseRot = new AmeiseRot();
                 antRed.push(r);
                 n++;
                 t = 0;
-                
+
             }
 
 

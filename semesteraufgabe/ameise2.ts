@@ -64,8 +64,8 @@ namespace Sem {
             
             
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 9, this.y);
             crc2.arc(this.x + 9, this.y, 7, 180, 270);
             crc2.closePath();
@@ -73,8 +73,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 9, this.y);
             crc2.lineTo(this.x + 10, this.y + 10);
             crc2.closePath();
@@ -82,8 +82,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 10, this.y + 10);
             crc2.lineTo(this.x + 5, this.y + 15);
             crc2.closePath();
@@ -91,8 +91,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 9, this.y);
             crc2.lineTo(this.x + 10, this.y - 13);
             crc2.closePath();
@@ -100,8 +100,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 10, this.y - 13);
             crc2.lineTo(this.x + 5, this.y - 15);
             crc2.closePath();
@@ -109,8 +109,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 19, this.y);
             crc2.arc(this.x + 19, this.y, 6, 180, 270);
             crc2.closePath();
@@ -118,8 +118,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 19, this.y);
             crc2.lineTo(this.x + 20, this.y + 11);
             crc2.closePath();
@@ -127,8 +127,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 20, this.y + 11);
             crc2.lineTo(this.x + 15, this.y + 15);
             crc2.closePath();
@@ -136,8 +136,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 19, this.y);
             crc2.lineTo(this.x + 20, this.y - 11);
             crc2.closePath();
@@ -145,8 +145,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 20, this.y - 11);
             crc2.lineTo(this.x + 15, this.y - 15);
             crc2.closePath();
@@ -154,8 +154,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 29, this.y);
             crc2.arc(this.x + 29, this.y, 6, 180, 270);
             crc2.closePath();
@@ -163,8 +163,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 25, this.y);
             crc2.lineTo(this.x + 27, this.y + 11);
             crc2.closePath();
@@ -172,8 +172,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 27, this.y + 11);
             crc2.lineTo(this.x + 22, this.y + 15);
             crc2.closePath();
@@ -181,8 +181,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 25, this.y);
             crc2.lineTo(this.x + 27, this.y - 11);
             crc2.closePath();
@@ -190,8 +190,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "red";
-            crc2.strokeStyle = "red";
+            crc2.fillStyle = "#ff0000";
+            crc2.strokeStyle = "#ff0000";
             crc2.moveTo(this.x + 27, this.y - 11);
             crc2.lineTo(this.x + 22, this.y - 15);
             crc2.closePath();

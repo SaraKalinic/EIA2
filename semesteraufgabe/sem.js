@@ -7,7 +7,7 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
 var Sem;
 (function (Sem) {
-    window.addEventListener("load", init);
+    window.addEventListener("load", start);
     Sem.ant = [];
     Sem.antRed = [];
     Sem.antBrown = [];
@@ -19,6 +19,9 @@ var Sem;
     let v = 3;
     let z = 0;
     let br = 0;
+    let s = 0;
+    let r = 0;
+    let ab = 0;
     //---------------------------------------------------------------------------
     //START SCREEN
     function start(_event) {
@@ -74,12 +77,13 @@ var Sem;
         Sem.crc2.fillStyle = "black";
         Sem.crc2.font = "70px Arial";
         Sem.crc2.fillText("Das Große Krabbeln", 200, 150);
-        Sem.crc2.font = "50px Arial";
-        Sem.crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 250);
-        Sem.crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 320);
-        Sem.crc2.fillText("Erreicht eine Ameise den Korb ", 200, 390);
-        Sem.crc2.fillText("so hast du verloren.", 200, 460);
-        Sem.crc2.fillText("Klicke um das Spiel zu starten.", 200, 600);
+        Sem.crc2.font = "35px Arial";
+        Sem.crc2.fillText("Vernichte die Ameisen (durch klich auf diese bevor) sie an den Korb gelangen. ", 50, 250);
+        Sem.crc2.fillText("Schwarze Ameise = 1 Klick ", 50, 320);
+        Sem.crc2.fillText("Braune Ameise = 2 Klick ", 50, 390);
+        Sem.crc2.fillText("Rote Ameise = 3 Klick ", 50, 460);
+        Sem.crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren. ", 50, 530);
+        Sem.crc2.fillText("Klicke um das Spiel zu starten.", 50, 620);
     }
     ;
     //---------------------------------------------------------------------------
@@ -97,7 +101,7 @@ var Sem;
         Sem.crc2.fillStyle = "#adebad";
         Sem.crc2.fillRect(0, 0, canvas.width, canvas.height);
         let highscore = document.createElement("div");
-        highscore.innerText = " Ameisen vernichtet: " + k;
+        highscore.innerText = " Ameisen vernichtet: " + k + "\n Schwarze Ameisen: " + s + " \n Braune Ameisen: " + ab + " \n Rote Ameisen: " + r;
         highscore.style.fontSize = "40px";
         document.body.appendChild(highscore);
         //Hintergrund malen lassen
@@ -138,6 +142,7 @@ var Sem;
                 if (diffX <= 40 && diffY <= 40) {
                     Sem.ant.splice(i, 1);
                     k++;
+                    s++;
                 }
                 ;
             }
@@ -162,6 +167,7 @@ var Sem;
                     if (br > 1 && br < 3) {
                         Sem.antBrown.splice(i, 1);
                         k++;
+                        ab++;
                         br = 0;
                     }
                 }
@@ -188,6 +194,7 @@ var Sem;
                     if (z > 2) {
                         Sem.antRed.splice(i, 1);
                         k++;
+                        r++;
                         z = 0;
                     }
                 }
@@ -287,7 +294,7 @@ var Sem;
             }
             window.setTimeout(animate, 35);
             checkPosition();
-            highscore.innerText = " Ameisen vernichtet: " + k;
+            highscore.innerText = " Ameisen vernichtet: " + k + "\n Schwarze Ameisen: " + s + " \n Braune Ameisen: " + ab + " \n Rote Ameisen: " + r;
             t++;
             //console.log(t); 
             if (t > 31 && t < 33) {
