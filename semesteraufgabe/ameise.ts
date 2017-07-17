@@ -92,21 +92,21 @@ namespace Sem {
         // Startposition Möglichkeiten
         setPosition1(): void {
             this.x = 0;
-            this.y = Math.floor(Math.random() * (1080 - 0)) + 0;
+            this.y = Math.floor(Math.random() * (700 - 0)) + 0;
         }
         setPosition2(): void {
-            this.x = 1920;
-            this.y = Math.floor(Math.random() * (1080 - 0)) + 0;
+            this.x = 1300;
+            this.y = Math.floor(Math.random() * (700 - 0)) + 0;
         }
 
         setPosition3(): void {
-            this.x = Math.floor(Math.random() * (1920 - 0)) + 0;
+            this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
             this.y = 0;
         }
 
         setPosition4(): void {
-            this.x = Math.floor(Math.random() * (1920 - 0)) + 0;
-            this.y = 1080;
+            this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
+            this.y = 700;
         }
 
         // Ameise zeichnen Funktion

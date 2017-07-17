@@ -37,18 +37,18 @@ var Sem;
         Sem.crc2.fill();
         Sem.crc2.stroke();
         Sem.crc2.fillStyle = "black";
-        Sem.crc2.font = "150px Arial";
-        Sem.crc2.fillText("Das Große Krabbeln", 250, 450);
-        Sem.crc2.font = "70px Arial";
-        Sem.crc2.fillText("Klicken Sie irgendwo hin um das Spiel zu starten", 200, 650);
+        Sem.crc2.font = "100px Arial";
+        Sem.crc2.fillText("Das Große Krabbeln", 250, 250);
+        Sem.crc2.font = "60px Arial";
+        Sem.crc2.fillText("Klicken Sie um das Spiel zu starten", 250, 450);
     }
     //--------------------------------------------------------------------------   
     //EKLÄRUNG
     function startTutorial(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1920;
-        canvas.height = 1080;
+        canvas.width = 1300;
+        canvas.height = 700;
         console.log(canvas);
         canvas.addEventListener("click", init);
         canvas.addEventListener("touch", init);
@@ -67,13 +67,14 @@ var Sem;
         Sem.crc2.fill();
         Sem.crc2.stroke();
         Sem.crc2.fillStyle = "black";
-        Sem.crc2.font = "100px Arial";
-        Sem.crc2.fillText("Das Große Krabbeln", 200, 150);
         Sem.crc2.font = "70px Arial";
-        Sem.crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 450);
-        Sem.crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 600);
-        Sem.crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren.", 200, 750);
-        Sem.crc2.fillText("Klicke um das Spiel zu starten.", 200, 1000);
+        Sem.crc2.fillText("Das Große Krabbeln", 200, 150);
+        Sem.crc2.font = "50px Arial";
+        Sem.crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 250);
+        Sem.crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 320);
+        Sem.crc2.fillText("Erreicht eine Ameise den Korb ", 200, 390);
+        Sem.crc2.fillText("so hast du verloren.", 200, 460);
+        Sem.crc2.fillText("Klicke um das Spiel zu starten.", 200, 600);
     }
     ;
     //---------------------------------------------------------------------------
@@ -81,8 +82,8 @@ var Sem;
     function init(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1920;
-        canvas.height = 1080;
+        canvas.width = 1300;
+        canvas.height = 700;
         console.log(canvas);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
@@ -191,10 +192,10 @@ var Sem;
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.fillStyle = "black";
-            Sem.crc2.font = "100px Arial";
-            Sem.crc2.fillText("Game Over - Sie haben gewonnen", 250, 450);
             Sem.crc2.font = "70px Arial";
-            Sem.crc2.fillText("Refresh to play again", 570, 650);
+            Sem.crc2.fillText("Game Over - Sie haben gewonnen", 250, 350);
+            Sem.crc2.font = "50px Arial";
+            Sem.crc2.fillText("Refresh to play again", 570, 450);
         }
         ;
         //GAME LOST SCREEN 
@@ -210,10 +211,10 @@ var Sem;
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.fillStyle = "black";
-            Sem.crc2.font = "100px Arial";
-            Sem.crc2.fillText("Game Over - Sie haben verloren", 250, 450);
             Sem.crc2.font = "70px Arial";
-            Sem.crc2.fillText("Refresh to play again", 570, 650);
+            Sem.crc2.fillText("Game Over - Sie haben verloren", 250, 250);
+            Sem.crc2.font = "50px Arial";
+            Sem.crc2.fillText("Refresh to play again", 570, 450);
         }
         ;
         // Hintergrund mal funktionen

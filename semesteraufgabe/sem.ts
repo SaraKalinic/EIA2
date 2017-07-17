@@ -43,10 +43,10 @@ namespace Sem {
 
         crc2.stroke();
         crc2.fillStyle = "black";
-        crc2.font = "150px Arial";
-        crc2.fillText("Das Große Krabbeln", 250, 450);
-        crc2.font = "70px Arial";
-        crc2.fillText("Klicken Sie irgendwo hin um das Spiel zu starten", 200, 650);
+        crc2.font = "100px Arial";
+        crc2.fillText("Das Große Krabbeln", 250, 250);
+        crc2.font = "60px Arial";
+        crc2.fillText("Klicken Sie um das Spiel zu starten", 250, 450);
 
 
     }
@@ -57,8 +57,8 @@ namespace Sem {
 
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1920;
-        canvas.height = 1080;
+        canvas.width = 1300;
+        canvas.height = 700;
         console.log(canvas);
         canvas.addEventListener("click", init);
         canvas.addEventListener("touch", init);
@@ -80,13 +80,14 @@ namespace Sem {
 
         crc2.stroke();
         crc2.fillStyle = "black";
-        crc2.font = "100px Arial";
+        crc2.font = "70px Arial";
         crc2.fillText("Das Große Krabbeln", 200, 150);
-         crc2.font = "70px Arial";
-        crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 450);
-        crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 600);
-        crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren.", 200, 750);
-        crc2.fillText("Klicke um das Spiel zu starten.", 200, 1000);
+         crc2.font = "50px Arial";
+        crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 250);
+        crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 320);
+        crc2.fillText("Erreicht eine Ameise den Korb ", 200, 390);
+        crc2.fillText("so hast du verloren.", 200, 460);
+        crc2.fillText("Klicke um das Spiel zu starten.", 200, 600);
 
 
 
@@ -99,8 +100,8 @@ namespace Sem {
 
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1920;
-        canvas.height = 1080;
+        canvas.width = 1300;
+        canvas.height = 700;
         console.log(canvas);
 
         crc2 = canvas.getContext("2d");
@@ -243,10 +244,10 @@ namespace Sem {
 
             crc2.stroke();
             crc2.fillStyle = "black";
-            crc2.font = "100px Arial";
-            crc2.fillText("Game Over - Sie haben gewonnen", 250, 450);
             crc2.font = "70px Arial";
-            crc2.fillText("Refresh to play again", 570, 650);
+            crc2.fillText("Game Over - Sie haben gewonnen", 250, 350);
+            crc2.font = "50px Arial";
+            crc2.fillText("Refresh to play again", 570, 450);
 
         };
 
@@ -266,10 +267,10 @@ namespace Sem {
 
             crc2.stroke();
             crc2.fillStyle = "black";
-            crc2.font = "100px Arial";
-            crc2.fillText("Game Over - Sie haben verloren", 250, 450);
             crc2.font = "70px Arial";
-            crc2.fillText("Refresh to play again", 570, 650);
+            crc2.fillText("Game Over - Sie haben verloren", 250, 250);
+            crc2.font = "50px Arial";
+            crc2.fillText("Refresh to play again", 570, 450);
         };
 
 
