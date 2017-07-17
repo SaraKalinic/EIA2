@@ -97,7 +97,7 @@ namespace Sem {
     //---------------------------------------------------------------------------
     // SPIEL 
     function init(_event: Event): void {
-
+     
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1300;
