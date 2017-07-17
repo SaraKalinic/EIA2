@@ -7,13 +7,18 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
 var Sem;
 (function (Sem) {
-    window.addEventListener("load", start);
+    window.addEventListener("load", init);
     Sem.ant = [];
+    Sem.antRed = [];
+    Sem.antBrown = [];
     let image;
-    let n = 5;
+    let n = 3;
     let t = 0;
     let m = 1;
     let k = 0;
+    let v = 3;
+    let z = 0;
+    let br = 0;
     //---------------------------------------------------------------------------
     //START SCREEN
     function start(_event) {
@@ -105,13 +110,18 @@ var Sem;
         // Ameise erstellen
         for (let i = 0; i < n; i++) {
             Sem.ant[i] = new Sem.Ameise();
+            let r = new Sem.AmeiseRot();
+            Sem.antRed.push(r);
+            let b = new Sem.AmeiseBrown();
+            Sem.antBrown.push(b);
         }
-        window.setTimeout(animate, 20);
+        window.setTimeout(animate, 35);
         // Event Listener hinzufügen
         canvas.addEventListener("touch", killAntM);
         canvas.addEventListener("click", killAnt);
         // Bei Klick auf Ameise soll diese gelöscht werden
         function killAnt(event) {
+            // Schwarze Ameise nach einem Klick löschen        
             for (let i = 0; i < Sem.ant.length; i++) {
                 let a = Sem.ant[i];
                 // Position des Klick herausfinden
@@ -124,17 +134,70 @@ var Sem;
                 let diffY = Math.abs(a.currentPosY - clickY);
                 //console.log(diffX);
                 //console.log(diffY);
-                // Wenn differenz < 20 wird Ameise gelöscht
+                // Wenn differenz < 40 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
                     Sem.ant.splice(i, 1);
                     k++;
                 }
                 ;
             }
-            ; //console.log(n);
+            ;
+            //  Braune Ameise nach 2 Klicks löschen
+            for (let i = 0; i < Sem.antBrown.length; i++) {
+                let b = Sem.antBrown[i];
+                // Position des Klick herausfinden
+                let clickX = event.clientX;
+                let clickY = event.clientY;
+                //console.log(clickX);
+                //console.log(clickY);
+                // Differenz zwischen Klick Position und Position der Ameise ausrechnen
+                let diffX = Math.abs(b.currentPosX - clickX);
+                let diffY = Math.abs(b.currentPosY - clickY);
+                //console.log(diffX);
+                //console.log(diffY);
+                // Wenn differenz < 40 wird Ameise gelöscht
+                if (diffX <= 40 && diffY <= 40) {
+                    br++;
+                    console.log(br);
+                    if (br > 1 && br < 3) {
+                        Sem.antBrown.splice(i, 1);
+                        k++;
+                        br = 0;
+                    }
+                }
+                ;
+            }
+            ;
+            // Rote Ameise nach 3 klicks löschen
+            for (let i = 0; i < Sem.antRed.length; i++) {
+                let ar = Sem.antRed[i];
+                // Position des Klick herausfinden
+                let clickX = event.clientX;
+                let clickY = event.clientY;
+                //console.log(clickX);
+                //console.log(clickY);
+                // Differenz zwischen Klick Position und Position der Ameise ausrechnen
+                let diffX = Math.abs(ar.currentPosX - clickX);
+                let diffY = Math.abs(ar.currentPosY - clickY);
+                //console.log(diffX);
+                //console.log(diffY);
+                // Wenn differenz < 40 wird Ameise gelöscht
+                if (diffX <= 40 && diffY <= 40) {
+                    z++;
+                    //console.log(z);
+                    if (z > 2) {
+                        Sem.antRed.splice(i, 1);
+                        k++;
+                        z = 0;
+                    }
+                }
+                ;
+            }
+            ;
+            //console.log(n);
         }
         ;
-        // Bei Klick auf Ameise soll diese gelöscht werden
+        // Bei Klick auf Ameise soll diese gelöscht werden für Touch
         function killAntM(event) {
             for (let i = 0; i < Sem.ant.length; i++) {
                 let a = Sem.ant[i];
@@ -149,8 +212,10 @@ var Sem;
                 //console.log(diffX);
                 //console.log(diffY);
                 // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX <= 80 && diffY <= 80) {
+                if (diffX <= 100 && diffY <= 100) {
                     Sem.ant.splice(i, 1);
+                    Sem.antBrown.splice(i, 1);
+                    Sem.antRed.splice(i, 1);
                     k++;
                 }
                 ;
@@ -169,12 +234,36 @@ var Sem;
                 ;
             }
             ;
+            for (let i = 0; i < Sem.antBrown.length; i++) {
+                let b = Sem.antBrown[i];
+                if (b.currentPosX >= 567 && b.currentPosX <= 750) {
+                    if (b.currentPosY >= 245 && b.currentPosY <= 429) {
+                        gameLost();
+                    }
+                }
+                ;
+            }
+            ;
+            for (let i = 0; i < Sem.antRed.length; i++) {
+                let r = Sem.antRed[i];
+                if (r.currentPosX >= 567 && r.currentPosX <= 750) {
+                    if (r.currentPosY >= 245 && r.currentPosY <= 429) {
+                        gameLost();
+                    }
+                }
+                ;
+            }
+            ;
         }
         ;
         //Neue Ameise malen lassen
         function drawNeueAmeise() {
             let a = new Sem.Ameise();
             Sem.ant.push(a);
+            let h = new Sem.AmeiseRot();
+            Sem.antRed.push(h);
+            let b = new Sem.AmeiseBrown();
+            Sem.antBrown.push(b);
             n++;
         }
         ;
@@ -188,14 +277,32 @@ var Sem;
                 a.update();
             }
             ;
-            window.setTimeout(animate, 20);
+            for (let i = 0; i < Sem.antRed.length; i++) {
+                let h = Sem.antRed[i];
+                h.update();
+            }
+            for (let i = 0; i < Sem.antBrown.length; i++) {
+                let b = Sem.antBrown[i];
+                b.update();
+            }
+            window.setTimeout(animate, 35);
             checkPosition();
             highscore.innerText = " Ameisen vernichtet: " + k;
             t++;
             //console.log(t); 
-            if (t > 22) {
+            if (t > 31 && t < 33) {
                 let a = new Sem.Ameise();
                 Sem.ant.push(a);
+                n++;
+            }
+            if (t > 50 && t < 52) {
+                let b = new Sem.AmeiseBrown();
+                Sem.antBrown.push(b);
+                n++;
+            }
+            if (t > 70 && t < 72) {
+                let r = new Sem.AmeiseRot();
+                Sem.antRed.push(r);
                 n++;
                 t = 0;
             }
