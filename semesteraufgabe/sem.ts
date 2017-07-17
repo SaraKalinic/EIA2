@@ -103,6 +103,7 @@ namespace Sem {
         canvas.width = 1300;
         canvas.height = 700;
         console.log(canvas);
+        
 
         crc2 = canvas.getContext("2d");
         console.log(crc2);
@@ -113,7 +114,10 @@ namespace Sem {
         crc2.fillStyle = "#adebad";
         crc2.fillRect(0, 0, canvas.width, canvas.height);
 
-
+        let highscore = document.createElement("div");
+        highscore.innerText = " Ameisen vernichtet: " + k;
+        highscore.style.fontSize = "40px"; 
+        document.body.appendChild(highscore);
 
         //Hintergrund malen lassen
         drawDecke(400, 150, "#80aaff", "#80aaff", "#cce6ff", "#cce6ff");
@@ -235,7 +239,7 @@ namespace Sem {
             window.setTimeout(animate, 20);
 
             checkPosition();
-            
+            highscore.innerText = " Bienen vernichtet: " + k;
             t++;
             //console.log(t); 
             if (t > 22) {
@@ -346,6 +350,7 @@ namespace Sem {
             crc2.moveTo(_x + 70, _y);
             crc2.lineTo(_x + 85, _y);
             crc2.lineTo(_x + 85, _y + 350);
+     
             crc2.lineTo(_x + 70, _y + 350);
             crc2.closePath();
             crc2.fill();

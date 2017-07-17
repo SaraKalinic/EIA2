@@ -91,6 +91,10 @@ var Sem;
         canvas.removeEventListener("touch", init);
         Sem.crc2.fillStyle = "#adebad";
         Sem.crc2.fillRect(0, 0, canvas.width, canvas.height);
+        let highscore = document.createElement("div");
+        highscore.innerText = " Ameisen vernichtet: " + k;
+        highscore.style.fontSize = "40px";
+        document.body.appendChild(highscore);
         //Hintergrund malen lassen
         drawDecke(400, 150, "#80aaff", "#80aaff", "#cce6ff", "#cce6ff");
         drawTeller(470, 430, 50, 180, 270, "#ffffff", "#ffffff", "#e6e6e6", "#e6e6e6");
@@ -186,6 +190,7 @@ var Sem;
             ;
             window.setTimeout(animate, 20);
             checkPosition();
+            highscore.innerText = " Bienen vernichtet: " + k;
             t++;
             //console.log(t); 
             if (t > 22) {
