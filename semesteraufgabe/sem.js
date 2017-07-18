@@ -132,10 +132,12 @@ var Sem;
         Sem.crc2.fillStyle = "black";
         Sem.crc2.font = "70px Arial";
         Sem.crc2.fillText("Das Große Krabbeln", 200, 150);
-        Sem.crc2.font = "35px Arial";
-        Sem.crc2.fillText("Vernichte die Ameisen (durch klich auf diese bevor) sie an den Korb gelangen. ", 50, 250);
-        Sem.crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren. ", 50, 530);
-        Sem.crc2.fillText("Klicke um das Spiel zu starten.", 50, 620);
+        Sem.crc2.font = "50px Arial";
+        Sem.crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 250);
+        Sem.crc2.fillText("du auf diese tippst um sie zu vernichten. ", 200, 320);
+        Sem.crc2.fillText("Erreicht eine Ameise den Korb ", 200, 390);
+        Sem.crc2.fillText("so hast du verloren.", 200, 460);
+        Sem.crc2.fillText("Tippe um das Spiel zu starten.", 200, 600);
     }
     ;
     //---------------------------------------------------------------------------

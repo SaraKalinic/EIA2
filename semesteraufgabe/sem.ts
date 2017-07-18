@@ -149,11 +149,13 @@ namespace Sem {
         crc2.fillStyle = "black";
         crc2.font = "70px Arial";
         crc2.fillText("Das Große Krabbeln", 200, 150);
-        crc2.font = "35px Arial";
-        crc2.fillText("Vernichte die Ameisen (durch klich auf diese bevor) sie an den Korb gelangen. ", 50, 250);
-        
-        crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren. ", 50, 530);
-        crc2.fillText("Klicke um das Spiel zu starten.", 50, 620);
+        crc2.font = "50px Arial";
+        crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 250);
+        crc2.fillText("du auf diese tippst um sie zu vernichten. ", 200, 320);
+        crc2.fillText("Erreicht eine Ameise den Korb ", 200, 390);
+        crc2.fillText("so hast du verloren.", 200, 460);
+        crc2.fillText("Tippe um das Spiel zu starten.", 200, 600);
+
 
 
 
