@@ -462,6 +462,8 @@ var Sem;
             Sem.crc2.fillText("Dein Highscore: " + k, 370, 550);
             // Damit wenn Game Over Screen angezeigt wird keine Ameisen mehr geklickt werden können
             canvas.removeEventListener("click", killAnt);
+            canvas.removeEventListener("touchstart", killAnt);
+            canvas.removeEventListener("touchend", killAnt);
         }
         // GAME WON SCREEN 
         function gameWon() {
