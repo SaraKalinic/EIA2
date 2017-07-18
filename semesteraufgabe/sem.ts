@@ -37,8 +37,10 @@ namespace Sem {
         canvas.width = 1300;
         canvas.height = 700;
         console.log(canvas);
-        // EventListener auf Canvas -> Bei Klick auf Canvas wird auf Erklärung gewechselt
+        // EventListener auf Canvas -> Bei Klick/ Touch auf Canvas wird auf Erklärung gewechselt
+        // Ruft bei klick startTutorial auf 
         canvas.addEventListener("click", startTutorial);
+        //Ruft bei touch startTutorial2 auf 
         canvas.addEventListener("touchstart", startTutorial2);
         canvas.addEventListener("touchend", startTutorial2);
         crc2 = canvas.getContext("2d");
@@ -66,7 +68,7 @@ namespace Sem {
 
     }
     //--------------------------------------------------------------------------   
-    //ERKLÄRUNG
+    //INTERAKTION ERKLÄRUNG für klick Devices
 
     function startTutorial(_event: Event): void {
 
@@ -114,7 +116,7 @@ namespace Sem {
     };
 
     //--------------------------------------------------------------------------   
-    //ERKLÄRUNG
+    //INTERAKTION ERKLÄRUNG für Touch Devices 
 
     function startTutorial2(_event: Event): void {
 
@@ -128,8 +130,8 @@ namespace Sem {
         canvas.removeEventListener("touchend", startTutorial2);
         canvas.removeEventListener("click", startTutorial);
         // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
-        //canvas.addEventListener("touchstart", init);
-        //canvas.addEventListener("touchend", init);
+        canvas.addEventListener("touchstart", init);
+        canvas.addEventListener("touchend", init);
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
