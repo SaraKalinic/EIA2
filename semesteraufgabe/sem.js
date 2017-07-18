@@ -137,7 +137,7 @@ var Sem;
         window.setTimeout(animate, 35);
         // Event Listener an Canvas anfügen, welcher Funktion "killAnt" aufruft
         canvas.addEventListener("touchstart", killAntM);
-        //canvas.addEventListener("touchend", );
+        canvas.addEventListener("touchend", killAntM);
         canvas.addEventListener("click", killAnt);
         // Funktion um Ameise bei klick darauf zu Löschen
         function killAnt(event) {
@@ -230,26 +230,29 @@ var Sem;
         }
         // Bei Klick auf Ameise soll diese gelöscht werden für Touch
         function killAntM(event) {
-            for (let i = 0; i < Sem.ant.length; i++) {
-                let a = Sem.ant[i];
-                // Position des Klick herausfinden
-                let clickX = event.clientX;
-                let clickY = event.clientY;
-                //console.log(clickX);
-                //console.log(clickY);
-                // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                let diffX = Math.abs(a.currentPosX - clickX);
-                let diffY = Math.abs(a.currentPosY - clickY);
-                //console.log(diffX);
-                //console.log(diffY);
-                // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX <= 100 && diffY <= 100) {
-                    Sem.ant.splice(i, 1);
-                    Sem.antBrown.splice(i, 1);
-                    Sem.antRed.splice(i, 1);
-                    k++;
-                }
-            } //console.log(n);
+            if (event.touches.length == 1) {
+                var touch = event.touches[0];
+                for (let i = 0; i < Sem.ant.length; i++) {
+                    let a = Sem.ant[i];
+                    // Position des Klick herausfinden
+                    let clickX = touch.clientX;
+                    let clickY = touch.clientY;
+                    //console.log(clickX);
+                    //console.log(clickY);
+                    // Differenz zwischen Klick Position und Position der Ameise ausrechnen
+                    let diffX = Math.abs(a.currentPosX - clickX);
+                    let diffY = Math.abs(a.currentPosY - clickY);
+                    //console.log(diffX);
+                    //console.log(diffY);
+                    // Wenn differenz < 20 wird Ameise gelöscht
+                    if (diffX <= 100 && diffY <= 100) {
+                        Sem.ant.splice(i, 1);
+                        Sem.antBrown.splice(i, 1);
+                        Sem.antRed.splice(i, 1);
+                        k++;
+                    }
+                } //console.log(n);
+            }
         }
         // Funktion die das Spiel beendet
         function checkPosition() {

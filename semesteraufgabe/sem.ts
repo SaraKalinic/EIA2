@@ -164,7 +164,7 @@ namespace Sem {
 
         // Event Listener an Canvas anfügen, welcher Funktion "killAnt" aufruft
         canvas.addEventListener("touchstart", killAntM);
-        //canvas.addEventListener("touchend", );
+        canvas.addEventListener("touchend",killAntM );
         canvas.addEventListener("click", killAnt);
 
         // Funktion um Ameise bei klick darauf zu Löschen
@@ -295,13 +295,15 @@ namespace Sem {
 
 
         // Bei Klick auf Ameise soll diese gelöscht werden für Touch
-        function killAntM(event: MouseEvent): void {
+        function killAntM(event: TouchEvent): void {
+            if(event.touches.length == 1){
+                 var touch = event.touches[0];
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
 
                 // Position des Klick herausfinden
-                let clickX: number = event.clientX;
-                let clickY: number = event.clientY;
+                let clickX: number = touch.clientX;
+                let clickY: number = touch.clientY;
                 //console.log(clickX);
                 //console.log(clickY);
 
@@ -323,7 +325,7 @@ namespace Sem {
                 }
 
             } //console.log(n);
-
+}
         }
 
         // Funktion die das Spiel beendet
