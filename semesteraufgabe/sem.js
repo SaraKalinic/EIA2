@@ -73,7 +73,7 @@ var Sem;
         //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
         canvas.removeEventListener("click", startTutorial);
         canvas.removeEventListener("touchstart", startTutorial2);
-        canvas.removeEventListener("touchend", startTutorial2);
+        //canvas.removeEventListener("touchend", startTutorial2);
         // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
         canvas.addEventListener("click", init);
         Sem.crc2 = canvas.getContext("2d");
@@ -272,6 +272,7 @@ var Sem;
             }
             //console.log(n);
         }
+        //Funktion KillAnt für touch devices
         // Bei Klick auf Ameise soll diese gelöscht werden für Touch
         function killAntM(event) {
             if (event.touches.length == 1) {
@@ -289,7 +290,7 @@ var Sem;
                     //console.log(diffX);
                     //console.log(diffY);
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 300 && diffY <= 300) {
+                    if (diffX <= 100 && diffY <= 100) {
                         Sem.ant.splice(i, 1);
                         k++;
                         s++;
@@ -308,7 +309,7 @@ var Sem;
                     //console.log(diffX);
                     //console.log(diffY);
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 300 && diffY <= 300) {
+                    if (diffX <= 100 && diffY <= 100) {
                         Sem.antRed.splice(i, 1);
                         k++;
                         r++;
@@ -327,7 +328,7 @@ var Sem;
                     //console.log(diffX);
                     //console.log(diffY);
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 300 && diffY <= 300) {
+                    if (diffX <= 100 && diffY <= 100) {
                         Sem.antBrown.splice(i, 1);
                         k++;
                         ab++;
