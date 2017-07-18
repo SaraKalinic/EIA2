@@ -41,7 +41,7 @@ var Sem;
         canvas.addEventListener("click", startTutorial);
         //Ruft bei touch startTutorial2 auf 
         canvas.addEventListener("touchstart", startTutorial2);
-        canvas.addEventListener("touchend", startTutorial2);
+        //canvas.addEventListener("touchend", startTutorial2);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
         // Zeichnet Hintergrund

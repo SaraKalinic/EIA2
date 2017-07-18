@@ -42,7 +42,7 @@ namespace Sem {
         canvas.addEventListener("click", startTutorial);
         //Ruft bei touch startTutorial2 auf 
         canvas.addEventListener("touchstart", startTutorial2);
-        canvas.addEventListener("touchend", startTutorial2);
+        //canvas.addEventListener("touchend", startTutorial2);
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
