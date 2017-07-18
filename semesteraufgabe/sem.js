@@ -247,11 +247,45 @@ var Sem;
                     // Wenn differenz < 20 wird Ameise gelöscht
                     if (diffX <= 200 && diffY <= 200) {
                         Sem.ant.splice(i, 1);
-                        Sem.antBrown.splice(i, 1);
-                        Sem.antRed.splice(i, 1);
                         k++;
                     }
                 } //console.log(n);
+                for (let i = 0; i < Sem.antRed.length; i++) {
+                    let a = Sem.antRed[i];
+                    // Position des Klick herausfinden
+                    let clickX = touch.clientX;
+                    let clickY = touch.clientY;
+                    //console.log(clickX);
+                    //console.log(clickY);
+                    // Differenz zwischen Klick Position und Position der Ameise ausrechnen
+                    let diffX = Math.abs(a.currentPosX - clickX);
+                    let diffY = Math.abs(a.currentPosY - clickY);
+                    //console.log(diffX);
+                    //console.log(diffY);
+                    // Wenn differenz < 20 wird Ameise gelöscht
+                    if (diffX <= 200 && diffY <= 200) {
+                        Sem.antRed.splice(i, 1);
+                        k++;
+                    }
+                }
+                for (let i = 0; i < Sem.antBrown.length; i++) {
+                    let a = Sem.antBrown[i];
+                    // Position des Klick herausfinden
+                    let clickX = touch.clientX;
+                    let clickY = touch.clientY;
+                    //console.log(clickX);
+                    //console.log(clickY);
+                    // Differenz zwischen Klick Position und Position der Ameise ausrechnen
+                    let diffX = Math.abs(a.currentPosX - clickX);
+                    let diffY = Math.abs(a.currentPosY - clickY);
+                    //console.log(diffX);
+                    //console.log(diffY);
+                    // Wenn differenz < 20 wird Ameise gelöscht
+                    if (diffX <= 200 && diffY <= 200) {
+                        Sem.antBrown.splice(i, 1);
+                        k++;
+                    }
+                }
             }
         }
         // Funktion die das Spiel beendet

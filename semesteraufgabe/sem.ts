@@ -317,14 +317,60 @@ namespace Sem {
                     // Wenn differenz < 20 wird Ameise gelöscht
                     if (diffX <= 200 && diffY <= 200) {
                         ant.splice(i, 1);
-
-                        antBrown.splice(i, 1);
-                        antRed.splice(i, 1);
                         k++;
                         // console.log(k);
                     }
 
                 } //console.log(n);
+                
+                for (let i: number = 0; i < antRed.length; i++) {
+                    let a: AmeiseRot = antRed[i];
+
+                    // Position des Klick herausfinden
+                    let clickX: number = touch.clientX;
+                    let clickY: number = touch.clientY;
+                    //console.log(clickX);
+                    //console.log(clickY);
+
+                    // Differenz zwischen Klick Position und Position der Ameise ausrechnen
+                    let diffX: number = Math.abs(a.currentPosX - clickX);
+                    let diffY: number = Math.abs(a.currentPosY - clickY);
+
+                    //console.log(diffX);
+                    //console.log(diffY);
+
+                    // Wenn differenz < 20 wird Ameise gelöscht
+                    if (diffX <= 200 && diffY <= 200) {
+                        antRed.splice(i, 1);
+                        k++;
+                        // console.log(k);
+                    }
+
+                }
+                for (let i: number = 0; i < antBrown.length; i++) {
+                    let a: AmeiseBrown = antBrown[i];
+
+                    // Position des Klick herausfinden
+                    let clickX: number = touch.clientX;
+                    let clickY: number = touch.clientY;
+                    //console.log(clickX);
+                    //console.log(clickY);
+
+                    // Differenz zwischen Klick Position und Position der Ameise ausrechnen
+                    let diffX: number = Math.abs(a.currentPosX - clickX);
+                    let diffY: number = Math.abs(a.currentPosY - clickY);
+
+                    //console.log(diffX);
+                    //console.log(diffY);
+
+                    // Wenn differenz < 20 wird Ameise gelöscht
+                    if (diffX <= 200 && diffY <= 200) {
+                        antBrown.splice(i, 1);
+                        k++;
+                        // console.log(k);
+                    }
+
+                }
             }
         }
 
