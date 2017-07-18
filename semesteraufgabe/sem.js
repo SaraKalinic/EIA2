@@ -38,7 +38,8 @@ var Sem;
         console.log(canvas);
         // EventListener auf Canvas -> Bei Klick auf Canvas wird auf Erklärung gewechselt
         canvas.addEventListener("click", startTutorial);
-        canvas.addEventListener("touch", startTutorial);
+        canvas.addEventListener("touchstart", startTutorial2);
+        canvas.addEventListener("touchend", startTutorial2);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
         // Zeichnet Hintergrund
@@ -99,6 +100,44 @@ var Sem;
         Sem.crc2.fillText("Klicke um das Spiel zu starten.", 50, 620);
     }
     ;
+    //--------------------------------------------------------------------------   
+    //ERKLÄRUNG
+    function startTutorial2(_event) {
+        let canvas;
+        canvas = document.getElementsByTagName("canvas")[0];
+        canvas.width = 1300;
+        canvas.height = 700;
+        console.log(canvas);
+        //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
+        canvas.removeEventListener("touchstart", startTutorial);
+        canvas.removeEventListener("touchend", startTutorial);
+        canvas.removeEventListener("touch", startTutorial);
+        // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
+        canvas.addEventListener("click", init);
+        canvas.addEventListener("touch", init);
+        Sem.crc2 = canvas.getContext("2d");
+        console.log(Sem.crc2);
+        // Zeichnet Hintergrund
+        Sem.crc2.beginPath();
+        Sem.crc2.fillStyle = "#adebad";
+        Sem.crc2.strokeStyle = "#adebad";
+        Sem.crc2.moveTo(0, 0);
+        Sem.crc2.lineTo(0, canvas.height);
+        Sem.crc2.lineTo(canvas.width, canvas.height);
+        Sem.crc2.lineTo(canvas.width, 0);
+        Sem.crc2.closePath();
+        Sem.crc2.fill();
+        // Schrift
+        Sem.crc2.stroke();
+        Sem.crc2.fillStyle = "black";
+        Sem.crc2.font = "70px Arial";
+        Sem.crc2.fillText("Das Große Krabbeln", 200, 150);
+        Sem.crc2.font = "35px Arial";
+        Sem.crc2.fillText("Vernichte die Ameisen (durch klich auf diese bevor) sie an den Korb gelangen. ", 50, 250);
+        Sem.crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren. ", 50, 530);
+        Sem.crc2.fillText("Klicke um das Spiel zu starten.", 50, 620);
+    }
+    ;
     //---------------------------------------------------------------------------
     // SPIEL 
     function init(_event) {
@@ -111,7 +150,8 @@ var Sem;
         console.log(Sem.crc2);
         // Entfernt EventListener von Canvas, welcher init (Spiel) aufrufen soll
         canvas.removeEventListener("click", init);
-        canvas.removeEventListener("touch", init);
+        canvas.removeEventListener("touchstart", init);
+        canvas.removeEventListener("touchend", init);
         Sem.crc2.fillStyle = "#adebad";
         Sem.crc2.fillRect(0, 0, canvas.width, canvas.height);
         // Div für Highscore wird erstellt und an Body angehangen

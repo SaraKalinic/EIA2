@@ -39,7 +39,8 @@ namespace Sem {
         console.log(canvas);
         // EventListener auf Canvas -> Bei Klick auf Canvas wird auf Erklärung gewechselt
         canvas.addEventListener("click", startTutorial);
-        canvas.addEventListener("touch", startTutorial);
+        canvas.addEventListener("touchstart", startTutorial2);
+        canvas.addEventListener("touchend", startTutorial2);
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
@@ -111,7 +112,51 @@ namespace Sem {
 
     };
 
+    //--------------------------------------------------------------------------   
+    //ERKLÄRUNG
 
+    function startTutorial2(_event: Event): void {
+
+        let canvas: HTMLCanvasElement;
+        canvas = document.getElementsByTagName("canvas")[0];
+        canvas.width = 1300;
+        canvas.height = 700;
+        console.log(canvas);
+        //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
+        canvas.removeEventListener("touchstart", startTutorial);
+        canvas.removeEventListener("touchend", startTutorial);
+        canvas.removeEventListener("touch", startTutorial);
+        // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
+        canvas.addEventListener("click", init);
+        canvas.addEventListener("touch", init);
+        crc2 = canvas.getContext("2d");
+        console.log(crc2);
+
+        // Zeichnet Hintergrund
+        crc2.beginPath();
+        crc2.fillStyle = "#adebad";
+        crc2.strokeStyle = "#adebad";
+        crc2.moveTo(0, 0);
+        crc2.lineTo(0, canvas.height);
+        crc2.lineTo(canvas.width, canvas.height);
+        crc2.lineTo(canvas.width, 0);
+        crc2.closePath();
+        crc2.fill();
+
+        // Schrift
+        crc2.stroke();
+        crc2.fillStyle = "black";
+        crc2.font = "70px Arial";
+        crc2.fillText("Das Große Krabbeln", 200, 150);
+        crc2.font = "35px Arial";
+        crc2.fillText("Vernichte die Ameisen (durch klich auf diese bevor) sie an den Korb gelangen. ", 50, 250);
+        
+        crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren. ", 50, 530);
+        crc2.fillText("Klicke um das Spiel zu starten.", 50, 620);
+
+
+
+    };
     //---------------------------------------------------------------------------
     // SPIEL 
     function init(_event: Event): void {
@@ -127,7 +172,8 @@ namespace Sem {
         console.log(crc2);
         // Entfernt EventListener von Canvas, welcher init (Spiel) aufrufen soll
         canvas.removeEventListener("click", init);
-        canvas.removeEventListener("touch", init);
+        canvas.removeEventListener("touchstart", init);
+        canvas.removeEventListener("touchend", init);
 
         crc2.fillStyle = "#adebad";
         crc2.fillRect(0, 0, canvas.width, canvas.height);
