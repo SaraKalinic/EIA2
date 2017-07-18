@@ -318,6 +318,7 @@ namespace Sem {
                     if (diffX <= 200 && diffY <= 200) {
                         ant.splice(i, 1);
                         k++;
+                        s++;
                         // console.log(k);
                     }
 
@@ -343,6 +344,7 @@ namespace Sem {
                     if (diffX <= 200 && diffY <= 200) {
                         antRed.splice(i, 1);
                         k++;
+                        r++;
                         // console.log(k);
                     }
 
@@ -367,6 +369,7 @@ namespace Sem {
                     if (diffX <= 200 && diffY <= 200) {
                         antBrown.splice(i, 1);
                         k++;
+                        ab++;
                         // console.log(k);
                     }
 

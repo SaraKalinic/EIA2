@@ -248,6 +248,7 @@ var Sem;
                     if (diffX <= 200 && diffY <= 200) {
                         Sem.ant.splice(i, 1);
                         k++;
+                        s++;
                     }
                 } //console.log(n);
                 for (let i = 0; i < Sem.antRed.length; i++) {
@@ -266,6 +267,7 @@ var Sem;
                     if (diffX <= 200 && diffY <= 200) {
                         Sem.antRed.splice(i, 1);
                         k++;
+                        r++;
                     }
                 }
                 for (let i = 0; i < Sem.antBrown.length; i++) {
@@ -284,6 +286,7 @@ var Sem;
                     if (diffX <= 200 && diffY <= 200) {
                         Sem.antBrown.splice(i, 1);
                         k++;
+                        ab++;
                     }
                 }
             }
