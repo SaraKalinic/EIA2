@@ -422,6 +422,7 @@ namespace Sem {
 
 
             window.setTimeout(animate, 35);
+            
             // Funktion welche immer die aktuelle Position der Ameise herausfinden / speichern soll 
             checkPosition();
             // Highscore welcher Anzahl Ameisen vernichtet + einzelner Ameisen Arten vernichtet hochzählt

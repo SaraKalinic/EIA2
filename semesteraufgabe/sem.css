@@ -1,4 +1,11 @@
-body {
-	width: 90%;
+canvas {
+	
+	width: 80%;
 	height: 50%;
 };
+
+div {
+	width: 100%;
+	heigth: 10%;
+	
+}
