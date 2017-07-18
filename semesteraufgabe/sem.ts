@@ -164,7 +164,7 @@ namespace Sem {
 
         // Event Listener an Canvas anfügen, welcher Funktion "killAnt" aufruft
         canvas.addEventListener("touchstart", killAntM);
-        canvas.addEventListener("touchend",killAntM );
+        canvas.addEventListener("touchend", killAntM);
         canvas.addEventListener("click", killAnt);
 
         // Funktion um Ameise bei klick darauf zu Löschen
@@ -323,7 +323,7 @@ namespace Sem {
                     }
 
                 } //console.log(n);
-                
+
                 for (let i: number = 0; i < antRed.length; i++) {
                     let a: AmeiseRot = antRed[i];
 
@@ -474,7 +474,7 @@ namespace Sem {
 
 
             window.setTimeout(animate, 35);
-            
+
             // Funktion welche immer die aktuelle Position der Ameise herausfinden / speichern soll 
             checkPosition();
             // Highscore welcher Anzahl Ameisen vernichtet + einzelner Ameisen Arten vernichtet hochzählt
@@ -574,7 +574,7 @@ namespace Sem {
 
         }
 
-    
+
 
         // Hintergrund mal funktionen
 
