@@ -70,10 +70,10 @@ var Sem;
         console.log(canvas);
         //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
         canvas.removeEventListener("click", startTutorial);
-        canvas.removeEventListener("touch", startTutorial);
+        canvas.removeEventListener("touchstart", startTutorial2);
+        canvas.removeEventListener("touchend", startTutorial2);
         // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
         canvas.addEventListener("click", init);
-        canvas.addEventListener("touch", init);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
         // Zeichnet Hintergrund
@@ -111,10 +111,10 @@ var Sem;
         //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
         canvas.removeEventListener("touchstart", startTutorial);
         canvas.removeEventListener("touchend", startTutorial);
-        canvas.removeEventListener("touch", startTutorial);
+        canvas.removeEventListener("click", startTutorial);
         // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
-        canvas.addEventListener("click", init);
-        canvas.addEventListener("touch", init);
+        canvas.addEventListener("touchstart", init);
+        canvas.addEventListener("touchend", init);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
         // Zeichnet Hintergrund
