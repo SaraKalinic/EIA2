@@ -8,6 +8,7 @@ nicht kopiert und auch nicht diktiert. */
 
 namespace Sem {
     window.addEventListener("load", start); // Lädt Start Screen wenn Fenster geladen wird
+    
     export let crc2: CanvasRenderingContext2D;
     //Klassen
     export let ant: Ameise[] = [];
@@ -366,7 +367,7 @@ namespace Sem {
                     //console.log(diffY);
 
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 100 && diffY <= 100) {
+                    if (diffX <= 200 && diffY <= 200) {
                         ant.splice(i, 1);
                         k++;
                         s++;
@@ -392,7 +393,7 @@ namespace Sem {
                     //console.log(diffY);
 
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 100 && diffY <= 100) {
+                    if (diffX <= 200 && diffY <= 200) {
                         antRed.splice(i, 1);
                         k++;
                         r++;
@@ -417,7 +418,7 @@ namespace Sem {
                     //console.log(diffY);
 
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 100 && diffY <= 100) {
+                    if (diffX <= 200 && diffY <= 200) {
                         antBrown.splice(i, 1);
                         k++;
                         ab++;
