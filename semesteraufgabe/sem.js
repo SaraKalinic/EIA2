@@ -1,5 +1,5 @@
-/*Aufgabe: (Semesteraufgabe)
-Name: (Sara Kalinic)
+//*Aufgabe: (Semesteraufgabe)
+/*Name: (Sara Kalinic)
 Matrikel: (255073)
 Datum: (16.07.2017)
 Hiermit versichere ich, dass ich diesen
@@ -37,8 +37,8 @@ var Sem;
         canvas.height = 700;
         console.log(canvas);
         // EventListener auf Canvas -> Bei Klick auf Canvas wird auf Erklärung gewechselt
-        canvas.addEventListener("click", startTutorial1);
-        canvas.addEventListener("touchstart", startTutorial2);
+        canvas.addEventListener("click", startTutorial);
+        canvas.addEventListener("touch", startTutorial);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
         // Zeichnet Hintergrund
@@ -60,18 +60,19 @@ var Sem;
         Sem.crc2.fillText("Klicken Sie um das Spiel zu starten", 250, 450);
     }
     //--------------------------------------------------------------------------   
-    //ERKLÄRUNG für Klick Geräte/ Klick EventListener
-    function startTutorial1(_event) {
+    //ERKLÄRUNG
+    function startTutorial(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1300;
         canvas.height = 700;
         console.log(canvas);
         //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
-        canvas.removeEventListener("click", startTutorial1);
-        canvas.removeEventListener("touchstart", startTutorial2);
+        canvas.removeEventListener("click", startTutorial);
+        canvas.removeEventListener("touch", startTutorial);
         // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
         canvas.addEventListener("click", init);
+        canvas.addEventListener("touch", init);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
         // Zeichnet Hintergrund
@@ -96,42 +97,6 @@ var Sem;
         Sem.crc2.fillText("Rote Ameise = 3 Klick ", 50, 460);
         Sem.crc2.fillText("Erreicht eine Ameise den Korb so hast du verloren. ", 50, 530);
         Sem.crc2.fillText("Klicke um das Spiel zu starten.", 50, 620);
-    }
-    ;
-    function startTutorial2(_event) {
-        let canvas;
-        canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1300;
-        canvas.height = 700;
-        console.log(canvas);
-        //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
-        canvas.removeEventListener("touch", startTutorial2);
-        // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
-        canvas.addEventListener("click", init);
-        canvas.addEventListener("touchstart", init);
-        Sem.crc2 = canvas.getContext("2d");
-        console.log(Sem.crc2);
-        // Zeichnet Hintergrund
-        Sem.crc2.beginPath();
-        Sem.crc2.fillStyle = "#adebad";
-        Sem.crc2.strokeStyle = "#adebad";
-        Sem.crc2.moveTo(0, 0);
-        Sem.crc2.lineTo(0, canvas.height);
-        Sem.crc2.lineTo(canvas.width, canvas.height);
-        Sem.crc2.lineTo(canvas.width, 0);
-        Sem.crc2.closePath();
-        Sem.crc2.fill();
-        // Schrift
-        Sem.crc2.stroke();
-        Sem.crc2.fillStyle = "black";
-        Sem.crc2.font = "70px Arial";
-        Sem.crc2.fillText("Das Große Krabbeln", 200, 150);
-        Sem.crc2.font = "50px Arial";
-        Sem.crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 250);
-        Sem.crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 320);
-        Sem.crc2.fillText("Erreicht eine Ameise den Korb ", 200, 390);
-        Sem.crc2.fillText("so hast du verloren.", 200, 460);
-        Sem.crc2.fillText("Klicke um das Spiel zu starten.", 200, 600);
     }
     ;
     //---------------------------------------------------------------------------

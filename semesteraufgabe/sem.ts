@@ -1,5 +1,5 @@
-/*Aufgabe: (Semesteraufgabe)
-Name: (Sara Kalinic)
+//*Aufgabe: (Semesteraufgabe)
+/*Name: (Sara Kalinic)
 Matrikel: (255073)
 Datum: (16.07.2017)
 Hiermit versichere ich, dass ich diesen
@@ -38,8 +38,8 @@ namespace Sem {
         canvas.height = 700;
         console.log(canvas);
         // EventListener auf Canvas -> Bei Klick auf Canvas wird auf Erklärung gewechselt
-        canvas.addEventListener("click", startTutorial1);
-        canvas.addEventListener("touchstart", startTutorial2);
+        canvas.addEventListener("click", startTutorial);
+        canvas.addEventListener("touch", startTutorial);
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
@@ -65,9 +65,9 @@ namespace Sem {
 
     }
     //--------------------------------------------------------------------------   
-    //ERKLÄRUNG für Klick Geräte/ Klick EventListener
+    //ERKLÄRUNG
 
-    function startTutorial1(_event: Event): void {
+    function startTutorial(_event: Event): void {
 
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
@@ -75,11 +75,11 @@ namespace Sem {
         canvas.height = 700;
         console.log(canvas);
         //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
-        canvas.removeEventListener("click", startTutorial1);
-        canvas.removeEventListener("touchstart", startTutorial2);
+        canvas.removeEventListener("click", startTutorial);
+        canvas.removeEventListener("touch", startTutorial);
         // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
         canvas.addEventListener("click", init);
-        
+        canvas.addEventListener("touch", init);
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
@@ -111,48 +111,7 @@ namespace Sem {
 
     };
 
-function startTutorial2(_event: Event): void {
 
-        let canvas: HTMLCanvasElement;
-        canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1300;
-        canvas.height = 700;
-        console.log(canvas);
-        //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
-        
-        canvas.removeEventListener("touch", startTutorial2);
-        // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
-        canvas.addEventListener("click", init);
-        canvas.addEventListener("touchstart", init);
-        crc2 = canvas.getContext("2d");
-        console.log(crc2);
-
-        // Zeichnet Hintergrund
-        crc2.beginPath();
-        crc2.fillStyle = "#adebad";
-        crc2.strokeStyle = "#adebad";
-        crc2.moveTo(0, 0);
-        crc2.lineTo(0, canvas.height);
-        crc2.lineTo(canvas.width, canvas.height);
-        crc2.lineTo(canvas.width, 0);
-        crc2.closePath();
-        crc2.fill();
-
-        // Schrift
-        crc2.stroke();
-        crc2.fillStyle = "black";
-        crc2.font = "70px Arial";
-        crc2.fillText("Das Große Krabbeln", 200, 150);
-        crc2.font = "50px Arial";
-        crc2.fillText("Rette dein Picknick vor den Ameisen indem ", 200, 250);
-        crc2.fillText("du auf diese klickst um sie zu vernichten. ", 200, 320);
-        crc2.fillText("Erreicht eine Ameise den Korb ", 200, 390);
-        crc2.fillText("so hast du verloren.", 200, 460);
-        crc2.fillText("Klicke um das Spiel zu starten.", 200, 600);
-
-
-
-    };
     //---------------------------------------------------------------------------
     // SPIEL 
     function init(_event: Event): void {
