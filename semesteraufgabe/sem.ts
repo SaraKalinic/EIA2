@@ -296,36 +296,36 @@ namespace Sem {
 
         // Bei Klick auf Ameise soll diese gelöscht werden für Touch
         function killAntM(event: TouchEvent): void {
-            if(event.touches.length == 1){
-                 var touch = event.touches[0];
-            for (let i: number = 0; i < ant.length; i++) {
-                let a: Ameise = ant[i];
+            if (event.touches.length == 1) {
+                var touch = event.touches[0];
+                for (let i: number = 0; i < ant.length; i++) {
+                    let a: Ameise = ant[i];
 
-                // Position des Klick herausfinden
-                let clickX: number = touch.clientX;
-                let clickY: number = touch.clientY;
-                //console.log(clickX);
-                //console.log(clickY);
+                    // Position des Klick herausfinden
+                    let clickX: number = touch.clientX;
+                    let clickY: number = touch.clientY;
+                    //console.log(clickX);
+                    //console.log(clickY);
 
-                // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                let diffX: number = Math.abs(a.currentPosX - clickX);
-                let diffY: number = Math.abs(a.currentPosY - clickY);
+                    // Differenz zwischen Klick Position und Position der Ameise ausrechnen
+                    let diffX: number = Math.abs(a.currentPosX - clickX);
+                    let diffY: number = Math.abs(a.currentPosY - clickY);
 
-                //console.log(diffX);
-                //console.log(diffY);
+                    //console.log(diffX);
+                    //console.log(diffY);
 
-                // Wenn differenz < 20 wird Ameise gelöscht
-                if (diffX <= 100 && diffY <= 100) {
-                    ant.splice(i, 1);
+                    // Wenn differenz < 20 wird Ameise gelöscht
+                    if (diffX <= 200 && diffY <= 200) {
+                        ant.splice(i, 1);
 
-                    antBrown.splice(i, 1);
-                    antRed.splice(i, 1);
-                    k++;
-                    // console.log(k);
-                }
+                        antBrown.splice(i, 1);
+                        antRed.splice(i, 1);
+                        k++;
+                        // console.log(k);
+                    }
 
-            } //console.log(n);
-}
+                } //console.log(n);
+            }
         }
 
         // Funktion die das Spiel beendet
