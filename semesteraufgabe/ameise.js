@@ -67,18 +67,22 @@ var Sem;
         }
         // Startposition Möglichkeiten
         setPosition1() {
+            // Bei 0 an X - Achse, Random auf y Achse
             this.x = 0;
             this.y = Math.floor(Math.random() * (700 - 0)) + 0;
         }
         setPosition2() {
+            // Bei canvas.width an X - Achse, Random auf y Achse
             this.x = 1300;
             this.y = Math.floor(Math.random() * (700 - 0)) + 0;
         }
         setPosition3() {
+            // Bei 0 an Y - Achse, Random auf X - Achse
             this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
             this.y = 0;
         }
         setPosition4() {
+            // Bei canvas.length an Y - Achse, Random auf X - Achse
             this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
             this.y = 700;
         }

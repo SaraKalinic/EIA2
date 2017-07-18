@@ -7,20 +7,26 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. */
 var Sem;
 (function (Sem) {
-    window.addEventListener("load", start);
+    window.addEventListener("load", start); // Lädt Start Screen wenn Fenster geladen wird
+    //Klassen
     Sem.ant = [];
     Sem.antRed = [];
     Sem.antBrown = [];
     let image;
     let n = 3;
+    // var Runden durchlaufene animate Funktion 
     let t = 0;
-    let m = 1;
+    // var gesamt vernichtete Ameisen 
     let k = 0;
-    let v = 3;
+    // var klicks auf rote Ameisen 
     let z = 0;
+    // var klicks auf braune Ameisen 
     let br = 0;
+    // var vernichtete schwarze Ameisen 
     let s = 0;
+    // var vernichtete rote Ameisen 
     let r = 0;
+    // var vernichtete braune Ameisen 
     let ab = 0;
     //---------------------------------------------------------------------------
     //START SCREEN
@@ -30,10 +36,12 @@ var Sem;
         canvas.width = 1300;
         canvas.height = 700;
         console.log(canvas);
+        // EventListener auf Canvas -> Bei Klick auf Canvas wird auf Erklärung gewechselt
         canvas.addEventListener("click", startTutorial);
         canvas.addEventListener("touch", startTutorial);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
+        // Zeichnet Hintergrund
         Sem.crc2.beginPath();
         Sem.crc2.fillStyle = "#adebad";
         Sem.crc2.strokeStyle = "#adebad";
@@ -43,6 +51,7 @@ var Sem;
         Sem.crc2.lineTo(canvas.width, 0);
         Sem.crc2.closePath();
         Sem.crc2.fill();
+        // Text 
         Sem.crc2.stroke();
         Sem.crc2.fillStyle = "black";
         Sem.crc2.font = "100px Arial";
@@ -58,12 +67,15 @@ var Sem;
         canvas.width = 1300;
         canvas.height = 700;
         console.log(canvas);
+        //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
+        canvas.removeEventListener("click", startTutorial);
+        canvas.removeEventListener("touch", startTutorial);
+        // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
         canvas.addEventListener("click", init);
         canvas.addEventListener("touch", init);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
-        canvas.removeEventListener("click", startTutorial);
-        canvas.removeEventListener("touch", startTutorial);
+        // Zeichnet Hintergrund
         Sem.crc2.beginPath();
         Sem.crc2.fillStyle = "#adebad";
         Sem.crc2.strokeStyle = "#adebad";
@@ -73,6 +85,7 @@ var Sem;
         Sem.crc2.lineTo(canvas.width, 0);
         Sem.crc2.closePath();
         Sem.crc2.fill();
+        // Schrift
         Sem.crc2.stroke();
         Sem.crc2.fillStyle = "black";
         Sem.crc2.font = "70px Arial";
@@ -96,10 +109,12 @@ var Sem;
         console.log(canvas);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
+        // Entfernt EventListener von Canvas, welcher init (Spiel) aufrufen soll
         canvas.removeEventListener("click", init);
         canvas.removeEventListener("touch", init);
         Sem.crc2.fillStyle = "#adebad";
         Sem.crc2.fillRect(0, 0, canvas.width, canvas.height);
+        // Div für Highscore wird erstellt und an Body angehangen
         let highscore = document.createElement("div");
         highscore.innerText = " Ameisen vernichtet: " + k + "\n Schwarze Ameisen: " + s + " \n Braune Ameisen: " + ab + " \n Rote Ameisen: " + r;
         highscore.style.fontSize = "40px";
@@ -120,10 +135,10 @@ var Sem;
             Sem.antBrown.push(b);
         }
         window.setTimeout(animate, 35);
-        // Event Listener hinzufügen
+        // Event Listener an Canvas anfügen, welcher Funktion "killAnt" aufruft
         canvas.addEventListener("touch", killAntM);
         canvas.addEventListener("click", killAnt);
-        // Bei Klick auf Ameise soll diese gelöscht werden
+        // Funktion um Ameise bei klick darauf zu Löschen
         function killAnt(event) {
             // Schwarze Ameise nach einem Klick löschen        
             for (let i = 0; i < Sem.ant.length; i++) {
@@ -138,15 +153,16 @@ var Sem;
                 let diffY = Math.abs(a.currentPosY - clickY);
                 //console.log(diffX);
                 //console.log(diffY);
-                // Wenn differenz < 40 wird Ameise gelöscht
+                // Wenn differenz zwischen Position Ameise und Position Klick < 40 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
+                    //Entfernt Ameise aus Array
                     Sem.ant.splice(i, 1);
+                    //Zählt gesamte Ameisen getötet hoch
                     k++;
+                    // Zählt schwarze Ameisen getötet hoch
                     s++;
                 }
-                ;
             }
-            ;
             //  Braune Ameise nach 2 Klicks löschen
             for (let i = 0; i < Sem.antBrown.length; i++) {
                 let b = Sem.antBrown[i];
@@ -160,20 +176,24 @@ var Sem;
                 let diffY = Math.abs(b.currentPosY - clickY);
                 //console.log(diffX);
                 //console.log(diffY);
-                // Wenn differenz < 40 wird Ameise gelöscht
+                // Wenn differenz zwischen Position Ameise und Klick Position < 40 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
+                    //Zählt Klicks auf Ameise hoch
                     br++;
                     console.log(br);
+                    // Wenn Ameise 2 Mal geklickt wurde 
                     if (br > 1 && br < 3) {
+                        // Ameise wird aus Array gelöscht
                         Sem.antBrown.splice(i, 1);
+                        //Zählt gesamt Ameisen getötet hoch
                         k++;
+                        //Zählt braune Ameisen getötet hoch
                         ab++;
+                        // Setzt Anzahl an klick auf Ameise wieder Null
                         br = 0;
                     }
                 }
-                ;
             }
-            ;
             // Rote Ameise nach 3 klicks löschen
             for (let i = 0; i < Sem.antRed.length; i++) {
                 let ar = Sem.antRed[i];
@@ -189,21 +209,24 @@ var Sem;
                 //console.log(diffY);
                 // Wenn differenz < 40 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
+                    //Zählt Klick auf Ameise hoch
                     z++;
                     //console.log(z);
-                    if (z > 2) {
+                    //Wenn Ameise 3 Mal geklickt wurde
+                    if (z > 2 && z < 4) {
+                        //Ameise wird aus Array gelöscht
                         Sem.antRed.splice(i, 1);
+                        //Zählt gesamt Ameisen getötet hoch
                         k++;
+                        //Zählt rote Ameisen getötet hoch
                         r++;
+                        // Setzt Klick auf Ameise wieder Null
                         z = 0;
                     }
                 }
-                ;
             }
-            ;
             //console.log(n);
         }
-        ;
         // Bei Klick auf Ameise soll diese gelöscht werden für Touch
         function killAntM(event) {
             for (let i = 0; i < Sem.ant.length; i++) {
@@ -225,44 +248,47 @@ var Sem;
                     Sem.antRed.splice(i, 1);
                     k++;
                 }
-                ;
-            }
-            ; //console.log(n);
+            } //console.log(n);
         }
-        ;
+        // Funktion die das Spiel beendet
         function checkPosition() {
+            // Für Ameise Schwarz
             for (let i = 0; i < Sem.ant.length; i++) {
                 let a = Sem.ant[i];
+                // Wenn Ameisen Position auf X - Achse zwischen 567 & 750 
                 if (a.currentPosX >= 567 && a.currentPosX <= 750) {
+                    // Wenn Ameisen Position auf Y - Achse zwischen 245 & 429
                     if (a.currentPosY >= 245 && a.currentPosY <= 429) {
+                        // Ruft Funktion für Game Over Screen auf
                         gameLost();
                     }
                 }
-                ;
             }
-            ;
+            // Für Ameise Braun
             for (let i = 0; i < Sem.antBrown.length; i++) {
                 let b = Sem.antBrown[i];
+                // Wenn Ameisen Position auf X - Achse zwischen 567 & 750
                 if (b.currentPosX >= 567 && b.currentPosX <= 750) {
+                    // Wenn Ameisen Position auf Y - Achse zwischen 245 & 429
                     if (b.currentPosY >= 245 && b.currentPosY <= 429) {
+                        // Ruft Funktion für Game Over Screen auf
                         gameLost();
                     }
                 }
-                ;
             }
-            ;
+            // Für Ameise Rot
             for (let i = 0; i < Sem.antRed.length; i++) {
                 let r = Sem.antRed[i];
+                // Wenn Ameisen Position auf X - Achse zwischen 567 & 750
                 if (r.currentPosX >= 567 && r.currentPosX <= 750) {
+                    // Wenn Ameisen Position auf Y - Achse zwischen 245 & 429
                     if (r.currentPosY >= 245 && r.currentPosY <= 429) {
+                        // Ruft Funktion für Game Over Screen auf
                         gameLost();
                     }
                 }
-                ;
             }
-            ;
         }
-        ;
         //Neue Ameise malen lassen
         function drawNeueAmeise() {
             let a = new Sem.Ameise();
@@ -273,7 +299,6 @@ var Sem;
             Sem.antBrown.push(b);
             n++;
         }
-        ;
         // Animate Funktion
         function animate() {
             // Hintergrundbild abrufen
@@ -283,7 +308,6 @@ var Sem;
                 let a = Sem.ant[i];
                 a.update();
             }
-            ;
             for (let i = 0; i < Sem.antRed.length; i++) {
                 let h = Sem.antRed[i];
                 h.update();
@@ -293,54 +317,45 @@ var Sem;
                 b.update();
             }
             window.setTimeout(animate, 35);
+            // Funktion welche immer die aktuelle Position der Ameise herausfinden / speichern soll 
             checkPosition();
+            // Highscore welcher Anzahl Ameisen vernichtet + einzelner Ameisen Arten vernichtet hochzählt
             highscore.innerText = " Ameisen vernichtet: " + k + "\n Schwarze Ameisen: " + s + " \n Braune Ameisen: " + ab + " \n Rote Ameisen: " + r;
+            // Variable zum durchzählen wie oft Animate Funktion aufgerufen wurde
             t++;
             //console.log(t); 
+            // If Funktionen um neue Ameisen nachzuschieben
+            // Wenn Animate Funktion 32 Mal aufgerufen
             if (t > 31 && t < 33) {
+                // erstelle neue schwarze Ameisen
                 let a = new Sem.Ameise();
                 Sem.ant.push(a);
                 n++;
             }
+            //Wenn Animate Funktion 51 Mal aufgerufen
             if (t > 50 && t < 52) {
+                //erstelle neue braune Ameise
                 let b = new Sem.AmeiseBrown();
                 Sem.antBrown.push(b);
                 n++;
             }
+            // Wenn Animate Funktion 71 Mal aufgerufen
             if (t > 70 && t < 72) {
+                //erstelle neue rote Ameise
                 let r = new Sem.AmeiseRot();
                 Sem.antRed.push(r);
                 n++;
+                //setze t Null um wieder von vorne zu zählen
                 t = 0;
             }
             // Game Over - Wenn über 200 Ameisen vernichtet wurden
             if (k > 15000) {
                 gameWon();
             }
-            ;
         }
-        // GAME WON SCREEN 
-        function gameWon() {
-            Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "#adebad";
-            Sem.crc2.strokeStyle = "#adebad";
-            Sem.crc2.moveTo(0, 0);
-            Sem.crc2.lineTo(0, canvas.height);
-            Sem.crc2.lineTo(canvas.width, canvas.height);
-            Sem.crc2.lineTo(canvas.width, 0);
-            Sem.crc2.closePath();
-            Sem.crc2.fill();
-            Sem.crc2.stroke();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.font = "70px Arial";
-            Sem.crc2.fillText("Game Over - Sie haben gewonnen", 150, 350);
-            Sem.crc2.font = "50px Arial";
-            Sem.crc2.fillText("Refresh to play again", 370, 450);
-            canvas.removeEventListener("click", killAnt);
-        }
-        ;
         //GAME LOST SCREEN 
         function gameLost() {
+            //Zeichnet Background
             Sem.crc2.beginPath();
             Sem.crc2.fillStyle = "#adebad";
             Sem.crc2.strokeStyle = "#adebad";
@@ -350,16 +365,40 @@ var Sem;
             Sem.crc2.lineTo(canvas.width, 0);
             Sem.crc2.closePath();
             Sem.crc2.fill();
+            //Text
             Sem.crc2.stroke();
             Sem.crc2.fillStyle = "black";
             Sem.crc2.font = "70px Arial";
             Sem.crc2.fillText("Game Over - Sie haben verloren", 150, 250);
             Sem.crc2.font = "50px Arial";
             Sem.crc2.fillText("Refresh to play again", 370, 450);
+            // Zeigt Highscore auf Game Over Screen an
             Sem.crc2.fillText("Dein Highscore: " + k, 370, 550);
+            // Damit wenn Game Over Screen angezeigt wird keine Ameisen mehr geklickt werden können
             canvas.removeEventListener("click", killAnt);
         }
-        ;
+        // GAME WON SCREEN 
+        function gameWon() {
+            //Zeichnet Background
+            Sem.crc2.beginPath();
+            Sem.crc2.fillStyle = "#adebad";
+            Sem.crc2.strokeStyle = "#adebad";
+            Sem.crc2.moveTo(0, 0);
+            Sem.crc2.lineTo(0, canvas.height);
+            Sem.crc2.lineTo(canvas.width, canvas.height);
+            Sem.crc2.lineTo(canvas.width, 0);
+            Sem.crc2.closePath();
+            Sem.crc2.fill();
+            //Schrift
+            Sem.crc2.stroke();
+            Sem.crc2.fillStyle = "black";
+            Sem.crc2.font = "70px Arial";
+            Sem.crc2.fillText("Game Over - Sie haben gewonnen", 150, 350);
+            Sem.crc2.font = "50px Arial";
+            Sem.crc2.fillText("Refresh to play again", 370, 450);
+            //Damit wenn Game Over Screen angezeigt wird keine Ameisen mehr geklickt werden können
+            canvas.removeEventListener("click", killAnt);
+        }
         // Hintergrund mal funktionen
         function drawDecke(_x, _y, _strokeColor, _fillColor, _strokeColor1, _fillColor1) {
             Sem.crc2.beginPath();

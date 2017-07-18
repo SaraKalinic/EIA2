@@ -9,20 +9,20 @@ nicht kopiert und auch nicht diktiert. */
 namespace Sem {
 
     export class AmeiseBrown extends Ameise {
-       
+
 
         constructor() {
             super();
             this.setStartPosition();
-            
+
         }
 
         update(): void {
-             this.move();
-             this.draw();
-             this.logCurrentPosition();
-          }
-        
+            this.move();
+            this.draw();
+            this.logCurrentPosition();
+        }
+
         setStartPosition(): void {
 
             for (var i: number = 0; i < ant.length; i++) {
@@ -67,9 +67,9 @@ namespace Sem {
             this.y = 700;
         }
 
-       draw(): void {
-            
-            
+        draw(): void {
+
+
             crc2.beginPath();
             crc2.fillStyle = "#b30000";
             crc2.strokeStyle = "#b30000";

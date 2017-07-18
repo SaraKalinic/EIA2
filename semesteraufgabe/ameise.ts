@@ -92,28 +92,32 @@ namespace Sem {
 
         // Startposition Möglichkeiten
         setPosition1(): void {
+            // Bei 0 an X - Achse, Random auf y Achse
             this.x = 0;
             this.y = Math.floor(Math.random() * (700 - 0)) + 0;
         }
         setPosition2(): void {
+            // Bei canvas.width an X - Achse, Random auf y Achse
             this.x = 1300;
             this.y = Math.floor(Math.random() * (700 - 0)) + 0;
         }
 
         setPosition3(): void {
+            // Bei 0 an Y - Achse, Random auf X - Achse
             this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
             this.y = 0;
         }
 
         setPosition4(): void {
+            // Bei canvas.length an Y - Achse, Random auf X - Achse
             this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
             this.y = 700;
         }
 
         // Ameise zeichnen Funktion
         draw(): void {
-            
-            
+
+
             crc2.beginPath();
             crc2.fillStyle = "black";
             crc2.strokeStyle = "black";
