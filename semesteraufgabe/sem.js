@@ -39,7 +39,7 @@ var Sem;
         // EventListener auf Canvas -> Bei Klick auf Canvas wird auf Erklärung gewechselt
         canvas.addEventListener("click", startTutorial);
         canvas.addEventListener("touchstart", startTutorial2);
-        //canvas.addEventListener("touchend", startTutorial2);
+        canvas.addEventListener("touchend", startTutorial2);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
         // Zeichnet Hintergrund
