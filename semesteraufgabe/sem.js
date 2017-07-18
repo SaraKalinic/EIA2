@@ -109,8 +109,8 @@ var Sem;
         canvas.height = 700;
         console.log(canvas);
         //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
-        canvas.removeEventListener("touchstart", startTutorial);
-        canvas.removeEventListener("touchend", startTutorial);
+        canvas.removeEventListener("touchstart", startTutorial2);
+        canvas.removeEventListener("touchend", startTutorial2);
         canvas.removeEventListener("click", startTutorial);
         // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
         canvas.addEventListener("touchstart", init);
