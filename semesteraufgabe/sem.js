@@ -116,7 +116,7 @@ var Sem;
         canvas.removeEventListener("click", startTutorial);
         // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
         canvas.addEventListener("touchstart", init);
-        canvas.addEventListener("touchend", init);
+        //canvas.addEventListener("touchend", init);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
         // Zeichnet Hintergrund
