@@ -136,7 +136,8 @@ var Sem;
         }
         window.setTimeout(animate, 35);
         // Event Listener an Canvas anfügen, welcher Funktion "killAnt" aufruft
-        canvas.addEventListener("touch", killAntM);
+        canvas.addEventListener("touchstart", killAntM);
+        //canvas.addEventListener("touchend", );
         canvas.addEventListener("click", killAnt);
         // Funktion um Ameise bei klick darauf zu Löschen
         function killAnt(event) {
