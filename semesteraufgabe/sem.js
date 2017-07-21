@@ -68,7 +68,7 @@ var Sem;
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1300;
-        canvas.height = 700;
+        canvas.height = 600;
         console.log(canvas);
         //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
         canvas.removeEventListener("click", startTutorial);
