@@ -38,9 +38,9 @@ var Sem;
         console.log(canvas);
         // EventListener auf Canvas -> Bei Klick/ Touch auf Canvas wird auf Erklärung gewechselt
         // Ruft bei klick startTutorial auf 
-        // canvas.addEventListener("click", startTutorial);
+        canvas.addEventListener("click", startTutorial);
         //Ruft bei touch startTutorial2 auf 
-        //canvas.addEventListener("touchstart", startTutorial2);
+        canvas.addEventListener("touchstart", startTutorial2);
         //canvas.addEventListener("touchend", startTutorial2);
         Sem.crc2 = canvas.getContext("2d");
         console.log(Sem.crc2);
@@ -67,8 +67,8 @@ var Sem;
     function startTutorial(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
-        canvas.width = 1000;
-        canvas.height = 600;
+        canvas.width = 1300;
+        canvas.height = 700;
         console.log(canvas);
         //Entfernt Eventlistener, welcher Erklärung aufrufen soll von Canvas 
         canvas.removeEventListener("click", startTutorial);
