@@ -41,9 +41,9 @@ namespace Sem {
         console.log(canvas);
         // EventListener auf Canvas -> Bei Klick/ Touch auf Canvas wird auf Erklärung gewechselt
         // Ruft bei klick startTutorial auf 
-        canvas.addEventListener("click", startTutorial);
+       // canvas.addEventListener("click", startTutorial);
         //Ruft bei touch startTutorial2 auf 
-        canvas.addEventListener("touchstart", startTutorial2);
+        //canvas.addEventListener("touchstart", startTutorial2);
         //canvas.addEventListener("touchend", startTutorial2);
         crc2 = canvas.getContext("2d");
         console.log(crc2);
