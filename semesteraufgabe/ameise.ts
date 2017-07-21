@@ -14,23 +14,24 @@ namespace Sem {
         xTarget: number;
         yTarget: number;
         speed: number;
-        
+        klicks: number; 
 
         constructor() {
             this.color = "black";
             this.speed = 0.004;
+            this.klicks = 0; 
             this.setStartPosition();
             this.setTarget();
             this.draw();
             this.move();
         }
 
-        
+
         // Update Funktion
         update(): void {
             this.move();
             this.draw();
-           
+
         }
 
         // Target Position auf den Korb setzten
@@ -40,7 +41,7 @@ namespace Sem {
         }
 
         move(): void {
-            
+
             this.x += Math.random() * 7 - 6;
             this.y += Math.random() * 4 - 2;
 
@@ -86,12 +87,12 @@ namespace Sem {
         setPosition1(): void {
             // Bei 0 an X - Achse, Random auf y Achse
             this.x = 0;
-            this.y = Math.floor(Math.random() * (700 ));
+            this.y = Math.floor(Math.random() * (700));
         }
         setPosition2(): void {
             // Bei canvas.width an X - Achse, Random auf y Achse
             this.x = 1300;
-            this.y = Math.floor(Math.random() * (700)) ;
+            this.y = Math.floor(Math.random() * (700));
         }
 
         setPosition3(): void {

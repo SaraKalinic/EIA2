@@ -11,6 +11,7 @@ var Sem;
         constructor() {
             this.color = "black";
             this.speed = 0.004;
+            this.klicks = 0;
             this.setStartPosition();
             this.setTarget();
             this.draw();

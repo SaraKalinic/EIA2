@@ -223,19 +223,19 @@ var Sem;
                 //console.log(diffY);
                 // Wenn differenz zwischen Position Ameise und Klick Position < 40 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
+                    b.klicks++;
+                    //console.log(b.klicks);
                     //Zählt Klicks auf Ameise hoch
                     br++;
-                    console.log(br);
+                    //console.log(br);
                     // Wenn Ameise 2 Mal geklickt wurde 
-                    if (br > 1 && br < 3) {
+                    if (b.klicks > 1) {
                         // Ameise wird aus Array gelöscht
                         Sem.antBrown.splice(i, 1);
                         //Zählt gesamt Ameisen getötet hoch
                         k++;
                         //Zählt braune Ameisen getötet hoch
                         ab++;
-                        // Setzt Anzahl an klick auf Ameise wieder Null
-                        br = 0;
                     }
                 }
             }
@@ -254,19 +254,19 @@ var Sem;
                 //console.log(diffY);
                 // Wenn differenz < 40 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
+                    ar.klicks++;
+                    //console.log(ar.klicks);
                     //Zählt Klick auf Ameise hoch
                     z++;
                     //console.log(z);
                     //Wenn Ameise 3 Mal geklickt wurde
-                    if (z > 2 && z < 4) {
+                    if (ar.klicks > 2) {
                         //Ameise wird aus Array gelöscht
                         Sem.antRed.splice(i, 1);
                         //Zählt gesamt Ameisen getötet hoch
                         k++;
                         //Zählt rote Ameisen getötet hoch
                         r++;
-                        // Setzt Klick auf Ameise wieder Null
-                        z = 0;
                     }
                 }
             }

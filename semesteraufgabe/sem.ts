@@ -30,7 +30,7 @@ namespace Sem {
     let r: number = 0;
     // var vernichtete braune Ameisen 
     let ab: number = 0;
-    
+
     //---------------------------------------------------------------------------
 
     //START SCREEN
@@ -160,10 +160,6 @@ namespace Sem {
         crc2.fillText("Erreicht eine Ameise den Korb ", 200, 390);
         crc2.fillText("so hast du verloren.", 200, 460);
         crc2.fillText("Tippe um das Spiel zu starten.", 200, 600);
-
-
-
-
     };
     //---------------------------------------------------------------------------
     // SPIEL 
@@ -280,13 +276,14 @@ namespace Sem {
 
                 // Wenn differenz zwischen Position Ameise und Klick Position < 40 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
-
+                    b.klicks++;
+                    //console.log(b.klicks);
                     //Zählt Klicks auf Ameise hoch
                     br++;
 
-                    console.log(br);
+                    //console.log(br);
                     // Wenn Ameise 2 Mal geklickt wurde 
-                    if (br > 1 && br < 3) {
+                    if (b.klicks > 1 ) {
                         // Ameise wird aus Array gelöscht
                         antBrown.splice(i, 1);
                         //Zählt gesamt Ameisen getötet hoch
@@ -294,7 +291,7 @@ namespace Sem {
                         //Zählt braune Ameisen getötet hoch
                         ab++;
                         // Setzt Anzahl an klick auf Ameise wieder Null
-                        br = 0;
+
                     }
 
                     // console.log(k);
@@ -322,13 +319,15 @@ namespace Sem {
 
                 // Wenn differenz < 40 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
+                    ar.klicks++;
 
+                    //console.log(ar.klicks);
                     //Zählt Klick auf Ameise hoch
                     z++;
 
                     //console.log(z);
                     //Wenn Ameise 3 Mal geklickt wurde
-                    if (z > 2 && z < 4) {
+                    if (ar.klicks > 2) {
                         //Ameise wird aus Array gelöscht
                         antRed.splice(i, 1);
                         //Zählt gesamt Ameisen getötet hoch
@@ -336,7 +335,7 @@ namespace Sem {
                         //Zählt rote Ameisen getötet hoch
                         r++;
                         // Setzt Klick auf Ameise wieder Null
-                        z = 0;
+                        //console.log(ar.klicks);
                     }
 
                     // console.log(k);
@@ -352,6 +351,7 @@ namespace Sem {
         // Bei Klick auf Ameise soll diese gelöscht werden für Touch
         function killAntM(event: TouchEvent): void {
             if (event.touches.length == 1) {
+
                 var touch = event.touches[0];
                 for (let i: number = 0; i < ant.length; i++) {
                     let a: Ameise = ant[i];
@@ -371,10 +371,12 @@ namespace Sem {
 
                     // Wenn differenz < 20 wird Ameise gelöscht
                     if (diffX <= 50 && diffY <= 50) {
+
                         ant.splice(i, 1);
                         k++;
                         s++;
                         // console.log(k);
+
                     }
 
                 } //console.log(n);
@@ -397,10 +399,13 @@ namespace Sem {
 
                     // Wenn differenz < 20 wird Ameise gelöscht
                     if (diffX <= 50 && diffY <= 50) {
+
                         antRed.splice(i, 1);
                         k++;
                         r++;
+
                         // console.log(k);
+
                     }
 
                 }

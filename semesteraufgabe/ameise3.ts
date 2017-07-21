@@ -9,7 +9,7 @@ nicht kopiert und auch nicht diktiert. */
 namespace Sem {
 
     export class AmeiseBrown extends Ameise {
-
+ 
 
         constructor() {
             super();
