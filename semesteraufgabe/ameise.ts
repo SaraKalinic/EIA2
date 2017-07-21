@@ -11,35 +11,26 @@ namespace Sem {
         x: number;
         y: number;
         color: string;
-        size: number;
         xTarget: number;
         yTarget: number;
         speed: number;
-        currentPosX: number;
-        currentPosY: number;
+        
 
         constructor() {
-
-            this.draw();
+            this.color = "black";
             this.speed = 0.004;
             this.setStartPosition();
             this.setTarget();
+            this.draw();
             this.move();
         }
 
-        // Position der Ameise herausfinden
-        logCurrentPosition(): void {
-            this.currentPosX = this.x;
-            this.currentPosY = this.y;
-
-            //console.log(this.x);
-            //console.log(this.y);    
-        }
+        
         // Update Funktion
         update(): void {
             this.move();
             this.draw();
-            this.logCurrentPosition();
+           
         }
 
         // Target Position auf den Korb setzten
@@ -49,6 +40,7 @@ namespace Sem {
         }
 
         move(): void {
+            
             this.x += Math.random() * 7 - 6;
             this.y += Math.random() * 4 - 2;
 
@@ -94,23 +86,23 @@ namespace Sem {
         setPosition1(): void {
             // Bei 0 an X - Achse, Random auf y Achse
             this.x = 0;
-            this.y = Math.floor(Math.random() * (700 - 0)) + 0;
+            this.y = Math.floor(Math.random() * (700 ));
         }
         setPosition2(): void {
             // Bei canvas.width an X - Achse, Random auf y Achse
             this.x = 1300;
-            this.y = Math.floor(Math.random() * (700 - 0)) + 0;
+            this.y = Math.floor(Math.random() * (700)) ;
         }
 
         setPosition3(): void {
             // Bei 0 an Y - Achse, Random auf X - Achse
-            this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
+            this.x = Math.floor(Math.random() * (1300));
             this.y = 0;
         }
 
         setPosition4(): void {
             // Bei canvas.length an Y - Achse, Random auf X - Achse
-            this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
+            this.x = Math.floor(Math.random() * (1300));
             this.y = 700;
         }
 
@@ -119,8 +111,8 @@ namespace Sem {
 
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 9, this.y);
             crc2.arc(this.x + 9, this.y, 7, 180, 270);
             crc2.closePath();
@@ -128,8 +120,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 9, this.y);
             crc2.lineTo(this.x + 10, this.y + 10);
             crc2.closePath();
@@ -137,8 +129,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 10, this.y + 10);
             crc2.lineTo(this.x + 5, this.y + 15);
             crc2.closePath();
@@ -146,8 +138,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 9, this.y);
             crc2.lineTo(this.x + 10, this.y - 13);
             crc2.closePath();
@@ -155,8 +147,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 10, this.y - 13);
             crc2.lineTo(this.x + 5, this.y - 15);
             crc2.closePath();
@@ -164,8 +156,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 19, this.y);
             crc2.arc(this.x + 19, this.y, 6, 180, 270);
             crc2.closePath();
@@ -173,8 +165,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 19, this.y);
             crc2.lineTo(this.x + 20, this.y + 11);
             crc2.closePath();
@@ -182,8 +174,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 20, this.y + 11);
             crc2.lineTo(this.x + 15, this.y + 15);
             crc2.closePath();
@@ -191,8 +183,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 19, this.y);
             crc2.lineTo(this.x + 20, this.y - 11);
             crc2.closePath();
@@ -200,8 +192,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 20, this.y - 11);
             crc2.lineTo(this.x + 15, this.y - 15);
             crc2.closePath();
@@ -209,8 +201,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 29, this.y);
             crc2.arc(this.x + 29, this.y, 6, 180, 270);
             crc2.closePath();
@@ -218,8 +210,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 25, this.y);
             crc2.lineTo(this.x + 27, this.y + 11);
             crc2.closePath();
@@ -227,8 +219,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 27, this.y + 11);
             crc2.lineTo(this.x + 22, this.y + 15);
             crc2.closePath();
@@ -236,8 +228,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 25, this.y);
             crc2.lineTo(this.x + 27, this.y - 11);
             crc2.closePath();
@@ -245,8 +237,8 @@ namespace Sem {
             crc2.stroke();
 
             crc2.beginPath();
-            crc2.fillStyle = "black";
-            crc2.strokeStyle = "black";
+            crc2.fillStyle = this.color;
+            crc2.strokeStyle = this.color;
             crc2.moveTo(this.x + 27, this.y - 11);
             crc2.lineTo(this.x + 22, this.y - 15);
             crc2.closePath();

@@ -105,7 +105,7 @@ namespace Sem {
         crc2.font = "70px Arial";
         crc2.fillText("Das Große Krabbeln", 200, 150);
         crc2.font = "35px Arial";
-        crc2.fillText("Vernichte die Ameisen (durch klich auf diese bevor) sie an den Korb gelangen. ", 50, 250);
+        crc2.fillText("Vernichte die Ameisen (durch Klick auf diese) bevor sie an den Korb gelangen. ", 50, 250);
         crc2.fillText("Schwarze Ameise = 1 Klick ", 50, 320);
         crc2.fillText("Braune Ameise = 2 Klick ", 50, 390);
         crc2.fillText("Rote Ameise = 3 Klick ", 50, 460);
@@ -233,8 +233,8 @@ namespace Sem {
                 //console.log(clickY);
 
                 // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                let diffX: number = Math.abs(a.currentPosX - clickX);
-                let diffY: number = Math.abs(a.currentPosY - clickY);
+                let diffX: number = Math.abs(a.x - clickX);
+                let diffY: number = Math.abs(a.y - clickY);
 
                 //console.log(diffX);
                 //console.log(diffY);
@@ -269,8 +269,8 @@ namespace Sem {
                 //console.log(clickY);
 
                 // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                let diffX: number = Math.abs(b.currentPosX - clickX);
-                let diffY: number = Math.abs(b.currentPosY - clickY);
+                let diffX: number = Math.abs(b.x - clickX);
+                let diffY: number = Math.abs(b.y - clickY);
 
                 //console.log(diffX);
                 //console.log(diffY);
@@ -311,8 +311,8 @@ namespace Sem {
                 //console.log(clickY);
 
                 // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                let diffX: number = Math.abs(ar.currentPosX - clickX);
-                let diffY: number = Math.abs(ar.currentPosY - clickY);
+                let diffX: number = Math.abs(ar.x - clickX);
+                let diffY: number = Math.abs(ar.y - clickY);
 
                 //console.log(diffX);
                 //console.log(diffY);
@@ -360,8 +360,8 @@ namespace Sem {
                     //console.log(clickY);
 
                     // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                    let diffX: number = Math.abs(a.currentPosX - clickX);
-                    let diffY: number = Math.abs(a.currentPosY - clickY);
+                    let diffX: number = Math.abs(a.x - clickX);
+                    let diffY: number = Math.abs(a.y - clickY);
 
                     //console.log(diffX);
                     //console.log(diffY);
@@ -386,8 +386,8 @@ namespace Sem {
                     //console.log(clickY);
 
                     // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                    let diffX: number = Math.abs(a.currentPosX - clickX);
-                    let diffY: number = Math.abs(a.currentPosY - clickY);
+                    let diffX: number = Math.abs(a.x - clickX);
+                    let diffY: number = Math.abs(a.y - clickY);
 
                     //console.log(diffX);
                     //console.log(diffY);
@@ -411,8 +411,8 @@ namespace Sem {
                     //console.log(clickY);
 
                     // Differenz zwischen Klick Position und Position der Ameise ausrechnen
-                    let diffX: number = Math.abs(a.currentPosX - clickX);
-                    let diffY: number = Math.abs(a.currentPosY - clickY);
+                    let diffX: number = Math.abs(a.x - clickX);
+                    let diffY: number = Math.abs(a.y - clickY);
 
                     //console.log(diffX);
                     //console.log(diffY);
@@ -436,9 +436,9 @@ namespace Sem {
             for (let i: number = 0; i < ant.length; i++) {
                 let a: Ameise = ant[i];
                 // Wenn Ameisen Position auf X - Achse zwischen 567 & 750 
-                if (a.currentPosX >= 567 && a.currentPosX <= 750) {
+                if (a.x >= 567 && a.x <= 750) {
                     // Wenn Ameisen Position auf Y - Achse zwischen 245 & 429
-                    if (a.currentPosY >= 245 && a.currentPosY <= 429) {
+                    if (a.y >= 245 && a.y <= 429) {
                         // Ruft Funktion für Game Over Screen auf
                         gameLost();
 
@@ -450,9 +450,9 @@ namespace Sem {
             for (let i: number = 0; i < antBrown.length; i++) {
                 let b: AmeiseBrown = antBrown[i];
                 // Wenn Ameisen Position auf X - Achse zwischen 567 & 750
-                if (b.currentPosX >= 567 && b.currentPosX <= 750) {
+                if (b.x >= 567 && b.x <= 750) {
                     // Wenn Ameisen Position auf Y - Achse zwischen 245 & 429
-                    if (b.currentPosY >= 245 && b.currentPosY <= 429) {
+                    if (b.y >= 245 && b.y <= 429) {
                         // Ruft Funktion für Game Over Screen auf
                         gameLost();
 
@@ -465,9 +465,9 @@ namespace Sem {
             for (let i: number = 0; i < antRed.length; i++) {
                 let r: AmeiseRot = antRed[i];
                 // Wenn Ameisen Position auf X - Achse zwischen 567 & 750
-                if (r.currentPosX >= 567 && r.currentPosX <= 750) {
+                if (r.x >= 567 && r.x <= 750) {
                     // Wenn Ameisen Position auf Y - Achse zwischen 245 & 429
-                    if (r.currentPosY >= 245 && r.currentPosY <= 429) {
+                    if (r.y >= 245 && r.y <= 429) {
                         // Ruft Funktion für Game Over Screen auf
                         gameLost();
 
@@ -483,6 +483,7 @@ namespace Sem {
         //Neue Ameise malen lassen
         function drawNeueAmeise(): void {
             let a: Ameise = new Ameise();
+           
             ant.push(a);
 
             let h: AmeiseRot = new AmeiseRot();
@@ -600,6 +601,7 @@ namespace Sem {
             canvas.removeEventListener("click", killAnt);
             canvas.removeEventListener("touchstart", killAnt);
             canvas.removeEventListener("touchend", killAnt);
+            
         }
 
         // GAME WON SCREEN 

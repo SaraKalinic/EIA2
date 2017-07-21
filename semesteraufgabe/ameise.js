@@ -9,24 +9,17 @@ var Sem;
 (function (Sem) {
     class Ameise {
         constructor() {
-            this.draw();
+            this.color = "black";
             this.speed = 0.004;
             this.setStartPosition();
             this.setTarget();
+            this.draw();
             this.move();
-        }
-        // Position der Ameise herausfinden
-        logCurrentPosition() {
-            this.currentPosX = this.x;
-            this.currentPosY = this.y;
-            //console.log(this.x);
-            //console.log(this.y);    
         }
         // Update Funktion
         update() {
             this.move();
             this.draw();
-            this.logCurrentPosition();
         }
         // Target Position auf den Korb setzten
         setTarget() {
@@ -69,140 +62,140 @@ var Sem;
         setPosition1() {
             // Bei 0 an X - Achse, Random auf y Achse
             this.x = 0;
-            this.y = Math.floor(Math.random() * (700 - 0)) + 0;
+            this.y = Math.floor(Math.random() * (700));
         }
         setPosition2() {
             // Bei canvas.width an X - Achse, Random auf y Achse
             this.x = 1300;
-            this.y = Math.floor(Math.random() * (700 - 0)) + 0;
+            this.y = Math.floor(Math.random() * (700));
         }
         setPosition3() {
             // Bei 0 an Y - Achse, Random auf X - Achse
-            this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
+            this.x = Math.floor(Math.random() * (1300));
             this.y = 0;
         }
         setPosition4() {
             // Bei canvas.length an Y - Achse, Random auf X - Achse
-            this.x = Math.floor(Math.random() * (1300 - 0)) + 0;
+            this.x = Math.floor(Math.random() * (1300));
             this.y = 700;
         }
         // Ameise zeichnen Funktion
         draw() {
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 9, this.y);
             Sem.crc2.arc(this.x + 9, this.y, 7, 180, 270);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 9, this.y);
             Sem.crc2.lineTo(this.x + 10, this.y + 10);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 10, this.y + 10);
             Sem.crc2.lineTo(this.x + 5, this.y + 15);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 9, this.y);
             Sem.crc2.lineTo(this.x + 10, this.y - 13);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 10, this.y - 13);
             Sem.crc2.lineTo(this.x + 5, this.y - 15);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 19, this.y);
             Sem.crc2.arc(this.x + 19, this.y, 6, 180, 270);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 19, this.y);
             Sem.crc2.lineTo(this.x + 20, this.y + 11);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 20, this.y + 11);
             Sem.crc2.lineTo(this.x + 15, this.y + 15);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 19, this.y);
             Sem.crc2.lineTo(this.x + 20, this.y - 11);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 20, this.y - 11);
             Sem.crc2.lineTo(this.x + 15, this.y - 15);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 29, this.y);
             Sem.crc2.arc(this.x + 29, this.y, 6, 180, 270);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 25, this.y);
             Sem.crc2.lineTo(this.x + 27, this.y + 11);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 27, this.y + 11);
             Sem.crc2.lineTo(this.x + 22, this.y + 15);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 25, this.y);
             Sem.crc2.lineTo(this.x + 27, this.y - 11);
             Sem.crc2.closePath();
             Sem.crc2.fill();
             Sem.crc2.stroke();
             Sem.crc2.beginPath();
-            Sem.crc2.fillStyle = "black";
-            Sem.crc2.strokeStyle = "black";
+            Sem.crc2.fillStyle = this.color;
+            Sem.crc2.strokeStyle = this.color;
             Sem.crc2.moveTo(this.x + 27, this.y - 11);
             Sem.crc2.lineTo(this.x + 22, this.y - 15);
             Sem.crc2.closePath();
