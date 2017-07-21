@@ -369,7 +369,7 @@ namespace Sem {
                     //console.log(diffY);
 
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 100 && diffY <= 100) {
+                    if (diffX <= 50 && diffY <= 50) {
                         ant.splice(i, 1);
                         k++;
                         s++;
@@ -395,7 +395,7 @@ namespace Sem {
                     //console.log(diffY);
 
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 100 && diffY <= 100) {
+                    if (diffX <= 50 && diffY <= 50) {
                         antRed.splice(i, 1);
                         k++;
                         r++;
@@ -420,7 +420,7 @@ namespace Sem {
                     //console.log(diffY);
 
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 100 && diffY <= 100) {
+                    if (diffX <= 50 && diffY <= 50) {
                         antBrown.splice(i, 1);
                         k++;
                         ab++;
