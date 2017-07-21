@@ -8,7 +8,7 @@ nicht kopiert und auch nicht diktiert. */
 
 namespace Sem {
     window.addEventListener("load", start); // Lädt Start Screen wenn Fenster geladen wird
-    
+
     export let crc2: CanvasRenderingContext2D;
     //Klassen
     export let ant: Ameise[] = [];
@@ -31,6 +31,7 @@ namespace Sem {
     // var vernichtete braune Ameisen 
     let ab: number = 0;
     //---------------------------------------------------------------------------
+
     //START SCREEN
     function start(_event: Event): void {
         let canvas: HTMLCanvasElement;
@@ -84,7 +85,7 @@ namespace Sem {
         //canvas.removeEventListener("touchend", startTutorial2);
         // Fügt Canvas EventListener hinzu, bei klick auf Canvas wird init (Spiel) aufgerufen
         canvas.addEventListener("click", init);
-        
+
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
@@ -167,6 +168,7 @@ namespace Sem {
     // SPIEL 
     function init(_event: Event): void {
 
+
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1300;
@@ -242,6 +244,7 @@ namespace Sem {
                 // Wenn differenz zwischen Position Ameise und Position Klick < 40 wird Ameise gelöscht
                 if (diffX <= 40 && diffY <= 40) {
 
+
                     //Entfernt Ameise aus Array
                     ant.splice(i, 1);
 
@@ -260,7 +263,6 @@ namespace Sem {
             //  Braune Ameise nach 2 Klicks löschen
             for (let i: number = 0; i < antBrown.length; i++) {
                 let b: AmeiseBrown = antBrown[i];
-
 
                 // Position des Klick herausfinden
                 let clickX: number = event.clientX;
@@ -367,7 +369,7 @@ namespace Sem {
                     //console.log(diffY);
 
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 200 && diffY <= 200) {
+                    if (diffX <= 100 && diffY <= 100) {
                         ant.splice(i, 1);
                         k++;
                         s++;
@@ -393,7 +395,7 @@ namespace Sem {
                     //console.log(diffY);
 
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 200 && diffY <= 200) {
+                    if (diffX <= 100 && diffY <= 100) {
                         antRed.splice(i, 1);
                         k++;
                         r++;
@@ -418,7 +420,7 @@ namespace Sem {
                     //console.log(diffY);
 
                     // Wenn differenz < 20 wird Ameise gelöscht
-                    if (diffX <= 200 && diffY <= 200) {
+                    if (diffX <= 100 && diffY <= 100) {
                         antBrown.splice(i, 1);
                         k++;
                         ab++;
@@ -483,7 +485,7 @@ namespace Sem {
         //Neue Ameise malen lassen
         function drawNeueAmeise(): void {
             let a: Ameise = new Ameise();
-           
+
             ant.push(a);
 
             let h: AmeiseRot = new AmeiseRot();
@@ -552,9 +554,8 @@ namespace Sem {
                 let b: AmeiseBrown = new AmeiseBrown();
                 antBrown.push(b);
                 n++;
-
-
             }
+
             // Wenn Animate Funktion 71 Mal aufgerufen
             if (t > 70 && t < 72) {
                 //erstelle neue rote Ameise
@@ -564,12 +565,11 @@ namespace Sem {
 
                 //setze t Null um wieder von vorne zu zählen
                 t = 0;
-
             }
 
 
             // Game Over - Wenn über 200 Ameisen vernichtet wurden
-            if (k > 15000) {
+            if (k > 1000) {
                 gameWon();
             }
         }
@@ -601,7 +601,7 @@ namespace Sem {
             canvas.removeEventListener("click", killAnt);
             canvas.removeEventListener("touchstart", killAnt);
             canvas.removeEventListener("touchend", killAnt);
-            
+
         }
 
         // GAME WON SCREEN 
@@ -941,9 +941,6 @@ namespace Sem {
             crc2.closePath();
             crc2.fill();
             crc2.stroke();
-
-
-
         }
 
         function drawKorb(_x: number, _y: number, _x1: number, _y1: number, r: number, _strokeColor: string, _fillColor: string, _strokeColor1: string, _fillColor1: string): void {
@@ -1047,8 +1044,5 @@ namespace Sem {
             crc2.fill();
             crc2.stroke();
         }
-
-
-
     }
 }
