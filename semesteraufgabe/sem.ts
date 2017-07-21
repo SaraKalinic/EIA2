@@ -30,6 +30,7 @@ namespace Sem {
     let r: number = 0;
     // var vernichtete braune Ameisen 
     let ab: number = 0;
+    
     //---------------------------------------------------------------------------
 
     //START SCREEN
